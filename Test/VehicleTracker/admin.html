@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Live Map</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+
+        #sidebar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 250px;
+            background: white;
+            z-index: 1000;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        .vehicle-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .vehicle-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .vehicle-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="sidebar">
+        <h3>🔴 Live Vehicles</h3>
+        <div id="vehicle-list">
+            <p>Waiting for data...</p>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+    <!-- Load Configuration -->
+    <script src="firebase-config.js"></script>
+
+    <script>
+        // Initialize Map
+        // Default View: India Center
+        const map = L.map('map').setView([20.5937, 78.9629], 5);
+
+        // Add Tile Layer (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Markers Store
+        const markers = {};
+        const vehicleList = document.getElementById('vehicle-list');
+
+        // Listen for all location changes
+        database.ref('locations').on('value', (snapshot) => {
+            const data = snapshot.val();
+
+            if (!data) {
+                vehicleList.innerHTML = "<p>No active vehicles found.</p>";
+                return;
+            }
+
+            vehicleList.innerHTML = ""; // Clear list to rebuild
+
+            for (const [id, info] of Object.entries(data)) {
+                updateMarker(id, info);
+                updateSidebar(id, info);
+            }
+        });
+
+        function updateMarker(id, info) {
+            const lat = info.lat;
+            const lng = info.lng;
+            const lastUpdate = new Date(info.timestamp).toLocaleTimeString();
+
+            // Icon Customization (Optional: Rotate based on heading)
+            // For now, standard marker
+
+            if (markers[id]) {
+                // Update existing marker
+                const marker = markers[id];
+                marker.setLatLng([lat, lng]);
+                marker.bindPopup(`<b>${id}</b><br>Speed: ${info.speed} km/h<br>Last: ${lastUpdate}`);
+            } else {
+                // Create new marker
+                const marker = L.marker([lat, lng]).addTo(map);
+                marker.bindPopup(`<b>${id}</b><br>Speed: ${info.speed} km/h<br>Last: ${lastUpdate}`);
+                markers[id] = marker;
+
+                // Zoom to first vehicle found if map is at default zoom
+                if (Object.keys(markers).length === 1 && map.getZoom() === 5) {
+                    map.setView([lat, lng], 15);
+                }
+            }
+        }
+
+        function updateSidebar(id, info) {
+            const div = document.createElement('div');
+            div.className = 'vehicle-item';
+            div.innerHTML = `
+                <strong>${id}</strong><br>
+                <small>Updated: ${new Date(info.timestamp).toLocaleTimeString()}</small>
+            `;
+            div.onclick = () => {
+                if (markers[id]) {
+                    map.setView(markers[id].getLatLng(), 16);
+                    markers[id].openPopup();
+                }
+            };
+            vehicleList.appendChild(div);
+        }
+
+    </script>
+</body>
+
+</html>
