@@ -33,17 +33,17 @@
 
     <header>
         <div class="container">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <img src="assets/logo.png" alt="Cleanzit Logo" style="height: 60px;">
             </a>
             <div class="mobile-toggle" aria-label="Toggle Navigation">☰</div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#benefits">Why Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="stores.html">Stores</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                     <li><a href="tel:+917777818188" class="nav-phone">📞 +91 77778 18188</a></li>
                 </ul>
             </nav>
@@ -51,18 +51,18 @@
     </header>
 
     <main>
-        <!-- Hero Section - Mr Blue Style -->
+        <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="container">
                 <div class="hero-content">
                     <h1 class="hero-title">Join India's <span>Happiest Franchise</span> Brand</h1>
                     <p class="hero-subtitle">Picks up, Cleans and Delivers laundry right to your doorstep</p>
-                    <p class="hero-subtitle animate-slide-up" style="animation-delay: 0.2s;">
+                    <p class="hero-subtitle" style="font-size: 0.95rem; opacity: 0.9;">
                         Premium Laundry & Dry Cleaning | 24hr Express Delivery
                     </p>
 
-                    <!-- Premium Feature: Interactive Pincode Check -->
-                    <div class="hero-pincode-check animate-fade-in" style="animation-delay: 0.4s;">
+                    <!-- Pincode Check -->
+                    <div class="hero-pincode-check" style="margin: 2rem 0;">
                         <div class="pincode-box">
                             <span class="location-icon">📍</span>
                             <input type="text" placeholder="Enter Pincode" maxlength="6" aria-label="Enter Pincode">
@@ -71,9 +71,9 @@
                         <p class="pincode-note"><small>⚡ Instant pickup available in 50+ areas</small></p>
                     </div>
 
-                    <div class="hero-buttons animate-fade-in" style="animation-delay: 0.6s;">
-                        <a href="#contact" class="btn">Start Your Franchise</a>
-                        <a href="#how-it-works" class="btn btn-outline">How It Works</a>
+                    <div class="hero-buttons">
+                        <a href="contact.html" class="btn">Start Your Franchise</a>
+                        <a href="services.html" class="btn btn-outline">Our Services</a>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -82,32 +82,7 @@
             </div>
         </section>
 
-        <!-- Floating Form -->
-        <section class="container">
-            <div class="floating-form fade-in">
-                <h3>Request Franchise Information</h3>
-                <form id="franchise-form-float" class="form-grid" action="https://api.web3forms.com/submit"
-                    method="POST">
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE"> <!-- REPLACE THIS KEY -->
-                    <input type="hidden" name="subject" value="New Header Lead (Floating Form)">
-
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="tel" name="phone" placeholder="Mobile Number" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <select name="city" required>
-                        <option value="">Select City Tier</option>
-                        <option>Tier 1 (Metro)</option>
-                        <option>Tier 2</option>
-                        <option>Tier 3</option>
-                    </select>
-                    <button type="submit" class="btn">Get Franchise Kit</button>
-                </form>
-            </div>
-        </section>
-
-
-
-        <!-- Stats Section (Social Proof) -->
+        <!-- Stats Section -->
         <section class="stats-section">
             <div class="container">
                 <div class="stats-grid">
@@ -127,343 +102,203 @@
             </div>
         </section>
 
-        <!-- Affordable Luxury (Value Props) -->
+        <!-- Affordable Luxury Section -->
         <section class="affordable-luxury" style="background: var(--color-primary); color: #fff; padding: 5rem 0;">
             <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 1rem;">Affordable <span
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="color: #fff; font-size: 2rem; margin-bottom: 1rem;">Affordable <span
                             style="color: var(--color-secondary);">Luxury</span></h2>
                     <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto;">Experience premium fabric
                         care with world-class technology, starting at just ₹79/kg.</p>
                 </div>
-                <div class="luxury-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
-                    <!-- Card 1 -->
-                    <div class="luxury-card"
-                        style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); flex: 1 1 300px; max-width: 350px; transition: transform 0.3s ease;">
-                        <div style="font-size: 3rem; margin-bottom: 1.5rem;">🧬</div>
-                        <h3 style="color: var(--color-secondary); margin-bottom: 1rem;">Individual Wash</h3>
-                        <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Your clothes are tagged and washed
-                            separately. They never touch a stranger's fabrics. 100% Hygienic.</p>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto;">
+                    <div
+                        style="background: rgba(255,255,255,0.08); padding: 2rem; border-radius: 16px; text-align: center;">
+                        <span style="font-size: 2.5rem;">🧬</span>
+                        <h3 style="color: var(--color-secondary); margin: 1rem 0;">Individual Wash</h3>
+                        <p style="color: rgba(255,255,255,0.8);">Your clothes are tagged and washed separately. 100%
+                            Hygienic.</p>
                     </div>
-                    <!-- Card 2 -->
-                    <div class="luxury-card"
-                        style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); flex: 1 1 300px; max-width: 350px; transition: transform 0.3s ease;">
-                        <div style="font-size: 3rem; margin-bottom: 1.5rem;">🇩🇪</div>
-                        <h3 style="color: var(--color-secondary); margin-bottom: 1rem;">German Tech</h3>
-                        <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">We use state-of-the-art diverse
-                            machinery and eco-friendly enzymes for fabric longevity.</p>
+                    <div
+                        style="background: rgba(255,255,255,0.08); padding: 2rem; border-radius: 16px; text-align: center;">
+                        <span style="font-size: 2.5rem;">🇩🇪</span>
+                        <h3 style="color: var(--color-secondary); margin: 1rem 0;">German Tech</h3>
+                        <p style="color: rgba(255,255,255,0.8);">State-of-the-art machinery and eco-friendly enzymes.
+                        </p>
                     </div>
-                    <!-- Card 3 -->
-                    <div class="luxury-card"
-                        style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); flex: 1 1 300px; max-width: 350px; transition: transform 0.3s ease;">
-                        <div style="font-size: 3rem; margin-bottom: 1.5rem;">⚡</div>
-                        <h3 style="color: var(--color-secondary); margin-bottom: 1rem;">24h Express</h3>
-                        <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">From pickup to crisp packaging in
-                            just 24 hours. Tracking available via our App.</p>
+                    <div
+                        style="background: rgba(255,255,255,0.08); padding: 2rem; border-radius: 16px; text-align: center;">
+                        <span style="font-size: 2.5rem;">⚡</span>
+                        <h3 style="color: var(--color-secondary); margin: 1rem 0;">24h Express</h3>
+                        <p style="color: rgba(255,255,255,0.8);">From pickup to delivery in just 24 hours.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section id="how-it-works" class="features">
+        <!-- Services Preview -->
+        <section style="padding: 5rem 0; background: #fff;">
             <div class="container">
-                <h2 class="section-title">Our <span>Premium</span> Services</h2>
-                <div class="services-grid"
-                    style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
-                    <article class="service-card fade-in" style="flex: 1 1 22%; min-width: 250px; max-width: 300px;">
-                        <div class="service-card-image">🧺</div>
-                        <div class="service-card-content">
-                            <h3>Daily Laundry</h3>
-                            <p>Wash & Fold services for everyday clothes with express delivery.</p>
-                        </div>
-                    </article>
-                    <article class="service-card fade-in" style="flex: 1 1 22%; min-width: 250px; max-width: 300px;">
-                        <div class="service-card-image">👘</div>
-                        <div class="service-card-content">
-                            <h3>Saree & Ethnic Care</h3>
-                            <p>Specialized cleaning for silk sarees, lehengas & traditional wear.</p>
-                        </div>
-                    </article>
-                    <article class="service-card fade-in" style="flex: 1 1 22%; min-width: 250px; max-width: 300px;">
-                        <div class="service-card-image">👔</div>
-                        <div class="service-card-content">
-                            <h3>Dry Cleaning</h3>
-                            <p>Premium dry cleaning for suits, blazers & delicate fabrics.</p>
-                        </div>
-                    </article>
-                    <article class="service-card fade-in" style="flex: 1 1 22%; min-width: 250px; max-width: 300px;">
-                        <div class="service-card-image">🏨</div>
-                        <div class="service-card-content">
-                            <h3>B2B Services</h3>
-                            <p>Bulk laundry for hotels, hospitals & corporate clients.</p>
-                        </div>
-                    </article>
+                <h2 class="section-title">Our <span>Services</span></h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <span style="font-size: 2.5rem;">⚖️</span>
+                        <h3 style="color: var(--color-primary); margin-top: 0.75rem; font-size: 1rem;">Laundry by KG
+                        </h3>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <span style="font-size: 2.5rem;">👔</span>
+                        <h3 style="color: var(--color-primary); margin-top: 0.75rem; font-size: 1rem;">Dry Cleaning</h3>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <span style="font-size: 2.5rem;">🪟</span>
+                        <h3 style="color: var(--color-primary); margin-top: 0.75rem; font-size: 1rem;">Curtain Cleaning
+                        </h3>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <span style="font-size: 2.5rem;">🌬️</span>
+                        <h3 style="color: var(--color-primary); margin-top: 0.75rem; font-size: 1rem;">Steam Ironing
+                        </h3>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <span style="font-size: 2.5rem;">👟</span>
+                        <h3 style="color: var(--color-primary); margin-top: 0.75rem; font-size: 1rem;">Shoe Cleaning
+                        </h3>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="services.html" class="btn">View All Services</a>
+                    <a href="pricing.html" class="btn btn-outline" style="margin-left: 1rem;">See Pricing</a>
                 </div>
             </div>
         </section>
 
-        <!-- How It Works -->
-        <section id="how-it-works" class="how-it-works">
-            <div class="container">
-                <h2 class="section-title">How It <span>Works</span></h2>
-                <div class="steps-grid">
-                    <div class="step-item fade-in">
-                        <div class="step-number">1</div>
-                        <h3>Schedule Pickup</h3>
-                        <p>Book via app, WhatsApp or call. We collect from your doorstep.</p>
-                    </div>
-                    <div class="step-item fade-in">
-                        <div class="step-number">2</div>
-                        <h3>Expert Cleaning</h3>
-                        <p>State-of-the-art machines with premium detergents.</p>
-                    </div>
-                    <div class="step-item fade-in">
-                        <div class="step-number">3</div>
-                        <h3>Fresh Delivery</h3>
-                        <p>Neatly packed and delivered within 24-48 hours.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Benefits Section -->
-        <section id="benefits" class="benefits">
+        <!-- Why Partner Section -->
+        <section style="padding: 5rem 0; background: var(--color-bg-blue);">
             <div class="container">
                 <h2 class="section-title">Why <span>Partner</span> With Us?</h2>
-                <div class="benefits-grid">
-                    <div class="benefits-image">
-                        <img src="assets/india_laundry_services.png" alt="Modern laundry facility">
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem;">
+                        <span style="color: var(--color-secondary); font-size: 1.5rem;">✓</span>
+                        <div>
+                            <strong style="color: var(--color-primary);">Low Investment</strong>
+                            <p style="color: var(--color-text-light); margin-top: 0.25rem;">Start with just ₹8 Lakhs</p>
+                        </div>
                     </div>
-                    <ul class="benefits-list">
-                        <li class="fade-in">
-                            <span class="benefit-icon">✓</span>
-                            <div><strong>Low Investment</strong> - Start with just ₹8 Lakhs</div>
-                        </li>
-                        <li class="fade-in">
-                            <span class="benefit-icon">✓</span>
-                            <div><strong>High ROI</strong> - 200% returns in 18 months</div>
-                        </li>
-                        <li class="fade-in">
-                            <span class="benefit-icon">✓</span>
-                            <div><strong>Complete Training</strong> - 15-day comprehensive program</div>
-                        </li>
-                        <li class="fade-in">
-                            <span class="benefit-icon">✓</span>
-                            <div><strong>Tech Platform</strong> - Proprietary app & management system</div>
-                        </li>
-                        <li class="fade-in">
-                            <span class="benefit-icon">✓</span>
-                            <div><strong>Marketing Support</strong> - Local & digital marketing included</div>
-                        </li>
-                        <li class="fade-in">
-                            <span class="benefit-icon">✓</span>
-                            <div><strong>Zero Royalty</strong> - First 6 months royalty free</div>
-                        </li>
-                    </ul>
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem;">
+                        <span style="color: var(--color-secondary); font-size: 1.5rem;">✓</span>
+                        <div>
+                            <strong style="color: var(--color-primary);">High ROI</strong>
+                            <p style="color: var(--color-text-light); margin-top: 0.25rem;">200% returns in 18 months
+                            </p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem;">
+                        <span style="color: var(--color-secondary); font-size: 1.5rem;">✓</span>
+                        <div>
+                            <strong style="color: var(--color-primary);">Complete Training</strong>
+                            <p style="color: var(--color-text-light); margin-top: 0.25rem;">15-day comprehensive program
+                            </p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem;">
+                        <span style="color: var(--color-secondary); font-size: 1.5rem;">✓</span>
+                        <div>
+                            <strong style="color: var(--color-primary);">Tech Platform</strong>
+                            <p style="color: var(--color-text-light); margin-top: 0.25rem;">Proprietary app & management
+                                system</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem;">
+                        <span style="color: var(--color-secondary); font-size: 1.5rem;">✓</span>
+                        <div>
+                            <strong style="color: var(--color-primary);">Marketing Support</strong>
+                            <p style="color: var(--color-text-light); margin-top: 0.25rem;">Local & digital marketing
+                                included</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; padding: 1rem;">
+                        <span style="color: var(--color-secondary); font-size: 1.5rem;">✓</span>
+                        <div>
+                            <strong style="color: var(--color-primary);">Zero Royalty</strong>
+                            <p style="color: var(--color-text-light); margin-top: 0.25rem;">First 6 months royalty free
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="contact.html" class="btn">Get Franchise Details</a>
                 </div>
             </div>
         </section>
 
         <!-- Testimonials -->
-        <section id="testimonials" class="testimonials">
+        <section style="padding: 5rem 0; background: #fff;">
             <div class="container">
                 <h2 class="section-title">What <span>Franchisees</span> Say</h2>
-                <div class="testimonials-grid">
-                    <article class="testimonial-card fade-in">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Best business decision I ever made. Recovered my investment in just
-                            14 months. The support team is always available."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">RK</div>
-                            <div class="testimonial-info">
-                                <h4>Rajesh Kumar</h4>
-                                <p>Franchise Owner, Pune</p>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                    <div style="background: var(--color-bg-blue); padding: 2rem; border-radius: 16px;">
+                        <div style="color: #FFD700; margin-bottom: 1rem;">★★★★★</div>
+                        <p style="color: var(--color-text-light); line-height: 1.6; margin-bottom: 1.5rem;">"Best
+                            business decision I ever made. Recovered my investment in just 14 months."</p>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 45px; height: 45px; background: var(--color-primary); color: var(--color-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                                RK</div>
+                            <div>
+                                <strong style="color: var(--color-primary);">Rajesh Kumar</strong>
+                                <p style="font-size: 0.85rem; color: var(--color-text-light);">Franchise Owner, Pune</p>
                             </div>
                         </div>
-                    </article>
-                    <article class="testimonial-card fade-in">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"As a first-time entrepreneur, the training was exceptional. Now
-                            running 3 outlets across Hyderabad!"</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">PS</div>
-                            <div class="testimonial-info">
-                                <h4>Priya Sharma</h4>
-                                <p>Multi-unit Owner, Hyderabad</p>
+                    </div>
+                    <div style="background: var(--color-bg-blue); padding: 2rem; border-radius: 16px;">
+                        <div style="color: #FFD700; margin-bottom: 1rem;">★★★★★</div>
+                        <p style="color: var(--color-text-light); line-height: 1.6; margin-bottom: 1.5rem;">"As a
+                            first-time entrepreneur, the training was exceptional. Now running 3 outlets!"</p>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 45px; height: 45px; background: var(--color-primary); color: var(--color-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                                PS</div>
+                            <div>
+                                <strong style="color: var(--color-primary);">Priya Sharma</strong>
+                                <p style="font-size: 0.85rem; color: var(--color-text-light);">Multi-unit Owner,
+                                    Hyderabad</p>
                             </div>
                         </div>
-                    </article>
-                    <article class="testimonial-card fade-in">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"The technology platform makes operations seamless. My customers
-                            love the app experience."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">AM</div>
-                            <div class="testimonial-info">
-                                <h4>Amit Malhotra</h4>
-                                <p>Franchise Owner, Delhi NCR</p>
+                    </div>
+                    <div style="background: var(--color-bg-blue); padding: 2rem; border-radius: 16px;">
+                        <div style="color: #FFD700; margin-bottom: 1rem;">★★★★★</div>
+                        <p style="color: var(--color-text-light); line-height: 1.6; margin-bottom: 1.5rem;">"The
+                            technology platform makes operations seamless. My customers love the app experience."</p>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 45px; height: 45px; background: var(--color-primary); color: var(--color-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600;">
+                                AM</div>
+                            <div>
+                                <strong style="color: var(--color-primary);">Amit Malhotra</strong>
+                                <p style="font-size: 0.85rem; color: var(--color-text-light);">Franchise Owner, Delhi
+                                    NCR</p>
                             </div>
                         </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Detailed Cleaning Process (Mr Blue Inspired) -->
-        <section id="process" class="process" style="padding: 6rem 0; background: #fff;">
-            <div class="container">
-                <h2 class="section-title">Our <span>7-Stage</span> Hygiene Process</h2>
-                <!-- Max-width of <900px forces 4 items (approx 200px each) to Wrap, leaving 3 centered below -->
-                <div class="process-grid"
-                    style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 3rem auto; max-width: 900px;">
-                    <div class="process-step fade-in" style="flex: 0 1 180px; text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏷️</div>
-                        <h4 style="color: var(--color-text-dark); margin-bottom: 0.5rem;">Tagging</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">Individual tagging to ensure zero
-                            mix-ups.</p>
-                    </div>
-                    <div class="process-step fade-in" style="flex: 0 1 180px; text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔍</div>
-                        <h4 style="color: var(--color-text-dark); margin-bottom: 0.5rem;">Inspection</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">Stain & fabric analysis by
-                            experts.</p>
-                    </div>
-                    <div class="process-step fade-in" style="flex: 0 1 180px; text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🧪</div>
-                        <h4 style="color: var(--color-text-dark); margin-bottom: 0.5rem;">Pre-Treat</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">Spot treatment for tough stains.
-                        </p>
-                    </div>
-                    <div class="process-step fade-in" style="flex: 0 1 180px; text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🫧</div>
-                        <h4 style="color: var(--color-text-dark); margin-bottom: 0.5rem;">Deep Clean</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">pH neutral, anti-bacterial wash.
-                        </p>
-                    </div>
-                    <div class="process-step fade-in" style="flex: 0 1 180px; text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌬️</div>
-                        <h4 style="color: var(--color-text-dark); margin-bottom: 0.5rem;">Steam Finish</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">Wrinkle-free steam pressing.</p>
-                    </div>
-                    <div class="process-step fade-in" style="flex: 0 1 180px; text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">✅</div>
-                        <h4 style="color: var(--color-text-dark); margin-bottom: 0.5rem;">QA Check</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">Final quality inspection.</p>
-                    </div>
-                    <div class="process-step fade-in">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📦</div>
-                        <h4 style="color: var(--color-text-dark); margin-bottom: 0.5rem;">Packing</h4>
-                        <p style="font-size: 0.85rem; color: var(--color-text-light);">Eco-friendly, protective
-                            packaging.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section id="faq" class="faq" style="padding: 6rem 0; background: var(--color-bg-blue);">
+        <!-- CTA Section -->
+        <section style="padding: 5rem 0; background: var(--color-primary); text-align: center;">
             <div class="container">
-                <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
-                <div class="faq-grid" style="max-width: 800px; margin: 0 auto; display: grid; gap: 1rem;">
-                    <details class="faq-item fade-in"
-                        style="background: #fff; padding: 1.5rem; border-radius: 12px; cursor: pointer;">
-                        <summary
-                            style="font-weight: 700; color: var(--color-text-dark); font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                            What is the total investment required?
-                            <span style="color: var(--color-secondary);">▼</span>
-                        </summary>
-                        <p style="margin-top: 1rem; color: var(--color-text-light); line-height: 1.6;">The total
-                            investment starts from ₹8 Lakhs for a Tier 3 city unit, going up to ₹15-20 Lakhs for a Tier
-                            1 Metro flagship store. This includes equipment, interiors, and franchise fee.</p>
-                    </details>
-
-                    <details class="faq-item fade-in"
-                        style="background: #fff; padding: 1.5rem; border-radius: 12px; cursor: pointer;">
-                        <summary
-                            style="font-weight: 700; color: var(--color-text-dark); font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                            What is the expected ROI?
-                            <span style="color: var(--color-secondary);">▼</span>
-                        </summary>
-                        <p style="margin-top: 1rem; color: var(--color-text-light); line-height: 1.6;">Our franchisees
-                            typically see a Return on Investment (ROI) within 12-18 months. With a gross margin of
-                            70-80%, operational break-even can be achieved in the first 3 months.</p>
-                    </details>
-
-                    <details class="faq-item fade-in"
-                        style="background: #fff; padding: 1.5rem; border-radius: 12px; cursor: pointer;">
-                        <summary
-                            style="font-weight: 700; color: var(--color-text-dark); font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                            Do I need prior experience in laundry business?
-                            <span style="color: var(--color-secondary);">▼</span>
-                        </summary>
-                        <p style="margin-top: 1rem; color: var(--color-text-light); line-height: 1.6;">No experience is
-                            mandated. We provide comprehensive 15-day training for you and your staff, covering
-                            operations, machine handling, chemical usage, and customer management.</p>
-                    </details>
-
-                    <details class="faq-item fade-in"
-                        style="background: #fff; padding: 1.5rem; border-radius: 12px; cursor: pointer;">
-                        <summary
-                            style="font-weight: 700; color: var(--color-text-dark); font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                            What locations are you currently expanding in?
-                            <span style="color: var(--color-secondary);">▼</span>
-                        </summary>
-                        <p style="margin-top: 1rem; color: var(--color-text-light); line-height: 1.6;">We are
-                            aggressively expanding in Delhi NCR, Mumbai, Bangalore, Hyderabad, Pune, and select Tier-2
-                            cities like Jaipur, Lucknow, and Indore.</p>
-                    </details>
-
-                    <details class="faq-item fade-in"
-                        style="background: #fff; padding: 1.5rem; border-radius: 12px; cursor: pointer;">
-                        <summary
-                            style="font-weight: 700; color: var(--color-text-dark); font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                            How do you help with marketing?
-                            <span style="color: var(--color-secondary);">▼</span>
-                        </summary>
-                        <p style="margin-top: 1rem; color: var(--color-text-light); line-height: 1.6;">We handle
-                            national brand building and digital marketing (SEO, Social Media). For local store
-                            marketing, we provide templates, leaflets, and hyper-local ad strategies.</p>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section-title">Start Your <span>Franchise</span> Today</h2>
-                <p>Ready to join India's happiest laundry brand? Contact us now!</p>
-                <div class="contact-phone">
-                    📞 <a href="tel:+917777818188">+91 77778 18188</a>
-                </div>
-                <!-- 
-                    LEAD CAPTURE CONFIGURATION:
-                    Using Web3Forms for serverless form handling. 
-                    1. Get a free Access Key from https://web3forms.com/
-                    2. Replace 'YOUR_ACCESS_KEY_HERE' with your real key.
-                -->
-                <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE"> <!-- REPLACE THIS KEY -->
-                    <input type="hidden" name="subject" value="New Cleanzit Franchise Lead">
-
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="tel" name="phone" placeholder="Phone Number" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <select name="city" required>
-                        <option value="">Select Your City</option>
-                        <option>Delhi NCR</option>
-                        <option>Mumbai</option>
-                        <option>Bangalore</option>
-                        <option>Hyderabad</option>
-                        <option>Chennai</option>
-                        <option>Pune</option>
-                        <option>Other</option>
-                    </select>
-                    <button type="submit" class="btn">Get Franchise Details</button>
-                    <p style="font-size: 0.8rem; margin-top: 1rem; color: #6b7280;">* We respect your privacy. No spam.
-                    </p>
-                </form>
+                <h2 style="color: #fff; font-size: 2rem; margin-bottom: 1rem;">Ready to Start Your Franchise?</h2>
+                <p
+                    style="color: rgba(255,255,255,0.8); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    Join India's happiest laundry brand and build a profitable business.</p>
+                <a href="contact.html" class="btn" style="margin-right: 1rem;">Get Started</a>
+                <a href="tel:+917777818188" class="btn btn-outline" style="border-color: #fff; color: #fff;">Call
+                    Now</a>
             </div>
         </section>
     </main>
@@ -473,25 +308,15 @@
             <div class="footer-content">
                 <div class="footer-col">
                     <h4>Cleanzit</h4>
-                    <p>India's happiest laundry franchise. Transforming the fabric care experience across the nation.
-                    </p>
+                    <p>India's happiest laundry franchise. Transforming fabric care across the nation.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Our Services</h4>
+                    <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#">Daily Laundry</a></li>
-                        <li><a href="#">Dry Cleaning</a></li>
-                        <li><a href="#">Saree Care</a></li>
-                        <li><a href="#">B2B Services</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Franchise</h4>
-                    <ul>
-                        <li><a href="#">Requirements</a></li>
-                        <li><a href="#">Investment</a></li>
-                        <li><a href="#">Territories</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="stores.html">Stores</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -509,8 +334,8 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/917777818187?text=Hi!%20I'm%20interested%20in%20the%20Cleanzit%20franchise%20opportunity."
-        class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/917777818187?text=Hi," class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
