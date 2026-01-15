@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (window.location.protocol === 'http:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+            window.location.href = window.location.href.replace('http:', 'https:');
+        }
+    </script>
     <title>About Us | Cleanzit India - India's Happiest Laundry Franchise</title>
     <meta name="description"
         content="Learn about Cleanzit, India's happiest laundry franchise. Our mission, vision, and commitment to affordable, high-quality laundry services.">
