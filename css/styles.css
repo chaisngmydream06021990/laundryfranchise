@@ -30,6 +30,12 @@
     --container-width: 1200px;
     --header-height: 80px;
     --border-radius: 12px;
+
+    /* Site-wide announcement bar — see js/offers-banner.js for the single
+       source of truth for its text. This variable is what reserves space
+       for it above the fixed header; keep it in sync with the banner's
+       actual rendered height at each breakpoint. */
+    --banner-height: 40px;
 }
 
 /* Reset */
@@ -52,6 +58,7 @@ body {
     font-family: var(--font-main);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    padding-top: var(--banner-height);
 }
 
 img {
@@ -127,7 +134,7 @@ ul {
 header {
     height: var(--header-height);
     position: fixed;
-    top: 0;
+    top: var(--banner-height);
     left: 0;
     width: 100%;
     background-color: #fff;
@@ -942,5 +949,89 @@ footer {
 
     .stat-label {
         font-size: 0.85rem;
+    }
+}
+/* ============================================================
+   Site-wide offer banner (assets/offers-banner.js injects the
+   markup on every page). One component, edited in one place,
+   shown everywhere — see that file to change the offer text.
+   ============================================================ */
+.offer-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--banner-height);
+    z-index: 1001;
+    /* above header's z-index: 1000 */
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    padding: 0 3.25rem 0 0.75rem;
+    /* right padding clears the close button */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.offer-banner strong {
+    color: var(--color-secondary);
+}
+
+.offer-banner a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.offer-banner .offer-banner-close {
+    position: absolute;
+    right: 0.5rem;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0 0.5rem;
+    cursor: pointer;
+}
+
+.offer-banner .offer-banner-close:hover {
+    color: #fff;
+}
+
+body.offer-banner-hidden {
+    padding-top: 0;
+}
+
+body.offer-banner-hidden header {
+    top: 0;
+}
+
+body.offer-banner-hidden .offer-banner {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    :root {
+        --banner-height: 56px;
+    }
+
+    .offer-banner {
+        font-size: 0.72rem;
+        white-space: normal;
+        line-height: 1.3;
+        padding: 0.35rem 2.5rem 0.35rem 0.75rem;
     }
 }
