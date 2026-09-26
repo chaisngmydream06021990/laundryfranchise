@@ -39,11 +39,10 @@
       price tables there; this block just needs the org/brand facts.
 
       TODO for the owner (biggest local-SEO wins):
-        1. Add the real street address + pincode for the Bhopal store in
-           "address" below (stores.html still says "Address coming soon").
-        2. Add "latitude"/"longitude" from Google Maps once you have them.
-        3. Claim + verify your Google Business Profile and add its URL
-           to "sameAs" below, plus any Instagram/Facebook profile.
+        1. Outlet addresses live in data/bhopal.json and are generated
+           into the gen:outlets-ld block below by tools/build_bhopal_pages.py.
+        2. Add each outlet's Google Business Profile URL to "sameAs" on the
+           Organization below, plus any Instagram/Facebook profile.
     -->
     <script type="application/ld+json">
     {
@@ -53,46 +52,15 @@
           "@type": "Organization",
           "@id": "https://www.cleanzit.co.in/#organization",
           "name": "Cleanzit India",
-          "alternateName": ["Cleanzit", "CleanZit"],
+          "alternateName": [
+            "Cleanzit",
+            "CleanZit"
+          ],
           "url": "https://www.cleanzit.co.in/",
           "logo": "https://www.cleanzit.co.in/assets/logo.png",
           "email": "franchise@cleanzit.in",
           "telephone": "+91-7777818188",
-          "sameAs": []
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://www.cleanzit.co.in/#website",
-          "url": "https://www.cleanzit.co.in/",
-          "name": "Cleanzit India",
-          "inLanguage": "en-IN",
-          "publisher": { "@id": "https://www.cleanzit.co.in/#organization" }
-        },
-        {
-          "@type": ["DryCleaningOrLaundry", "LocalBusiness"],
-          "@id": "https://www.cleanzit.co.in/#localbusiness-bhopal",
-          "name": "Cleanzit Bhopal",
-          "description": "Cleanzit Bhopal offers laundry, dry cleaning, steam ironing and home deep-cleaning with free pickup and delivery on orders above Rs 300, delivered within 3 days.",
-          "url": "https://www.cleanzit.co.in/pricing.html",
-          "telephone": "+91-7777818187",
-          "image": "https://www.cleanzit.co.in/assets/india_laundry_hero.png",
-          "priceRange": "Rs 15 - Rs 1599",
-          "currenciesAccepted": "INR",
-          "paymentAccepted": "Cash, UPI, Credit Card, Debit Card",
-          "parentOrganization": { "@id": "https://www.cleanzit.co.in/#organization" },
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Bhopal",
-            "addressRegion": "Madhya Pradesh",
-            "addressCountry": "IN"
-          },
-          "areaServed": { "@type": "City", "name": "Bhopal" },
-          "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-            "opens": "09:00",
-            "closes": "20:00"
-          },
+          "sameAs": [],
           "makesOffer": [
             {
               "@type": "Offer",
@@ -101,15 +69,43 @@
             },
             {
               "@type": "Offer",
-              "name": "Free pickup and delivery above Rs 300",
+              "name": "Free pickup and delivery in Bhopal above Rs 300",
               "priceSpecification": {
                 "@type": "DeliveryChargeSpecification",
                 "price": 0,
                 "priceCurrency": "INR",
-                "eligibleTransactionVolume": { "@type": "PriceSpecification", "minPrice": 300, "priceCurrency": "INR" }
+                "eligibleTransactionVolume": {
+                  "@type": "PriceSpecification",
+                  "minPrice": 300,
+                  "priceCurrency": "INR"
+                }
               }
             }
+          ],
+          "department": [
+            {
+              "@id": "https://www.cleanzit.co.in/#outlet-gulmohar"
+            },
+            {
+              "@id": "https://www.cleanzit.co.in/#outlet-shahpura"
+            },
+            {
+              "@id": "https://www.cleanzit.co.in/#outlet-bagmugaliya"
+            },
+            {
+              "@id": "https://www.cleanzit.co.in/#outlet-kolar"
+            }
           ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.cleanzit.co.in/#website",
+          "url": "https://www.cleanzit.co.in/",
+          "name": "Cleanzit India",
+          "inLanguage": "en-IN",
+          "publisher": {
+            "@id": "https://www.cleanzit.co.in/#organization"
+          }
         },
         {
           "@type": "Franchise",
@@ -128,6 +124,128 @@
       ]
     }
     </script>
+    <!-- BEGIN:gen:outlets-ld — generated, see tools/build_bhopal_pages.py -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": [
+            "DryCleaningOrLaundry",
+            "LocalBusiness"
+          ],
+          "@id": "https://www.cleanzit.co.in/#outlet-gulmohar",
+          "name": "Cleanzit Dry Clean & Laundry Service — Gulmohar",
+          "url": "https://www.cleanzit.co.in/stores.html",
+          "telephone": "+91-7777818187",
+          "image": "https://www.cleanzit.co.in/assets/logo.png",
+          "priceRange": "Rs 15 - Rs 1599",
+          "currenciesAccepted": "INR",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "108, Doorsanchar Nagar, near Hotel Radisson, Gulmohar",
+            "addressLocality": "Bhopal",
+            "addressRegion": "Madhya Pradesh",
+            "addressCountry": "IN",
+            "postalCode": "462039"
+          },
+          "hasMap": "https://www.google.com/maps/search/?api=1&query=Cleanzit%20Dry%20Clean%20%26%20Laundry%20Service%2C%20108%2C%20Doorsanchar%20Nagar%2C%20near%20Hotel%20Radisson%2C%20Gulmohar%2C%20Bhopal",
+          "areaServed": {
+            "@type": "City",
+            "name": "Bhopal"
+          },
+          "parentOrganization": {
+            "@id": "https://www.cleanzit.co.in/#organization"
+          }
+        },
+        {
+          "@type": [
+            "DryCleaningOrLaundry",
+            "LocalBusiness"
+          ],
+          "@id": "https://www.cleanzit.co.in/#outlet-shahpura",
+          "name": "Cleanzit Dry Clean & Laundry Service — Shahpura",
+          "url": "https://www.cleanzit.co.in/stores.html",
+          "telephone": "+91-7777818187",
+          "image": "https://www.cleanzit.co.in/assets/logo.png",
+          "priceRange": "Rs 15 - Rs 1599",
+          "currenciesAccepted": "INR",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Shop No. 5, Aashiyana Aangan, Thana Road, near Shahpura",
+            "addressLocality": "Bhopal",
+            "addressRegion": "Madhya Pradesh",
+            "addressCountry": "IN"
+          },
+          "hasMap": "https://www.google.com/maps/search/?api=1&query=Cleanzit%20Dry%20Clean%20%26%20Laundry%20Service%2C%20Shop%20No.%205%2C%20Aashiyana%20Aangan%2C%20Thana%20Road%2C%20near%20Shahpura%2C%20Bhopal",
+          "areaServed": {
+            "@type": "City",
+            "name": "Bhopal"
+          },
+          "parentOrganization": {
+            "@id": "https://www.cleanzit.co.in/#organization"
+          }
+        },
+        {
+          "@type": [
+            "DryCleaningOrLaundry",
+            "LocalBusiness"
+          ],
+          "@id": "https://www.cleanzit.co.in/#outlet-bagmugaliya",
+          "name": "Cleanzit Dry Clean & Laundry Service — Bagmugaliya",
+          "url": "https://www.cleanzit.co.in/stores.html",
+          "telephone": "+91-7777818187",
+          "image": "https://www.cleanzit.co.in/assets/logo.png",
+          "priceRange": "Rs 15 - Rs 1599",
+          "currenciesAccepted": "INR",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Shop No. 1 & 2, 80 Feet CPA Road, Bagmugaliya",
+            "addressLocality": "Bhopal",
+            "addressRegion": "Madhya Pradesh",
+            "addressCountry": "IN"
+          },
+          "hasMap": "https://www.google.com/maps/search/?api=1&query=Cleanzit%20Dry%20Clean%20%26%20Laundry%20Service%2C%20Shop%20No.%201%20%26%202%2C%2080%20Feet%20CPA%20Road%2C%20Bagmugaliya%2C%20Bhopal",
+          "areaServed": {
+            "@type": "City",
+            "name": "Bhopal"
+          },
+          "parentOrganization": {
+            "@id": "https://www.cleanzit.co.in/#organization"
+          }
+        },
+        {
+          "@type": [
+            "DryCleaningOrLaundry",
+            "LocalBusiness"
+          ],
+          "@id": "https://www.cleanzit.co.in/#outlet-kolar",
+          "name": "Cleanzit Dry Clean & Laundry Service — Kolar",
+          "url": "https://www.cleanzit.co.in/stores.html",
+          "telephone": "+91-7777818187",
+          "image": "https://www.cleanzit.co.in/assets/logo.png",
+          "priceRange": "Rs 15 - Rs 1599",
+          "currenciesAccepted": "INR",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Shop No. GF-04, Shiv Sai Plaza, Danish Square, Kolar Road",
+            "addressLocality": "Bhopal",
+            "addressRegion": "Madhya Pradesh",
+            "addressCountry": "IN"
+          },
+          "hasMap": "https://www.google.com/maps/search/?api=1&query=Cleanzit%20Dry%20Clean%20%26%20Laundry%20Service%2C%20Shop%20No.%20GF-04%2C%20Shiv%20Sai%20Plaza%2C%20Danish%20Square%2C%20Kolar%20Road%2C%20Bhopal",
+          "areaServed": {
+            "@type": "City",
+            "name": "Bhopal"
+          },
+          "parentOrganization": {
+            "@id": "https://www.cleanzit.co.in/#organization"
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- END:gen:outlets-ld -->
 </head>
 
 <body>
@@ -284,6 +402,71 @@
             </div>
         </section>
 
+        <!-- Bhopal outlets & areas -->
+        <section class="lp-section alt" id="bhopal-areas">
+            <div class="container">
+                <h2 class="section-title">Laundry Pickup Across <span>Bhopal</span></h2>
+                <p class="lp-sub">Outlets in Gulmohar, Shahpura, Bagmugaliya and Kolar, with free doorstep pickup &amp; delivery on orders above ₹300.</p>
+                <!-- BEGIN:gen:areas — generated from data/bhopal.json by tools/build_bhopal_pages.py -->
+<div class="lp-area-group">
+    <h3>Near our Gulmohar outlet</h3>
+    <div class="lp-chips">
+        <a href="/bhopal/gulmohar/">Laundry in Gulmohar</a>
+        <a href="/bhopal/bawadia-kalan/">Laundry in Bawadia Kalan</a>
+        <a href="/bhopal/trilanga/">Laundry in Trilanga</a>
+        <a href="/bhopal/arera-colony/">Laundry in Arera Colony</a>
+        <a href="/bhopal/e-8-arera-colony/">Laundry in E-8 Arera Colony</a>
+        <a href="/bhopal/10-number-market/">Laundry in 10 Number Market</a>
+        <a href="/bhopal/char-imli/">Laundry in Char Imli</a>
+        <a href="/bhopal/bittan-market/">Laundry in Bittan Market</a>
+        <a href="/bhopal/mp-nagar/">Laundry in MP Nagar</a>
+        <a href="/bhopal/habibganj/">Laundry in Habibganj</a>
+        <a href="/bhopal/shivaji-nagar/">Laundry in Shivaji Nagar</a>
+        <a href="/bhopal/tt-nagar/">Laundry in TT Nagar</a>
+        <a href="/bhopal/new-market/">Laundry in New Market</a>
+        <a href="/bhopal/shyamla-hills/">Laundry in Shyamla Hills</a>
+    </div>
+</div>
+<div class="lp-area-group">
+    <h3>Near our Shahpura outlet</h3>
+    <div class="lp-chips">
+        <a href="/bhopal/shahpura/">Laundry in Shahpura</a>
+        <a href="/bhopal/manisha-market/">Laundry in Manisha Market</a>
+        <a href="/bhopal/sahyadri-parisar/">Laundry in Sahyadri Parisar</a>
+        <a href="/bhopal/chuna-bhatti/">Laundry in Chuna Bhatti</a>
+    </div>
+</div>
+<div class="lp-area-group">
+    <h3>Near our Bagmugaliya outlet</h3>
+    <div class="lp-chips">
+        <a href="/bhopal/bagmugaliya/">Laundry in Bagmugaliya</a>
+        <a href="/bhopal/hoshangabad-road/">Laundry in Hoshangabad Road</a>
+        <a href="/bhopal/danish-nagar/">Laundry in Danish Nagar</a>
+        <a href="/bhopal/misrod/">Laundry in Misrod</a>
+        <a href="/bhopal/katara-hills/">Laundry in Katara Hills</a>
+        <a href="/bhopal/bagsewaniya/">Laundry in Bagsewaniya</a>
+        <a href="/bhopal/rohit-nagar/">Laundry in Rohit Nagar</a>
+        <a href="/bhopal/saket-nagar/">Laundry in Saket Nagar</a>
+        <a href="/bhopal/jatkhedi/">Laundry in Jatkhedi</a>
+    </div>
+</div>
+<div class="lp-area-group">
+    <h3>Near our Kolar outlet</h3>
+    <div class="lp-chips">
+        <a href="/bhopal/kolar-road/">Laundry in Kolar Road</a>
+        <a href="/bhopal/danish-kunj/">Laundry in Danish Kunj</a>
+        <a href="/bhopal/sarvadharm-colony/">Laundry in Sarvadharm Colony</a>
+        <a href="/bhopal/lalita-nagar/">Laundry in Lalita Nagar</a>
+        <a href="/bhopal/mandakini-colony/">Laundry in Mandakini Colony</a>
+        <a href="/bhopal/nehru-nagar/">Laundry in Nehru Nagar</a>
+        <a href="/bhopal/kotra-sultanabad/">Laundry in Kotra Sultanabad</a>
+    </div>
+</div>
+                <!-- END:gen:areas -->
+                <p class="lp-center"><a href="/bhopal/" class="btn">See All Outlets &amp; Areas</a></p>
+            </div>
+        </section>
+
         <!-- Why Partner Section -->
         <section style="padding: 5rem 0; background: var(--color-bg-blue);">
             <div class="container">
@@ -428,6 +611,20 @@
                         <li><a href="stores.html">Stores</a></li>
                     </ul>
                 </div>
+                <!-- BEGIN:gen:footer-bhopal — generated, see tools/build_bhopal_pages.py -->
+                <div class="footer-col">
+                    <h4>Laundry in Bhopal</h4>
+                    <ul>
+                        <li><a href="/bhopal/">All Bhopal areas &amp; outlets</a></li>
+                        <li><a href="/bhopal/gulmohar/">Laundry in Gulmohar</a></li>
+                        <li><a href="/bhopal/bawadia-kalan/">Laundry in Bawadia Kalan</a></li>
+                        <li><a href="/bhopal/trilanga/">Laundry in Trilanga</a></li>
+                        <li><a href="/bhopal/arera-colony/">Laundry in Arera Colony</a></li>
+                        <li><a href="/bhopal/e-8-arera-colony/">Laundry in E-8 Arera Colony</a></li>
+                        <li><a href="/bhopal/10-number-market/">Laundry in 10 Number Market</a></li>
+                    </ul>
+                </div>
+                <!-- END:gen:footer-bhopal -->
                 <div class="footer-col">
                     <h4>Contact Us</h4>
                     <ul>

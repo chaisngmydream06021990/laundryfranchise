@@ -1,0 +1,95 @@
+{
+  "_readme": "Source of truth for the Bhopal outlet + area pages. Edit this file, then run: python3 tools/build_bhopal_pages.py  — it regenerates bhopal/index.html, every bhopal/<area>/index.html, and sitemap.xml. To stop showing an area, delete it from 'areas'. To add an outlet, add it to 'outlets' and reference its id from the areas it's closest to.",
+
+  "outlets": [
+    {
+      "id": "gulmohar",
+      "name": "Cleanzit Dry Clean & Laundry Service — Gulmohar",
+      "short": "Gulmohar",
+      "street": "108, Doorsanchar Nagar, near Hotel Radisson, Gulmohar",
+      "locality": "Gulmohar",
+      "postalCode": "462039",
+      "main": true,
+      "google_rating": "4.6",
+      "google_reviews": 68
+    },
+    {
+      "id": "shahpura",
+      "name": "Cleanzit Dry Clean & Laundry Service — Shahpura",
+      "short": "Shahpura",
+      "street": "Shop No. 5, Aashiyana Aangan, Thana Road, near Shahpura",
+      "locality": "Shahpura",
+      "postalCode": "",
+      "main": false
+    },
+    {
+      "id": "bagmugaliya",
+      "name": "Cleanzit Dry Clean & Laundry Service — Bagmugaliya",
+      "short": "Bagmugaliya",
+      "street": "Shop No. 1 & 2, 80 Feet CPA Road, Bagmugaliya",
+      "locality": "Bagmugaliya",
+      "postalCode": "",
+      "main": false
+    },
+    {
+      "id": "kolar",
+      "name": "Cleanzit Dry Clean & Laundry Service — Kolar",
+      "short": "Kolar",
+      "street": "Shop No. GF-04, Shiv Sai Plaza, Danish Square, Kolar Road",
+      "locality": "Kolar",
+      "postalCode": "",
+      "main": false
+    }
+  ],
+
+  "headline_prices": [
+    ["Wash & Fold", "₹60 / kg"],
+    ["Wash & Steam Iron", "₹90 / kg"],
+    ["Shirt / T-Shirt — dry clean", "₹60"],
+    ["Men's suit (2 / 3 pcs) — dry clean", "₹200 / 300"],
+    ["Saree — dry clean", "from ₹120"],
+    ["Blanket (single / double)", "₹250 / 375"],
+    ["Sofa cleaning at home", "from ₹150 / seat"],
+    ["Shoe cleaning", "from ₹160"]
+  ],
+
+  "areas": [
+    {"name": "Gulmohar", "outlet": "gulmohar"},
+    {"name": "Bawadia Kalan", "outlet": "gulmohar"},
+    {"name": "Trilanga", "outlet": "gulmohar"},
+    {"name": "Arera Colony", "outlet": "gulmohar"},
+    {"name": "E-8 Arera Colony", "outlet": "gulmohar"},
+    {"name": "10 Number Market", "outlet": "gulmohar"},
+    {"name": "Char Imli", "outlet": "gulmohar"},
+    {"name": "Bittan Market", "outlet": "gulmohar"},
+    {"name": "MP Nagar", "outlet": "gulmohar"},
+    {"name": "Habibganj", "outlet": "gulmohar"},
+    {"name": "Shivaji Nagar", "outlet": "gulmohar"},
+    {"name": "TT Nagar", "outlet": "gulmohar"},
+    {"name": "New Market", "outlet": "gulmohar"},
+    {"name": "Shyamla Hills", "outlet": "gulmohar"},
+
+    {"name": "Shahpura", "outlet": "shahpura"},
+    {"name": "Manisha Market", "outlet": "shahpura"},
+    {"name": "Sahyadri Parisar", "outlet": "shahpura"},
+    {"name": "Chuna Bhatti", "outlet": "shahpura"},
+
+    {"name": "Bagmugaliya", "outlet": "bagmugaliya"},
+    {"name": "Hoshangabad Road", "outlet": "bagmugaliya"},
+    {"name": "Danish Nagar", "outlet": "bagmugaliya"},
+    {"name": "Misrod", "outlet": "bagmugaliya"},
+    {"name": "Katara Hills", "outlet": "bagmugaliya"},
+    {"name": "Bagsewaniya", "outlet": "bagmugaliya"},
+    {"name": "Rohit Nagar", "outlet": "bagmugaliya"},
+    {"name": "Saket Nagar", "outlet": "bagmugaliya"},
+    {"name": "Jatkhedi", "outlet": "bagmugaliya"},
+
+    {"name": "Kolar Road", "outlet": "kolar"},
+    {"name": "Danish Kunj", "outlet": "kolar"},
+    {"name": "Sarvadharm Colony", "outlet": "kolar"},
+    {"name": "Lalita Nagar", "outlet": "kolar"},
+    {"name": "Mandakini Colony", "outlet": "kolar"},
+    {"name": "Nehru Nagar", "outlet": "kolar"},
+    {"name": "Kotra Sultanabad", "outlet": "kolar"}
+  ]
+}

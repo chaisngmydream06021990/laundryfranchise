@@ -1,4 +1,4 @@
-# Cleanzit India — laundry-konnect3
+# Cleanzit India — laundryfranchise
 
 This repository (`chaisngmydream06021990/laundryfranchise`) is the **live
 CleanZit website**, published at **www.cleanzit.co.in** (see `CNAME`). It is
@@ -33,6 +33,32 @@ use.
   change — mismatches read as untrustworthy data to both crawlers and
   customers who check both.
 
+## Bhopal outlets & area pages (generated)
+
+`data/bhopal.json` is the single source of truth for the Bhopal outlets
+(addresses, Google rating) and the list of areas served. After editing it,
+run:
+
+    python3 tools/build_bhopal_pages.py
+
+which (standard library only, safe to re-run) regenerates:
+
+- `bhopal/index.html` — hub listing every outlet and area
+- `bhopal/<area-slug>/index.html` — one page per area, with its closest
+  outlet, prices, FAQ and nearby areas (pages for areas removed from the
+  data file are deleted)
+- `sitemap.xml`
+- the `<!-- BEGIN:gen:NAME --> … <!-- END:gen:NAME -->` regions inside the
+  hand-written pages: outlet cards + outlet JSON-LD in `stores.html`,
+  area links + outlet JSON-LD in `index.html`, and the "Laundry in Bhopal"
+  footer column on all six pages.
+
+Never hand-edit generated files or anything between gen markers — it is
+overwritten on the next run. Generated pages use root-absolute paths
+(`/css/styles.css`), which work on the www.cleanzit.co.in custom domain;
+preview them with `python3 -m http.server` from the repo root, not
+file://.
+
 ## Prices
 
 The price list in `pricing.html` (six tabs: Laundry, Men's Wear, Women's
@@ -43,7 +69,8 @@ change, update, in this order:
 1. The visible `<table>`/panel in `pricing.html`.
 2. The matching `OfferCatalog` entries in the JSON-LD `<script>` block in
    `pricing.html`'s `<head>`.
-3. `llms.txt` at the repo root.
+3. `llms.txt` at the repo root, and `headline_prices` in
+   `data/bhopal.json` (then re-run the generator).
 4. Any FAQ answer in `contact.html` (and its FAQPage JSON-LD, generated
    from that same visible text) that quotes a specific price.
 
@@ -56,6 +83,9 @@ campaign ends — see the comment above that panel in `pricing.html`.
 - Contact email in JSON-LD/footers is `franchise@cleanzit.in` (`.in`, not
   `.co.in`) — this predates recent edits and hasn't been verified either
   way; don't "fix" it without confirming which domain is correct.
-- `stores.html` still has a placeholder "Address coming soon" for the
-  Bhopal store — needed for a real street-address `PostalAddress` in the
-  LocalBusiness JSON-LD (currently city-level only).
+- Opening hours: `stores.html`/`contact.html` historically said
+  "Mon-Sat 9 AM - 8 PM", but Google Maps shows the outlets open on Sunday
+  (10–10:30 AM). Hours were deliberately left out of the outlet cards and
+  JSON-LD (they link to Google Maps for timings) until confirmed.
+- Pincodes: only the Gulmohar outlet's (462039) is known; the others are
+  blank in `data/bhopal.json` — fill them in when available.
