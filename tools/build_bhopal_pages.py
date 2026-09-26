@@ -118,18 +118,19 @@ def outlet_card(o, closest=False, heading="h3"):
 </div>'''
 
 
-def area_groups(data, link_prefix="/bhopal/"):
-    by_outlet = {o["id"]: [] for o in data["outlets"]}
+def area_groups(data, link_prefix="/bhopal/", per_zone=None):
+    """Area links grouped by city zone. per_zone caps each group (homepage)."""
+    by_zone = {z: [] for z in data["zones"]}
     for a in data["areas"]:
-        by_outlet[a["outlet"]].append(a)
+        by_zone[a["zone"]].append(a)
     out = []
-    for o in data["outlets"]:
-        areas = by_outlet[o["id"]]
+    for zone in data["zones"]:
+        areas = by_zone[zone][:per_zone] if per_zone else by_zone[zone]
         if not areas:
             continue
         chips = "\n".join(f'        <a href="{link_prefix}{slugify(a["name"])}/">Laundry in {e(a["name"])}</a>' for a in areas)
         out.append(f'''<div class="lp-area-group">
-    <h3>Near our {e(o["short"])} outlet</h3>
+    <h3>{e(zone)}</h3>
     <div class="lp-chips">
 {chips}
     </div>
@@ -171,8 +172,7 @@ def faq_ld(qas, page_url):
 
 
 def footer_bhopal_col(data):
-    main_areas = data["areas"][:6]
-    lis = "\n".join(f'                        <li><a href="/bhopal/{slugify(a["name"])}/">Laundry in {e(a["name"])}</a></li>' for a in main_areas)
+    lis = "\n".join(f'                        <li><a href="/bhopal/{slugify(n)}/">Laundry in {e(n)}</a></li>' for n in data["footer_areas"])
     return f'''                <div class="footer-col">
                     <h4>Laundry in Bhopal</h4>
                     <ul>
@@ -180,6 +180,15 @@ def footer_bhopal_col(data):
 {lis}
                     </ul>
                 </div>'''
+
+
+def llms_areas(data):
+    lines = ["Free pickup and delivery across these Bhopal areas (each has its own page",
+             "at https://www.cleanzit.co.in/bhopal/<area>/):", ""]
+    for z in data["zones"]:
+        lines.append(f"- {z}: " + ", ".join(
+            a["name"] + (f" ({a['aka']})" if a.get("aka") else "") for a in data["areas"] if a["zone"] == z))
+    return "\n".join(lines)
 
 
 def page_shell(*, title, description, canonical, body, ld_blocks, footer_col):
@@ -303,6 +312,9 @@ def build_hub(data):
          "Wash & Fold is ₹60 per kg and Wash & Steam Iron is ₹90 per kg. Dry cleaning starts at ₹60 for a shirt or trouser. New customers get 20% off their first order."),
         ("How long does laundry and dry cleaning take?",
          "Standard delivery is within 3 days for laundry, dry cleaning, woolens, household items and shoes."),
+        ("Which areas of Bhopal does Cleanzit cover?",
+         "Free doorstep pickup and delivery across Bhopal — " + "; ".join(
+             z + ": " + ", ".join(a["name"] for a in data["areas"] if a["zone"] == z) for z in data["zones"]) + "."),
     ]
     body = f'''        <section class="lp-hero">
             <div class="container">
@@ -328,8 +340,8 @@ def build_hub(data):
 
         <section class="lp-section" id="areas">
             <div class="container">
-                <h2>Areas We Serve in Bhopal</h2>
-                <p class="lp-sub">Doorstep pickup across {n_areas} neighbourhoods. Pick your area for local details and your closest outlet.</p>
+                <h2>📍 Areas We Serve in Bhopal</h2>
+                <p class="lp-sub">Free doorstep pickup &amp; delivery across {n_areas} neighbourhoods. Pick your area for local details and your closest outlet.</p>
 {area_groups(data)}
                 <p class="lp-sub" style="margin-top:1rem;">Don't see your area? <a href="{e(wa_link("Hi Cleanzit, do you pick up from my area in Bhopal?"))}" target="_blank" rel="noopener">Ask us on WhatsApp</a> — we'll confirm the same day.</p>
             </div>
@@ -382,7 +394,9 @@ def build_area(data, area, outlets_by_id):
     url = f"{BASE}/bhopal/{slug}/"
     o = outlets_by_id[area["outlet"]]
     others = [x for x in data["outlets"] if x["id"] != o["id"]]
-    nearby = [a for a in data["areas"] if a["outlet"] == o["id"] and a["name"] != name]
+    nearby = [a for a in data["areas"] if a["zone"] == area["zone"] and a["name"] != name]
+    aka = area.get("aka")
+    aka_note = f" (also known as {aka})" if aka else ""
     nearby_chips = "\n".join(f'                    <a href="/bhopal/{slugify(a["name"])}/">Laundry in {e(a["name"])}</a>' for a in nearby)
     other_cards = "\n".join(outlet_card(x) for x in others)
     at_outlet = o["locality"].lower() == name.lower()
@@ -390,7 +404,7 @@ def build_area(data, area, outlets_by_id):
              else f"Your closest outlet is Cleanzit {o['short']}")
     qas = [
         (f"Do you offer laundry pickup in {name}, Bhopal?",
-         f"Yes. Cleanzit picks up and delivers across {name}, free on orders above ₹300. Book on WhatsApp at {PHONE_ORDERS_DISPLAY} with your address and a preferred time."),
+         f"Yes. Cleanzit picks up and delivers across {name}{aka_note}, free on orders above ₹300. Book on WhatsApp at {PHONE_ORDERS_DISPLAY} with your address and a preferred time."),
         (f"Which Cleanzit outlet is closest to {name}?",
          f"{where}, at {full_address(o)}. You can also drop off at any of our {len(data['outlets'])} Bhopal outlets."),
         (f"How much does dry cleaning cost in {name}?",
@@ -402,7 +416,7 @@ def build_area(data, area, outlets_by_id):
             <div class="container">
                 <p class="lp-crumbs"><a href="/">Home</a> › <a href="/bhopal/">Bhopal</a> › {e(name)}</p>
                 <h1>Laundry &amp; Dry Cleaning in <span>{e(name)}</span>, Bhopal</h1>
-                <p class="lp-lede">Free doorstep pickup &amp; delivery in {e(name)} on orders above ₹300. {e(where)} — laundry from ₹60/kg, dry cleaning from ₹60, back to you in 3 days. 20% off your first order.</p>
+                <p class="lp-lede">Free doorstep pickup &amp; delivery in {e(name)}{e(aka_note)} on orders above ₹300. {e(where)} — laundry from ₹60/kg, dry cleaning from ₹60, back to you in 3 days. 20% off your first order.</p>
                 <div class="lp-ctas">
                     <a class="btn" href="{e(wa_link(f"Hi Cleanzit, I'd like to book a laundry pickup in {name}, Bhopal."))}" target="_blank" rel="noopener">💬 Book a Pickup in {e(name)}</a>
                     <a class="btn btn-outline" href="tel:+{PHONE_ORDERS}">📞 Call {PHONE_ORDERS_DISPLAY}</a>
@@ -446,7 +460,7 @@ def build_area(data, area, outlets_by_id):
         <section class="lp-section alt">
             <div class="container">
                 <h2>Nearby Areas</h2>
-                <p class="lp-sub">Also served from our {e(o["short"])} outlet.</p>
+                <p class="lp-sub">Other areas in {e(area["zone"])} we pick up from.</p>
                 <div class="lp-chips">
 {nearby_chips}
                 </div>
@@ -482,7 +496,7 @@ def build_area(data, area, outlets_by_id):
     }]
     return slug, page_shell(
         title=f"Laundry & Dry Cleaning in {name}, Bhopal | Free Pickup | Cleanzit",
-        description=f"Laundry & dry cleaning in {name}, Bhopal with free pickup & delivery above ₹300. Closest outlet: Cleanzit {o['short']}. Wash & fold ₹60/kg, dry clean from ₹60, 3-day delivery, 20% off first order.",
+        description=f"Laundry & dry cleaning in {name}{aka_note}, Bhopal with free pickup & delivery above ₹300. Closest outlet: Cleanzit {o['short']}. Wash & fold ₹60/kg, dry clean from ₹60, 3-day delivery, 20% off first order.",
         canonical=url, body=body, ld_blocks=ld, footer_col=footer_bhopal_col(data))
 
 
@@ -517,9 +531,15 @@ def write_sitemap(data):
 def main():
     data = json.load(open(os.path.join(ROOT, "data", "bhopal.json"), encoding="utf-8"))
     outlets_by_id = {o["id"]: o for o in data["outlets"]}
+    names = {a["name"] for a in data["areas"]}
     for a in data["areas"]:
         if a["outlet"] not in outlets_by_id:
             sys.exit(f"area {a['name']!r} references unknown outlet {a['outlet']!r}")
+        if a["zone"] not in data["zones"]:
+            sys.exit(f"area {a['name']!r} has unknown zone {a['zone']!r} (add it to 'zones')")
+    for n in data["footer_areas"]:
+        if n not in names:
+            sys.exit(f"footer_areas entry {n!r} is not an area")
     slugs = [slugify(a["name"]) for a in data["areas"]]
     if len(set(slugs)) != len(slugs):
         sys.exit("two areas produce the same URL slug")
@@ -547,7 +567,8 @@ def main():
     replace_region(os.path.join(ROOT, "stores.html"), "outlets", cards)
     replace_region(os.path.join(ROOT, "stores.html"), "outlets-ld", outlets_ld_block(data))
     replace_region(os.path.join(ROOT, "index.html"), "outlets-ld", outlets_ld_block(data))
-    replace_region(os.path.join(ROOT, "index.html"), "areas", area_groups(data))
+    replace_region(os.path.join(ROOT, "index.html"), "areas", area_groups(data, per_zone=6))
+    replace_region(os.path.join(ROOT, "llms.txt"), "areas", llms_areas(data))
     for p in STATIC_PAGES:
         replace_region(os.path.join(ROOT, p), "footer-bhopal", footer_bhopal_col(data))
 

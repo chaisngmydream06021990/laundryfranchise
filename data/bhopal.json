@@ -1,6 +1,5 @@
 {
-  "_readme": "Source of truth for the Bhopal outlet + area pages. Edit this file, then run: python3 tools/build_bhopal_pages.py  — it regenerates bhopal/index.html, every bhopal/<area>/index.html, and sitemap.xml. To stop showing an area, delete it from 'areas'. To add an outlet, add it to 'outlets' and reference its id from the areas it's closest to.",
-
+  "_readme": "Source of truth for the Bhopal outlet + area pages. Edit this file, then run: python3 tools/build_bhopal_pages.py — it regenerates bhopal/index.html, every bhopal/<area>/index.html, sitemap.xml and the marked regions in the hand-written pages. Each area needs a 'zone' (one of 'zones', controls grouping on the hub and the 'Nearby Areas' list) and an 'outlet' (its closest outlet id). Optional 'aka' = another name people search for (shown on the area's page). To stop showing an area, delete it; its page is removed on the next run.",
   "outlets": [
     {
       "id": "gulmohar",
@@ -41,55 +40,401 @@
       "main": false
     }
   ],
-
-  "headline_prices": [
-    ["Wash & Fold", "₹60 / kg"],
-    ["Wash & Steam Iron", "₹90 / kg"],
-    ["Shirt / T-Shirt — dry clean", "₹60"],
-    ["Men's suit (2 / 3 pcs) — dry clean", "₹200 / 300"],
-    ["Saree — dry clean", "from ₹120"],
-    ["Blanket (single / double)", "₹250 / 375"],
-    ["Sofa cleaning at home", "from ₹150 / seat"],
-    ["Shoe cleaning", "from ₹160"]
+  "zones": [
+    "Central Bhopal",
+    "Gulmohar, Shahpura & AIIMS",
+    "Hoshangabad Road",
+    "Kolar Road",
+    "BHEL, Ayodhya Bypass & Raisen Road",
+    "North Bhopal & Old City"
   ],
-
+  "footer_areas": [
+    "MP Nagar",
+    "Arera Colony",
+    "Kolar Road",
+    "Hoshangabad Road",
+    "BHEL",
+    "Shahpura"
+  ],
+  "headline_prices": [
+    [
+      "Wash & Fold",
+      "₹60 / kg"
+    ],
+    [
+      "Wash & Steam Iron",
+      "₹90 / kg"
+    ],
+    [
+      "Shirt / T-Shirt — dry clean",
+      "₹60"
+    ],
+    [
+      "Men's suit (2 / 3 pcs) — dry clean",
+      "₹200 / 300"
+    ],
+    [
+      "Saree — dry clean",
+      "from ₹120"
+    ],
+    [
+      "Blanket (single / double)",
+      "₹250 / 375"
+    ],
+    [
+      "Sofa cleaning at home",
+      "from ₹150 / seat"
+    ],
+    [
+      "Shoe cleaning",
+      "from ₹160"
+    ]
+  ],
   "areas": [
-    {"name": "Gulmohar", "outlet": "gulmohar"},
-    {"name": "Bawadia Kalan", "outlet": "gulmohar"},
-    {"name": "Trilanga", "outlet": "gulmohar"},
-    {"name": "Arera Colony", "outlet": "gulmohar"},
-    {"name": "E-8 Arera Colony", "outlet": "gulmohar"},
-    {"name": "10 Number Market", "outlet": "gulmohar"},
-    {"name": "Char Imli", "outlet": "gulmohar"},
-    {"name": "Bittan Market", "outlet": "gulmohar"},
-    {"name": "MP Nagar", "outlet": "gulmohar"},
-    {"name": "Habibganj", "outlet": "gulmohar"},
-    {"name": "Shivaji Nagar", "outlet": "gulmohar"},
-    {"name": "TT Nagar", "outlet": "gulmohar"},
-    {"name": "New Market", "outlet": "gulmohar"},
-    {"name": "Shyamla Hills", "outlet": "gulmohar"},
-
-    {"name": "Shahpura", "outlet": "shahpura"},
-    {"name": "Manisha Market", "outlet": "shahpura"},
-    {"name": "Sahyadri Parisar", "outlet": "shahpura"},
-    {"name": "Chuna Bhatti", "outlet": "shahpura"},
-
-    {"name": "Bagmugaliya", "outlet": "bagmugaliya"},
-    {"name": "Hoshangabad Road", "outlet": "bagmugaliya"},
-    {"name": "Danish Nagar", "outlet": "bagmugaliya"},
-    {"name": "Misrod", "outlet": "bagmugaliya"},
-    {"name": "Katara Hills", "outlet": "bagmugaliya"},
-    {"name": "Bagsewaniya", "outlet": "bagmugaliya"},
-    {"name": "Rohit Nagar", "outlet": "bagmugaliya"},
-    {"name": "Saket Nagar", "outlet": "bagmugaliya"},
-    {"name": "Jatkhedi", "outlet": "bagmugaliya"},
-
-    {"name": "Kolar Road", "outlet": "kolar"},
-    {"name": "Danish Kunj", "outlet": "kolar"},
-    {"name": "Sarvadharm Colony", "outlet": "kolar"},
-    {"name": "Lalita Nagar", "outlet": "kolar"},
-    {"name": "Mandakini Colony", "outlet": "kolar"},
-    {"name": "Nehru Nagar", "outlet": "kolar"},
-    {"name": "Kotra Sultanabad", "outlet": "kolar"}
+    {
+      "name": "MP Nagar",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar",
+      "aka": "Maharana Pratap Nagar"
+    },
+    {
+      "name": "Arera Colony",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "E-8 Arera Colony",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "10 Number Market",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Bittan Market",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Habibganj",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar",
+      "aka": "Rani Kamlapati"
+    },
+    {
+      "name": "Shivaji Nagar",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Char Imli",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "TT Nagar",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "New Market",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Shyamla Hills",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Professors Colony",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Jawahar Chowk",
+      "zone": "Central Bhopal",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Gulmohar",
+      "zone": "Gulmohar, Shahpura & AIIMS",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Bawadiya Kalan",
+      "zone": "Gulmohar, Shahpura & AIIMS",
+      "outlet": "gulmohar",
+      "aka": "Bawadia Kalan"
+    },
+    {
+      "name": "Trilanga",
+      "zone": "Gulmohar, Shahpura & AIIMS",
+      "outlet": "shahpura"
+    },
+    {
+      "name": "Shahpura",
+      "zone": "Gulmohar, Shahpura & AIIMS",
+      "outlet": "shahpura"
+    },
+    {
+      "name": "Manisha Market",
+      "zone": "Gulmohar, Shahpura & AIIMS",
+      "outlet": "shahpura"
+    },
+    {
+      "name": "Sahyadri Parisar",
+      "zone": "Gulmohar, Shahpura & AIIMS",
+      "outlet": "shahpura"
+    },
+    {
+      "name": "Chunabhatti",
+      "zone": "Gulmohar, Shahpura & AIIMS",
+      "outlet": "shahpura",
+      "aka": "Chuna Bhatti"
+    },
+    {
+      "name": "Saket Nagar",
+      "zone": "Gulmohar, Shahpura & AIIMS",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "AIIMS Area",
+      "zone": "Gulmohar, Shahpura & AIIMS",
+      "outlet": "gulmohar",
+      "aka": "AIIMS Bhopal"
+    },
+    {
+      "name": "Hoshangabad Road",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya",
+      "aka": "Narmadapuram Road"
+    },
+    {
+      "name": "Bagmugaliya",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Danish Nagar",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Katara Hills",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Bagsewaniya",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Rohit Nagar",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Misrod",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Salaiya",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Jatkhedi",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Ratanpur",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Vidya Nagar",
+      "zone": "Hoshangabad Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Kolar Road",
+      "zone": "Kolar Road",
+      "outlet": "kolar"
+    },
+    {
+      "name": "Danish Kunj",
+      "zone": "Kolar Road",
+      "outlet": "kolar"
+    },
+    {
+      "name": "Sarvadharm Colony",
+      "zone": "Kolar Road",
+      "outlet": "kolar"
+    },
+    {
+      "name": "Lalita Nagar",
+      "zone": "Kolar Road",
+      "outlet": "kolar"
+    },
+    {
+      "name": "Mandakini Colony",
+      "zone": "Kolar Road",
+      "outlet": "kolar"
+    },
+    {
+      "name": "Nayapura",
+      "zone": "Kolar Road",
+      "outlet": "kolar"
+    },
+    {
+      "name": "Nehru Nagar",
+      "zone": "Kolar Road",
+      "outlet": "kolar"
+    },
+    {
+      "name": "Kotra Sultanabad",
+      "zone": "Kolar Road",
+      "outlet": "kolar"
+    },
+    {
+      "name": "Bhadbhada Road",
+      "zone": "Kolar Road",
+      "outlet": "kolar"
+    },
+    {
+      "name": "Neelbad",
+      "zone": "Kolar Road",
+      "outlet": "kolar"
+    },
+    {
+      "name": "Ayodhya Bypass",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Minal Residency",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Indrapuri",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "BHEL",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar",
+      "aka": "BHEL Township"
+    },
+    {
+      "name": "Piplani",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Awadhpuri",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "bagmugaliya"
+    },
+    {
+      "name": "Anand Nagar",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Raisen Road",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Ayodhya Nagar",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Narela Shankari",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Ashoka Garden",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Govindpura",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Sonagiri",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Barkheda",
+      "zone": "BHEL, Ayodhya Bypass & Raisen Road",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Koh-e-Fiza",
+      "zone": "North Bhopal & Old City",
+      "outlet": "gulmohar",
+      "aka": "Kohefiza"
+    },
+    {
+      "name": "Lalghati",
+      "zone": "North Bhopal & Old City",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Airport Road",
+      "zone": "North Bhopal & Old City",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Bairagarh",
+      "zone": "North Bhopal & Old City",
+      "outlet": "gulmohar",
+      "aka": "Sant Hirdaram Nagar"
+    },
+    {
+      "name": "Karond",
+      "zone": "North Bhopal & Old City",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Berasia Road",
+      "zone": "North Bhopal & Old City",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Idgah Hills",
+      "zone": "North Bhopal & Old City",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Jahangirabad",
+      "zone": "North Bhopal & Old City",
+      "outlet": "gulmohar"
+    },
+    {
+      "name": "Peer Gate",
+      "zone": "North Bhopal & Old City",
+      "outlet": "gulmohar",
+      "aka": "Old Bhopal"
+    },
+    {
+      "name": "Gandhi Nagar",
+      "zone": "North Bhopal & Old City",
+      "outlet": "gulmohar"
+    }
   ]
 }

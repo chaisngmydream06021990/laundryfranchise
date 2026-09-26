@@ -36,8 +36,12 @@ use.
 ## Bhopal outlets & area pages (generated)
 
 `data/bhopal.json` is the single source of truth for the Bhopal outlets
-(addresses, Google rating) and the list of areas served. After editing it,
-run:
+(addresses, Google rating) and the list of areas served. Each area has a
+`zone` (one of `zones`; controls grouping on the hub/homepage and each
+page's "Nearby Areas"), an `outlet` (its closest outlet id) and an optional
+`aka` (alternate name people search for, e.g. Bairagarh → Sant Hirdaram
+Nagar). `footer_areas` picks the six areas linked in every footer. After
+editing it, run:
 
     python3 tools/build_bhopal_pages.py
 
@@ -50,8 +54,9 @@ which (standard library only, safe to re-run) regenerates:
 - `sitemap.xml`
 - the `<!-- BEGIN:gen:NAME --> … <!-- END:gen:NAME -->` regions inside the
   hand-written pages: outlet cards + outlet JSON-LD in `stores.html`,
-  area links + outlet JSON-LD in `index.html`, and the "Laundry in Bhopal"
-  footer column on all six pages.
+  area links (capped at 6 per zone) + outlet JSON-LD in `index.html`, the
+  "Laundry in Bhopal" footer column on all six pages, and the area list in
+  `llms.txt`.
 
 Never hand-edit generated files or anything between gen markers — it is
 overwritten on the next run. Generated pages use root-absolute paths
