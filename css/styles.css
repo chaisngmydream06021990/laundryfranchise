@@ -19,7 +19,8 @@
     --color-success: #16a34a;
     --color-line: #cbd5e1;
 
-    --font-main: 'Poppins', 'Inter', system-ui, sans-serif;
+    --font-main: 'Poppins', 'Hind', 'Inter', system-ui, sans-serif;
+    /* Hind is only loaded on Hindi pages; Poppins has no Devanagari glyphs. */
 
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
@@ -1600,143 +1601,6 @@ body.offer-banner-hidden .offer-banner {
     white-space: nowrap;
 }
 
-/* ---- estimator ---- */
-.calc {
-    display: grid;
-    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-    gap: 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    align-items: start;
-}
-
-.calc-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 0.75rem;
-}
-
-.calc-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 0.75rem 0.9rem;
-    min-width: 0;
-}
-
-.calc-row.has-qty {
-    border-color: var(--color-primary);
-    background: var(--color-bg-blue);
-}
-
-.calc-name {
-    min-width: 0;
-}
-
-.calc-name strong {
-    display: block;
-    color: var(--color-primary);
-    font-size: 0.93rem;
-    line-height: 1.3;
-}
-
-.calc-name span {
-    font-size: 0.8rem;
-    color: var(--color-text-light);
-}
-
-.calc-qty {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    flex-shrink: 0;
-}
-
-.calc-qty button {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 8px;
-    border: 1px solid #cbd5e1;
-    background: #fff;
-    color: var(--color-primary);
-    font-size: 1.1rem;
-    font-weight: 700;
-    line-height: 1;
-    cursor: pointer;
-}
-
-.calc-qty button[data-step="1"] {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--color-secondary);
-}
-
-.calc-qty output {
-    min-width: 1.5rem;
-    text-align: center;
-    font-weight: 700;
-}
-
-.calc-summary {
-    position: sticky;
-    top: calc(var(--banner-height) + var(--header-height) + 1rem);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-    color: #fff;
-    border-radius: 16px;
-    padding: 1.75rem;
-}
-
-.calc-summary h3 {
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.calc-summary dl div {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    font-size: 0.93rem;
-}
-
-.calc-summary dd {
-    font-weight: 700;
-    text-align: right;
-}
-
-.calc-summary dd[data-out="total"] {
-    font-size: 1.4rem;
-    color: var(--color-secondary);
-}
-
-.calc-note {
-    font-size: 0.8rem;
-    opacity: 0.8;
-    margin: 1rem 0;
-}
-
-.calc-summary .calc-wa {
-    display: block;
-    text-align: center;
-    background: #25D366;
-    color: #fff;
-}
-
-@media (max-width: 860px) {
-    .calc {
-        grid-template-columns: 1fr;
-    }
-
-    .calc-summary {
-        position: static;
-    }
-}
-
 /* Primary buttons are navy — invisible on the navy CTA bands of the
    hand-written pages, so invert them there (same treatment as .lp-hero). */
 section[style*="background: var(--color-primary)"] .btn:not(.btn-outline) {
@@ -1750,4 +1614,781 @@ section[style*="background: var(--color-primary)"] .btn:not(.btn-outline):hover 
 
 .footer-col p + ul {
     margin-top: 1rem;
+}
+
+/* ============================================================
+   Booking journey: header CTA, language link, booking form,
+   mobile action bar (markup from tools/build_site.py).
+   ============================================================ */
+.nav-links {
+    gap: 1.5rem;
+}
+
+.nav-links .nav-cta {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+}
+
+.nav-links .nav-cta:hover {
+    color: #fff;
+}
+
+.nav-links .nav-lang {
+    font-family: 'Hind', var(--font-main);
+    color: #0f7a8a;
+}
+
+/* The fixed header sits below the offer banner, so the mobile menu must too. */
+@media (max-width: 768px) {
+    .nav-links {
+        top: calc(var(--banner-height) + var(--header-height));
+    }
+
+    body.offer-banner-hidden .nav-links {
+        top: var(--header-height);
+    }
+
+    .nav-links .nav-cta {
+        text-align: center;
+    }
+}
+
+.lp-hero-slim {
+    padding-bottom: 2.5rem;
+}
+
+.book-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.book-aside h2 {
+    text-align: left;
+    font-size: 1.3rem;
+}
+
+.book-aside .lp-steps {
+    grid-template-columns: 1fr;
+    margin: 1rem 0;
+}
+
+.book-aside .lp-sub {
+    text-align: left;
+    margin: 0.75rem 0 0;
+}
+
+.book-form {
+    background: #fff;
+    border-radius: 20px;
+    padding: 1.75rem;
+    box-shadow: 0 10px 40px rgba(27, 38, 49, 0.12);
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    color: var(--color-text);
+}
+
+.book-form h2 {
+    color: var(--color-primary);
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+    text-align: left;
+}
+
+.book-sub {
+    color: var(--color-text-light);
+    font-size: 0.92rem;
+    margin-bottom: 1.25rem;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem 1rem;
+}
+
+.book-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    min-width: 0;
+}
+
+.book-grid .book-wide {
+    grid-column: 1 / -1;
+}
+
+.book-grid input,
+.book-grid select,
+.book-grid textarea {
+    width: 100%;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    background: #fff;
+    min-width: 0;
+}
+
+.book-grid input:focus,
+.book-grid select:focus,
+.book-grid textarea:focus {
+    outline: 2px solid var(--color-secondary);
+    border-color: var(--color-primary);
+}
+
+.book-grid [aria-invalid="true"] {
+    border-color: #D0103A;
+    background: #fff5f7;
+}
+
+.book-error {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    background: #fff1f2;
+    color: #9f1239;
+    font-size: 0.9rem;
+}
+
+.book-error.is-ok {
+    background: #ecfdf5;
+    color: #065f46;
+}
+
+.book-submit {
+    width: 100%;
+    margin-top: 1.25rem;
+    background: #25D366;
+    color: #fff;
+}
+
+.book-submit:hover {
+    background: #1eb457;
+    color: #fff;
+}
+
+.book-fine {
+    margin-top: 0.85rem;
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.book-status {
+    margin-top: 0.4rem;
+    font-size: 0.82rem;
+    text-align: center;
+}
+
+.book-status a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.mobile-bar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.3fr;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1002;
+        background: #fff;
+        border-top: 1px solid #e2e8f0;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+        padding: 0.5rem;
+        gap: 0.5rem;
+        padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+    }
+
+    .mobile-bar a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--color-primary);
+        background: var(--color-bg-blue);
+        text-decoration: none;
+    }
+
+    .mobile-bar .mobile-bar-book {
+        background: var(--color-primary);
+        color: var(--color-secondary);
+    }
+
+    /* The bar replaces the floating WhatsApp button on phones. */
+    .whatsapp-float {
+        display: none !important;
+    }
+
+    body {
+        padding-bottom: 64px;
+    }
+
+    .book-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-form {
+        padding: 1.25rem;
+    }
+}
+
+/* ============================================================
+   Homepage (content/home.html)
+   ============================================================ */
+.home-hero {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + 1rem);
+}
+
+.home-hero .container {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: start;
+    padding-top: 3rem;
+    padding-bottom: 3.5rem;
+}
+
+.home-eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #0f7a8a;
+    margin-bottom: 1rem;
+}
+
+.home-chips {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.5rem 0;
+}
+
+.home-chips li {
+    background: #fff;
+    border: 1px solid #dbe4ee;
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.home-prices {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+}
+
+.home-prices strong {
+    color: var(--color-primary);
+}
+
+.hero-book .book-form {
+    border-top: 5px solid var(--color-secondary);
+}
+
+.offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+    max-width: 1150px;
+    margin: 2.5rem auto 0;
+}
+
+.offer-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px dashed #b6c7d6;
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.offer-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+    border-style: solid;
+}
+
+.offer-icon {
+    font-size: 2rem;
+}
+
+.offer-card strong {
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+.offer-card em {
+    font-style: normal;
+    font-weight: 600;
+    color: #0f7a8a;
+    font-size: 0.92rem;
+}
+
+.offer-card p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin: 0.35rem 0 0.5rem;
+}
+
+.offer-card .lp-more {
+    margin-top: auto;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.why-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 1.75rem;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.why-card span {
+    font-size: 2.2rem;
+}
+
+.why-card h3 {
+    color: var(--color-secondary);
+    margin: 0.75rem 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.why-card p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.93rem;
+}
+
+.why-process {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2.5rem auto 0;
+    max-width: 1000px;
+}
+
+.why-process li {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.88rem;
+    color: #fff;
+}
+
+.franchise-band {
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-line);
+    padding: 1.5rem 0;
+}
+
+.franchise-band .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+}
+
+.franchise-band a {
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+    .home-hero .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   "Build your laundry bag" estimator (pricing.html): category
+   tabs + a bill styled as a Cleanzit garment tag.
+   ============================================================ */
+.book-grid textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+.bag {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 2rem;
+    max-width: 1080px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.bag-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.bag-tab {
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    border-radius: 10px;
+    padding: 0.55rem 0.9rem;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.bag-tab[aria-selected="true"] {
+    background: var(--color-bg-blue);
+    border-color: var(--color-primary);
+    box-shadow: inset 0 -3px 0 var(--color-secondary);
+}
+
+.bag-count {
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    padding: 0.05rem 0.45rem;
+}
+
+.bag-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.bag-list + .bag-list {
+    margin-top: 1rem;
+}
+
+.bag-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.bag-item:last-child {
+    border-bottom: none;
+}
+
+.bag-item.has-qty {
+    background: #f4fdfd;
+    box-shadow: inset 3px 0 0 var(--color-secondary);
+}
+
+.bag-name {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    min-width: 0;
+}
+
+.bag-name small {
+    display: block;
+    font-weight: 400;
+    color: var(--color-text-light);
+    font-size: 0.78rem;
+}
+
+.bag-price {
+    font-size: 0.88rem;
+    color: var(--color-text-light);
+    white-space: nowrap;
+}
+
+.bag-step {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.bag-step button {
+    width: 2.1rem;
+    height: 2.1rem;
+    border: none;
+    background: transparent;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.bag-step button:hover {
+    background: var(--color-bg-blue);
+}
+
+.bag-step output {
+    min-width: 1.6rem;
+    text-align: center;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.bag-step i {
+    font-style: normal;
+    font-size: 0.72rem;
+    color: var(--color-text-light);
+    margin-right: 0.2rem;
+}
+
+/* The bill: a Cleanzit garment tag with a punched hole */
+.bag-tag {
+    position: sticky;
+    top: calc(var(--banner-height) + var(--header-height) + 1rem);
+    background: #fffdf6;
+    border: 1px solid #e8dfc8;
+    border-radius: 6px 6px 18px 18px;
+    padding: 0 1.4rem 1.4rem;
+    box-shadow: 0 12px 30px rgba(27, 38, 49, 0.12);
+    font-variant-numeric: tabular-nums;
+}
+
+.tag-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 -1.4rem 1rem;
+    padding: 0.9rem 1.4rem;
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    border-radius: 6px 6px 0 0;
+}
+
+.tag-hole {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fffdf6;
+    box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+
+.tag-lines {
+    list-style: none;
+    padding: 0 0 0.75rem;
+    margin: 0 0 0.75rem;
+    border-bottom: 2px dashed #d8cfb8;
+    font-size: 0.88rem;
+    max-height: 14rem;
+    overflow-y: auto;
+}
+
+.tag-lines li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.3rem 0;
+}
+
+.tag-empty {
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+.tag-sums div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+    font-size: 0.92rem;
+}
+
+.tag-sums dd {
+    font-weight: 600;
+}
+
+.tag-sums .tag-total {
+    border-top: 1px solid #e8dfc8;
+    margin-top: 0.4rem;
+    padding-top: 0.6rem;
+    font-size: 1.05rem;
+    color: var(--color-primary);
+}
+
+.tag-sums .tag-total dd {
+    font-weight: 800;
+    font-size: 1.35rem;
+}
+
+.tag-meter {
+    height: 8px;
+    border-radius: 999px;
+    background: #ece5d3;
+    overflow: hidden;
+    margin: 1rem 0 0.4rem;
+}
+
+.tag-meter span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--color-primary);
+    transition: width 0.25s ease;
+}
+
+.bag.is-free .tag-meter span {
+    background: #0f9d77;
+}
+
+.tag-pickup {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.bag.is-free .tag-pickup {
+    color: #0f7a5a;
+}
+
+.tag-note {
+    font-size: 0.76rem;
+    color: var(--color-text-light);
+    margin: 0.75rem 0 1rem;
+}
+
+.tag-cta {
+    display: block;
+    text-align: center;
+}
+
+@media (max-width: 860px) {
+    .bag {
+        grid-template-columns: 1fr;
+    }
+
+    .bag-tag {
+        position: static;
+    }
+
+    .bag-item {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .bag-price {
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: -0.4rem;
+    }
+
+    .bag-step {
+        grid-row: 1 / span 2;
+        grid-column: 2;
+    }
+}
+
+/* `hidden` must always win over component display rules (e.g. .tag-lines li). */
+[hidden] {
+    display: none !important;
+}
+
+.home-hero .hero-title {
+    font-size: clamp(2rem, 3.6vw, 2.85rem);
+    margin-bottom: 1rem;
+}
+
+.home-hero .hero-subtitle {
+    font-weight: 400;
+    font-size: 1.08rem;
+    color: var(--color-text-light);
+}
+
+.lp-open {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #0f7a5a;
+}
+
+.franchise-grid {
+    margin-top: 2.5rem;
+}
+
+.franchise-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.franchise-card strong {
+    color: var(--color-primary);
+    font-size: 1.05rem;
+}
+
+.franchise-card span {
+    color: var(--color-text-light);
+    font-size: 0.93rem;
+}
+
+/* Letter-spacing and uppercase break Devanagari conjuncts */
+html[lang^="hi"] .home-eyebrow,
+html[lang^="hi"] .lp-tag {
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 0.9rem;
 }

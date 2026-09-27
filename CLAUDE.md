@@ -36,6 +36,8 @@ nothing); run it after editing any source below, then commit the output.
 | `data/services.json` | Service pages at `/services/<slug>/`, cards on services.html and the homepage, footer service links. Text uses `{p:ITEM:COL}`, `{now:HOME_ID}`, `{was:HOME_ID}`, `{fact:KEY}` placeholders so prices are never typed twice. |
 | `data/bhopal.json` | Outlets (addresses), city zones, 67 areas → `/bhopal/` and `/bhopal/<area>/`, outlet cards/JSON-LD on stores.html + index.html, footer area links. |
 | `content/guides/*.html` | Guides at `/guides/<slug>/` — a `<!--meta {json} -->` header then plain HTML. Add a file to add a guide. |
+| `content/home.html` | The homepage body (everything inside `<main>` on index.html). Uses the price placeholders plus `{{components}}` (booking_form, stats, services_grid, offers, steps, areas, guides…). |
+| `data/hi.json` + `content/hi/home.html` | Hindi: `/hi/` homepage and `/hi/services/<slug>/` pages (Hindi copy in `services`), Hindi names for services, zones, areas and price items. The build fails if an area/zone/service lacks a Hindi name. English↔Hindi pages carry reciprocal hreflang links. |
 
 Hand-written pages contain `<!-- BEGIN:gen:NAME -->…<!-- END:gen:NAME -->`
 regions (nav, footer, price panels, cards, JSON-LD). Never edit inside them —
@@ -49,6 +51,19 @@ FAQ) still need a manual check when prices change.
 
 Generated pages use root-absolute paths (`/css/styles.css`); preview with
 `python3 -m http.server` from the repo root, not file://.
+
+## Customer journey
+
+- Every "Book" button goes to the WhatsApp booking form (`/book/`, the
+  homepage hero, or `/hi/#book`), passing `?service=<slug>&area=<slug>` so the
+  form arrives pre-filled. `js/booking.js` validates it and opens WhatsApp with
+  a structured message — there is **no app**, only WhatsApp.
+- The pricing page's "Build your laundry bag" estimator hands its item list to
+  the booking form via `?items=`.
+- On phones a sticky Call / WhatsApp / Book bar replaces the floating button.
+- `js/app.js` handles only `#contact-form` and `#franchise-form`.
+- Franchise is deliberately secondary: `franchise.html`, linked from the
+  footer, the stores page and a small homepage band — not the main nav.
 
 ## Content rules (important for search engines and AI assistants)
 
@@ -68,12 +83,15 @@ Generated pages use root-absolute paths (`/css/styles.css`); preview with
 - Contact email in JSON-LD/footers is `franchise@cleanzit.in` (`.in`, not
   `.co.in`) — this predates recent edits and hasn't been verified either
   way; don't "fix" it without confirming which domain is correct.
-- `services.html` "How It Works" says "Book via app" — confirm an app exists.
-- Homepage stats (10,000 families, 1,000,000 garments, 99% satisfaction) are
-  pre-existing claims; confirm or soften them.
-- Opening hours: `stores.html`/`contact.html` historically said
-  "Mon-Sat 9 AM - 8 PM", but Google Maps shows the outlets open on Sunday
-  (10–10:30 AM). Hours were deliberately left out of the outlet cards and
-  JSON-LD (they link to Google Maps for timings) until confirmed.
+- Still unverified owner claims kept on the site: "10,000+ happy families"
+  (homepage stats), "German Tech … eco-friendly enzymes" (homepage), franchise
+  figures (₹8 lakh entry, 12–18 month ROI, 70–80% margin, 6 months royalty-free).
+- Removed as unsupported: "99% satisfaction", "1,000,000 garments", placeholder
+  franchisee testimonials (Pune/Hyderabad/Delhi — Cleanzit is Bhopal-only),
+  "customers love the app", "200% returns", "24h express" (express = same day
+  for an extra charge, per the FAQ).
+- Opening hours: confirmed open 7 days a week (`open_note` in
+  data/bhopal.json). Exact times per outlet aren't known yet, so they're not in
+  the structured data — add `openingHoursSpecification` once confirmed.
 - Pincodes: only the Gulmohar outlet's (462039) is known; the others are
   blank in `data/bhopal.json` — fill them in when available.

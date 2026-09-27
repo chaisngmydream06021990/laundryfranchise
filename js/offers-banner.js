@@ -32,10 +32,18 @@
     whatsappUrl: 'https://wa.me/917777818187?text=Hi%2C%20I%27d%20like%20to%20book%20a%20pickup.'
   };
 
+  // Hindi pages (<html lang="hi-IN">) get the same offer in Hindi.
+  if ((document.documentElement.lang || '').indexOf('hi') === 0) {
+    OFFER.text = 'पहले ऑर्डर पर 20% छूट';
+    OFFER.text2 = '\u20B9300 से ज़्यादा पर फ्री पिकअप और डिलीवरी';
+    OFFER.cta = 'अभी बुक करें';
+    OFFER.whatsappUrl = 'https://wa.me/917777818187?text=' + encodeURIComponent('नमस्ते Cleanzit, मुझे पिकअप बुक करना है।');
+  }
+
   var html =
     '<div class="offer-banner" id="offer-banner" role="region" aria-label="Current offer">' +
       '<span><strong>' + OFFER.text + '</strong> &nbsp;·&nbsp; ' + OFFER.text2 +
-      ' &nbsp;·&nbsp; <a href="' + OFFER.whatsappUrl + '" target="_blank" rel="noopener">Book now: ' +
+      ' &nbsp;·&nbsp; <a href="' + OFFER.whatsappUrl + '" target="_blank" rel="noopener">' + (OFFER.cta || 'Book now') + ': ' +
       OFFER.phoneDisplay + '</a></span>' +
       '<button type="button" class="offer-banner-close" aria-label="Dismiss offer banner" onclick="' +
         'document.body.classList.add(\'offer-banner-hidden\');' +

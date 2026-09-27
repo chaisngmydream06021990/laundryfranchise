@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     // --- Stats Counter Animation ---
     const statsSection = document.querySelector('.stats-section');
-    const counters = document.querySelectorAll('.stat-number');
+    const counters = document.querySelectorAll('.stat-number[data-target]');
     let started = false; // Function started ? No
 
     function startCount(el) {
@@ -180,6 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const phone = formData.get('phone') || 'Not provided';
         const email = formData.get('email') || 'Not provided';
         const city = formData.get('city') || 'Not provided';
+        const interest = formData.get('interest') || '';
+        const note = (formData.get('message') || '').trim();
 
         // Validate required fields
         if (!formData.get('name') || !formData.get('phone')) {
@@ -187,14 +189,19 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Create WhatsApp message
-        const message = `Hi! I'm interested in Cleanzit Franchise.%0A%0A` +
+        // Create WhatsApp message — worded for what the person actually asked about
+        const isFranchise = form.id === 'franchise-form' || /franchise/i.test(interest);
+        const opening = isFranchise ? "Hi! I'm interested in a Cleanzit franchise."
+            : interest ? `Hi Cleanzit! I have a question about: ${interest}.` : 'Hi Cleanzit!';
+        const closing = isFranchise ? 'Please share the franchise details.' : 'Please get back to me.';
+        const message = `${encodeURIComponent(opening)}%0A%0A` +
             `📝 *My Details:*%0A` +
             `Name: ${encodeURIComponent(name)}%0A` +
             `Phone: ${encodeURIComponent(phone)}%0A` +
             `Email: ${encodeURIComponent(email)}%0A` +
-            `City: ${encodeURIComponent(city)}%0A%0A` +
-            `Please share the franchise details.`;
+            `City: ${encodeURIComponent(city)}%0A` +
+            (note ? `Message: ${encodeURIComponent(note)}%0A` : '') +
+            `%0A${encodeURIComponent(closing)}`;
 
         // WhatsApp number (bot/franchise inquiry line)
         const whatsappNumber = '917777818187';
@@ -221,7 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     };
 
-    const forms = document.querySelectorAll('form');
+    // Only the contact / franchise enquiry forms — the pickup booking form has
+    // its own handler in js/booking.js.
+    const forms = document.querySelectorAll('#contact-form, #franchise-form');
     forms.forEach(form => {
         form.addEventListener('submit', handleFormSubmit);
     });

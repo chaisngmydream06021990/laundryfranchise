@@ -32,6 +32,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.cleanzit.co.in/franchise.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://www.cleanzit.co.in/services/laundry-service-bhopal/</loc>
     <lastmod>2026-09-27</lastmod>
     <priority>0.8</priority>
@@ -100,6 +105,46 @@
     <loc>https://www.cleanzit.co.in/services/stain-removal-bhopal/</loc>
     <lastmod>2026-09-27</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.cleanzit.co.in/book/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.cleanzit.co.in/hi/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.cleanzit.co.in/hi/services/laundry-service-bhopal/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cleanzit.co.in/hi/services/dry-cleaning-bhopal/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cleanzit.co.in/hi/services/steam-ironing-bhopal/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cleanzit.co.in/hi/services/saree-lehenga-dry-cleaning-bhopal/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cleanzit.co.in/hi/services/sofa-cleaning-bhopal/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cleanzit.co.in/hi/services/blanket-quilt-cleaning-bhopal/</loc>
+    <lastmod>2026-09-27</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.cleanzit.co.in/guides/</loc>

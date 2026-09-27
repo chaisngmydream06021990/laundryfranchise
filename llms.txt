@@ -154,6 +154,16 @@ Guides:
 - Stain First Aid: Haldi, Oil, Tea, Ink and Mehendi: https://www.cleanzit.co.in/guides/stain-first-aid/
 - Winter Woolens: How to Wash, Store and Revive Them: https://www.cleanzit.co.in/guides/winter-woolens-care/
 
+Hindi (हिंदी):
+- Hindi homepage: https://www.cleanzit.co.in/hi/
+- भोपाल में लॉन्ड्री सर्विस: https://www.cleanzit.co.in/hi/services/laundry-service-bhopal/
+- भोपाल में ड्राई क्लीनिंग: https://www.cleanzit.co.in/hi/services/dry-cleaning-bhopal/
+- भोपाल में स्टीम प्रेस (इस्त्री) सर्विस: https://www.cleanzit.co.in/hi/services/steam-ironing-bhopal/
+- भोपाल में साड़ी, लहंगा और एथनिक कपड़ों की ड्राई क्लीनिंग: https://www.cleanzit.co.in/hi/services/saree-lehenga-dry-cleaning-bhopal/
+- भोपाल में सोफा सफाई: https://www.cleanzit.co.in/hi/services/sofa-cleaning-bhopal/
+- भोपाल में कंबल और रजाई की सफाई: https://www.cleanzit.co.in/hi/services/blanket-quilt-cleaning-bhopal/
+
+Book a pickup: https://www.cleanzit.co.in/book/
 Full price list: https://www.cleanzit.co.in/pricing.html
 Bhopal outlets and areas: https://www.cleanzit.co.in/bhopal/
 <!-- END:gen:pages -->

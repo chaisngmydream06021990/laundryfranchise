@@ -1,0 +1,85 @@
+<!--
+  Hindi homepage body (/hi/). Same placeholders and {{components}} as
+  content/home.html; components render in Hindi on this page.
+-->
+        <section class="hero home-hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <p class="home-eyebrow">भोपाल · लॉन्ड्री · ड्राई क्लीनिंग · प्रेस</p>
+                    <h1 class="hero-title">भोपाल में लॉन्ड्री और ड्राई क्लीनिंग, <span>घर से पिकअप</span></h1>
+                    <p class="hero-subtitle">एक मिनट में बुक करें — हम कपड़े आपके घर से ले जाते हैं, हर कपड़े को उसके फैब्रिक के हिसाब से साफ करते हैं, और {fact:delivery_days} दिन में वापस पहुंचाते हैं।</p>
+                    <ul class="home-chips">
+                        <li>🚚 ₹{fact:free_pickup_min} से ज़्यादा पर फ्री पिकअप</li>
+                        <li>🎉 पहले ऑर्डर पर {fact:first_order_off}% छूट</li>
+                        <li>📅 हफ्ते के सातों दिन खुला</li>
+                        <li>📍 {{outlet_count}} आउटलेट · {{area_count}} इलाके</li>
+                    </ul>
+                    <p class="home-prices">वॉश और फोल्ड <strong>{p:wash-fold:price}/किलो</strong> · शर्ट ड्राई क्लीन <strong>{p:shirt:dry}</strong> · स्टीम प्रेस <strong>{p:shirt:iron}</strong></p>
+                    <div class="hero-buttons">
+                        <a href="/pricing.html" class="btn btn-outline">पूरी रेट लिस्ट (English)</a>
+                    </div>
+                </div>
+                <div class="hero-book">
+{{booking_form}}
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section" id="services">
+            <div class="container">
+                <h2 class="section-title">हमारी <span>सेवाएं</span></h2>
+                <p class="lp-sub">रोज़ की लॉन्ड्री, ड्राई क्लीनिंग, प्रेस, जूते, बिस्तर — और घर पर सोफा, कारपेट व किचन की सफाई।</p>
+{{services_grid}}
+            </div>
+        </section>
+
+        <section class="lp-section alt" id="how-it-works">
+            <div class="container">
+                <h2 class="section-title">कैसे <span>काम करता है</span></h2>
+                <p class="lp-sub">कोई ऐप डाउनलोड करने की ज़रूरत नहीं — सब कुछ WhatsApp पर।</p>
+{{steps}}
+            </div>
+        </section>
+
+        <section class="lp-section" id="outlets">
+            <div class="container">
+                <h2 class="section-title">भोपाल में हमारे <span>आउटलेट</span></h2>
+{{outlets}}
+            </div>
+        </section>
+
+        <section class="lp-section alt" id="areas">
+            <div class="container">
+                <h2 class="section-title">भोपाल के <span>इलाके</span></h2>
+                <p class="lp-sub">इन सभी इलाकों में ₹{fact:free_pickup_min} से ज़्यादा के ऑर्डर पर फ्री पिकअप और डिलीवरी।</p>
+{{areas}}
+            </div>
+        </section>
+
+        <section class="lp-section" id="faq">
+            <div class="container">
+                <h2 class="section-title">अक्सर पूछे जाने वाले <span>सवाल</span></h2>
+                <div class="lp-faq">
+                    <details>
+                        <summary>भोपाल में लॉन्ड्री का रेट कितना है?</summary>
+                        <p>Cleanzit पर वॉश और फोल्ड {p:wash-fold:price} प्रति किलो और वॉश और स्टीम प्रेस {p:wash-iron:price} प्रति किलो है। शर्ट की ड्राई क्लीनिंग {p:shirt:dry} है। नए ग्राहकों को पहले ऑर्डर पर {fact:first_order_off}% छूट मिलती है।</p>
+                    </details>
+                    <details>
+                        <summary>क्या पिकअप और डिलीवरी फ्री है?</summary>
+                        <p>हां, भोपाल में ₹{fact:free_pickup_min} से ज़्यादा के ऑर्डर पर पिकअप और डिलीवरी फ्री है।</p>
+                    </details>
+                    <details>
+                        <summary>कपड़े कितने दिन में वापस मिलते हैं?</summary>
+                        <p>लॉन्ड्री, ड्राई क्लीनिंग, ऊनी कपड़े, बिस्तर और जूते — सामान्य डिलीवरी {fact:delivery_days} दिन में होती है। उसी दिन की एक्सप्रेस सर्विस भी एक्स्ट्रा चार्ज पर उपलब्ध है।</p>
+                    </details>
+                    <details>
+                        <summary>क्या Cleanzit रविवार को भी खुला रहता है?</summary>
+                        <p>हां, Cleanzit के सभी आउटलेट हफ्ते के सातों दिन खुले रहते हैं, रविवार को भी।</p>
+                    </details>
+                    <details>
+                        <summary>बुकिंग कैसे करें? क्या कोई ऐप है?</summary>
+                        <p>कोई ऐप डाउनलोड करने की ज़रूरत नहीं। इस पेज पर फॉर्म भरें या सीधे WhatsApp पर +91 77778 18187 पर मैसेज करें — हम आपका पिकअप स्लॉट कन्फर्म कर देंगे।</p>
+                    </details>
+                </div>
+            </div>
+        </section>

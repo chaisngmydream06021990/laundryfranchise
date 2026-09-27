@@ -496,25 +496,59 @@
     }
   ],
   "calculator": [
-    "wash-fold:price",
-    "wash-iron:price",
-    "shirt:dry",
-    "shirt:iron",
-    "trouser:dry",
-    "trouser:iron",
-    "coat:dry",
-    "suit-2:dry",
-    "suit-3:dry",
-    "kurta-short:dry",
-    "saree:dry",
-    "saree:iron",
-    "lehenga:dry",
-    "sweater-full:dry",
-    "blanket-single:dry",
-    "blanket-double:dry",
-    "quilt-double:dry",
-    "bedsheet-double:dry",
-    "shoe-sports-basic:price"
+    {
+      "group": "Everyday",
+      "icon": "👕",
+      "items": [
+        "wash-fold:price",
+        "wash-iron:price",
+        "shirt:iron",
+        "trouser:iron"
+      ]
+    },
+    {
+      "group": "Office",
+      "icon": "👔",
+      "items": [
+        "shirt:dry",
+        "trouser:dry",
+        "coat:dry",
+        "suit-2:dry",
+        "suit-3:dry"
+      ]
+    },
+    {
+      "group": "Ethnic",
+      "icon": "🥻",
+      "items": [
+        "kurta-short:dry",
+        "kurta-long:dry",
+        "saree:dry",
+        "saree:iron",
+        "lehenga:dry"
+      ]
+    },
+    {
+      "group": "Winter & bedding",
+      "icon": "🧣",
+      "items": [
+        "sweater-full:dry",
+        "shawl:dry",
+        "blanket-single:dry",
+        "blanket-double:dry",
+        "quilt-double:dry",
+        "bedsheet-double:dry"
+      ]
+    },
+    {
+      "group": "Shoes",
+      "icon": "👟",
+      "items": [
+        "shoe-sports-basic:price",
+        "shoe-sports-branded:price",
+        "shoe-leather:price"
+      ]
+    }
   ],
   "membership_note": "Ask our staff for details on which services the member discount covers."
 }

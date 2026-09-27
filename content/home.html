@@ -1,0 +1,120 @@
+<!--
+  Homepage body (everything inside <main> on index.html).
+  Built by tools/build_site.py: {p:ITEM:COL} {now:ID} {fact:KEY} are prices
+  from data/prices.json, and {{name}} inserts a generated component
+  (booking_form, stats, services_grid, offers, steps, areas, guides, outlet_count, area_count).
+-->
+        <!-- Hero: what we do + book right here -->
+        <section class="hero home-hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <p class="home-eyebrow">Doorstep laundry &amp; dry cleaning · Bhopal</p>
+                    <h1 class="hero-title">Laundry &amp; Dry Cleaning in Bhopal, <span>Picked Up From Your Door</span></h1>
+                    <p class="hero-subtitle">Book in a minute — we collect, clean every garment with the right process for its fabric, and deliver it back within {fact:delivery_days} days.</p>
+                    <ul class="home-chips">
+                        <li>🚚 Free pickup above ₹{fact:free_pickup_min}</li>
+                        <li>🎉 {fact:first_order_off}% off your first order</li>
+                        <li>📅 Open 7 days a week</li>
+                        <li>📍 {{outlet_count}} outlets · {{area_count}} areas</li>
+                    </ul>
+                    <p class="home-prices">Wash &amp; fold <strong>{p:wash-fold:price}/kg</strong> · Shirt dry clean <strong>{p:shirt:dry}</strong> · Steam iron <strong>{p:shirt:iron}</strong></p>
+                    <div class="hero-buttons">
+                        <a href="/pricing.html" class="btn btn-outline">See All Prices</a>
+                        <a href="/pricing.html#estimate" class="btn btn-outline">Estimate Your Bill</a>
+                    </div>
+                </div>
+                <div class="hero-book">
+{{booking_form}}
+                </div>
+            </div>
+        </section>
+
+{{stats}}
+
+        <!-- Services -->
+        <section class="lp-section" id="services">
+            <div class="container">
+                <h2 class="section-title">Our <span>Services</span></h2>
+                <p class="lp-sub">Everyday laundry, dry cleaning, ironing, shoes, bedding — and home cleaning for sofas, carpets and kitchens.</p>
+{{services_grid}}
+                <p class="lp-center"><a href="/services.html" class="btn">View All Services</a></p>
+            </div>
+        </section>
+
+        <!-- Current offers -->
+        <section class="lp-section alt" id="offers">
+            <div class="container">
+                <h2 class="section-title">Current <span>Offers</span></h2>
+{{offers}}
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="lp-section" id="how-it-works">
+            <div class="container">
+                <h2 class="section-title">How It <span>Works</span></h2>
+                <p class="lp-sub">No app to install — everything happens on WhatsApp.</p>
+{{steps}}
+            </div>
+        </section>
+
+        <!-- Why Cleanzit -->
+        <section class="affordable-luxury" style="background: var(--color-primary); color: #fff; padding: 5rem 0;">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="color: #fff; font-size: 2rem; margin-bottom: 1rem;">Why Bhopal Chooses <span style="color: var(--color-secondary);">Cleanzit</span></h2>
+                    <p style="color: rgba(255,255,255,0.8); max-width: 640px; margin: 0 auto;">Premium fabric care at honest prices — laundry from {p:wash-fold:price}/kg.</p>
+                </div>
+                <div class="why-grid">
+                    <div class="why-card">
+                        <span>🏷️</span>
+                        <h3>Individual Wash</h3>
+                        <p>Your clothes are tagged and washed separately — never mixed with anyone else's.</p>
+                    </div>
+                    <div class="why-card">
+                        <span>🔍</span>
+                        <h3>Fabric-First Process</h3>
+                        <p>Every garment is inspected and cleaned with a method suited to its fabric. If something carries a risk, we tell you first.</p>
+                    </div>
+                    <div class="why-card">
+                        <span>🇩🇪</span>
+                        <h3>German Tech</h3>
+                        <p>State-of-the-art machinery and eco-friendly enzymes.</p>
+                    </div>
+                    <div class="why-card">
+                        <span>⚡</span>
+                        <h3>Express on Request</h3>
+                        <p>Need it sooner? Ask for express delivery when you book.</p>
+                    </div>
+                </div>
+                <ol class="why-process" aria-label="Our 7-stage hygiene process">
+                    <li>🏷️ Tagging</li><li>🔍 Inspection</li><li>🧪 Pre-treat</li><li>🫧 Deep clean</li><li>🌬️ Steam finish</li><li>✅ QA check</li><li>📦 Packing</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Areas -->
+        <section class="lp-section alt" id="bhopal-areas">
+            <div class="container">
+                <h2 class="section-title">Laundry Pickup Across <span>Bhopal</span></h2>
+                <p class="lp-sub">Outlets in Gulmohar, Shahpura, Bagmugaliya and Kolar, with free doorstep pickup &amp; delivery on orders above ₹{fact:free_pickup_min}.</p>
+{{areas}}
+                <p class="lp-center"><a href="/bhopal/" class="btn">See All Outlets &amp; Areas</a></p>
+            </div>
+        </section>
+
+        <!-- Guides -->
+        <section class="lp-section" id="guides">
+            <div class="container">
+                <h2 class="section-title">Fabric Care <span>Guides</span></h2>
+{{guides}}
+            </div>
+        </section>
+
+        <!-- Franchise: secondary audience, deliberately low-key -->
+        <section class="franchise-band">
+            <div class="container">
+                <p><strong>Thinking of starting a laundry business?</strong> Cleanzit is expanding through franchise partners across India.</p>
+                <a href="/franchise.html">Franchise opportunities →</a>
+            </div>
+        </section>

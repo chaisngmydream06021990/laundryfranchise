@@ -11,7 +11,7 @@ Sources (edit these, never the generated output):
   content/guides/*.html guides         -> guides/, guides/<slug>/
 
 Also rewrites the <!-- BEGIN:gen:NAME --> ... <!-- END:gen:NAME --> regions in
-the hand-written pages (nav + footer on all six; price panels, structured data
+the hand-written pages (nav + footer on all of them; price panels, structured data
 and estimator on pricing.html; service cards on services.html; outlets on
 stores.html; areas/services/outlets on index.html) and in llms.txt, and
 regenerates sitemap.xml. Standard library only; deterministic, so re-running
@@ -34,12 +34,48 @@ PHONE_ORDERS_DISPLAY = "+91 77778 18187"
 PHONE_CALL = "917777818188"
 PHONE_CALL_DISPLAY = "+91 77778 18188"
 EMAIL = "franchise@cleanzit.in"
-STATIC_PAGES = ["index.html", "about.html", "services.html", "pricing.html", "stores.html", "contact.html"]
+STATIC_PAGES = ["index.html", "about.html", "services.html", "pricing.html", "stores.html", "contact.html", "franchise.html"]
 NAV = [("About", "/about.html"), ("Services", "/services.html"), ("Pricing", "/pricing.html"),
        ("Areas", "/bhopal/"), ("Guides", "/guides/"), ("Stores", "/stores.html"), ("Contact", "/contact.html")]
 ORG_REF = {"@type": "Organization", "@id": f"{BASE}/#organization", "name": "Cleanzit", "url": f"{BASE}/"}
 
 e = html.escape
+
+# UI strings for shared components. Page copy lives in data/ and content/.
+T = {
+    "en": {
+        "nav": [("Services", "/services.html"), ("Pricing", "/pricing.html"), ("Areas", "/bhopal/"), ("Stores", "/stores.html"),
+                ("Guides", "/guides/"), ("About", "/about.html"), ("Contact", "/contact.html")],
+        "lang_link": ("हिंदी", "/hi/", "hi"), "book_btn": "Book Pickup", "book_href": "/book/",
+        "book_title": "Book a Free Pickup", "book_sub": "Takes a minute. We confirm your slot on WhatsApp.",
+        "f_service": "Service", "f_service_any": "Several items / not sure", "f_name": "Your name", "f_name_ph": "Full name",
+        "f_phone": "Mobile number", "f_phone_ph": "10-digit mobile", "f_area": "Area in Bhopal", "f_area_choose": "Choose your area",
+        "f_area_other": "Other area (write it in the address)", "f_address": "Pickup address", "f_address_ph": "House / flat no., street, landmark",
+        "f_date": "Pickup date", "f_time": "Preferred time", "t": ["Morning", "Afternoon", "Evening"],
+        "f_notes": "Items or anything we should know (optional)", "notes_msg": "Notes", "f_notes_ph": "e.g. 2 sarees, 1 blanket, stain on a shirt",
+        "submit": "Send booking on WhatsApp", "fine": "Free pickup & delivery on orders above ₹{min} · {off}% off your first order · Open 7 days",
+        "status": "Already booked? Ask for your order status on WhatsApp", "status_msg": "Hi Cleanzit, I'd like to know the status of my order.",
+        "intro": "Hi Cleanzit, I'd like to book a pickup.", "err_required": "Please fill in:", "err_phone": "Please enter a valid 10-digit mobile number.",
+        "sent": "Opening WhatsApp… If it didn't open, message us at", "msg_date": "Date", "msg_time": "Time",
+        "bar_call": "Call", "bar_wa": "WhatsApp", "bar_book": "Book Pickup",
+    },
+    "hi": {
+        "nav": [("सेवाएं", "/hi/#services"), ("कीमतें", "/pricing.html"), ("इलाके", "/hi/#areas"), ("स्टोर", "/stores.html"),
+                ("संपर्क", "/contact.html")],
+        "lang_link": ("English", "/", "en"), "book_btn": "पिकअप बुक करें", "book_href": "/hi/#book",
+        "book_title": "फ्री पिकअप बुक करें", "book_sub": "बस एक मिनट लगेगा। आपका स्लॉट हम WhatsApp पर कन्फर्म करेंगे।",
+        "f_service": "सेवा", "f_service_any": "कई कपड़े / पक्का नहीं पता", "f_name": "आपका नाम", "f_name_ph": "पूरा नाम",
+        "f_phone": "मोबाइल नंबर", "f_phone_ph": "10 अंकों का मोबाइल नंबर", "f_area": "भोपाल में इलाका", "f_area_choose": "अपना इलाका चुनें",
+        "f_area_other": "कोई और इलाका (पते में लिखें)", "f_address": "पिकअप का पता", "f_address_ph": "मकान / फ्लैट नंबर, गली, लैंडमार्क",
+        "f_date": "पिकअप की तारीख", "f_time": "पसंदीदा समय", "t": ["सुबह", "दोपहर", "शाम"],
+        "f_notes": "कपड़े या कोई और जानकारी (वैकल्पिक)", "notes_msg": "नोट", "f_notes_ph": "जैसे 2 साड़ी, 1 कंबल, शर्ट पर दाग",
+        "submit": "WhatsApp पर बुकिंग भेजें", "fine": "₹{min} से ज़्यादा के ऑर्डर पर फ्री पिकअप और डिलीवरी · पहले ऑर्डर पर {off}% छूट · हफ्ते के सातों दिन खुला",
+        "status": "पहले से बुक किया है? अपने ऑर्डर का स्टेटस WhatsApp पर पूछें", "status_msg": "नमस्ते Cleanzit, मुझे अपने ऑर्डर का स्टेटस जानना है।",
+        "intro": "नमस्ते Cleanzit, मुझे पिकअप बुक करना है।", "err_required": "कृपया ये भरें:", "err_phone": "कृपया सही 10 अंकों का मोबाइल नंबर डालें।",
+        "sent": "WhatsApp खुल रहा है… अगर नहीं खुला, तो हमें इस नंबर पर मैसेज करें:", "msg_date": "तारीख", "msg_time": "समय",
+        "bar_call": "कॉल", "bar_wa": "WhatsApp", "bar_book": "पिकअप बुक करें",
+    },
+}
 
 
 def load(path):
@@ -104,7 +140,7 @@ class Prices:
         if ref.startswith("home:"):
             h = self.home.get(ref[5:]) or fail(f"unknown home service {ref}")
             unit = h.get("unit", "")
-            return {"label": f"{h['name']} (at home)", "short_label": h["name"], "value": h["now"],
+            return {"label": f"{h['name']} (at home)", "short_label": h["name"], "value": h["now"], "col_label": "",
                     "display": self.rupees(h["now"], True) + (f" / {unit}" if unit else ""),
                     "num": self.num(h["now"]), "plus": True, "unit": unit, "kind": "home", "item": h}
         iid, _, col = ref.partition(":")
@@ -116,7 +152,7 @@ class Prices:
         multi = len(cat["columns"]) > 1
         label = it["name"] + (f" — {cat['columns'][col].lower()}" if multi else "")
         unit = it.get("unit", "")
-        return {"label": label, "short_label": it["name"], "value": v,
+        return {"label": label, "short_label": it["name"], "value": v, "col_label": cat["columns"][col] if multi else "",
                 "display": self.rupees(v) + (f" / {unit}" if unit else ""),
                 "num": self.num(v), "plus": v.endswith("+"), "unit": unit, "kind": "item", "item": it}
 
@@ -146,30 +182,148 @@ class Prices:
         return o
 
 
+# ============================================================ Hindi helpers
+def hi_label(ctx, c):
+    hi = ctx["hi"]
+    name = hi["item_names"].get(c["item"]["id"], c["short_label"])
+    if c["kind"] == "home":
+        return f"{name} (घर पर)"
+    return name + (f" — {hi['column_names'].get(c['col_label'], c['col_label'])}" if c["col_label"] else "")
+
+
+def hi_display(ctx, text):
+    for en, hn in ctx["hi"]["unit_names"].items():
+        text = text.replace(f"/ {en}", f"/ {hn}").replace(f"/{en}", f"/{hn}")
+    return text
+
+
+def cell_label(ctx, c, lang):
+    return hi_label(ctx, c) if lang == "hi" else c["label"]
+
+
+def cell_display(ctx, c, lang):
+    return hi_display(ctx, c["display"]) if lang == "hi" else c["display"]
+
+
+def hi_service_href(ctx, slug):
+    """Hindi page if one exists, else the English one."""
+    return f"/hi/services/{slug}/" if slug in ctx["hi_services"] else f"/services/{slug}/"
+
+
 # ============================================================ shared fragments
-def nav_items(active, indent):
+def nav_items(active, indent, lang="en", alt_href=None):
+    t = T[lang]
     li = []
-    for name, href in NAV:
+    for name, href in t["nav"]:
         cls = ' class="active"' if href == active else ""
         li.append(f'{indent}<li><a href="{href}"{cls}>{name}</a></li>')
-    li.append(f'{indent}<li><a href="tel:+{PHONE_CALL}" class="nav-phone">📞 {PHONE_CALL_DISPLAY}</a></li>')
+    label, href, code = t["lang_link"]
+    li.append(f'{indent}<li><a href="{alt_href or href}" class="nav-lang" lang="{code}" hreflang="{code}">{label}</a></li>')
+    li.append(f'{indent}<li><a href="{t["book_href"]}" class="btn nav-cta">{t["book_btn"]}</a></li>')
     return "\n".join(li)
 
 
-def footer_cols(ctx, indent):
+def mobile_bar(lang="en"):
+    t = T[lang]
+    return f'''<div class="mobile-bar" role="navigation" aria-label="Quick actions">
+    <a href="tel:+{PHONE_ORDERS}">📞 {t["bar_call"]}</a>
+    <a href="https://wa.me/{PHONE_ORDERS}?text={urllib.parse.quote(t["intro"])}" target="_blank" rel="noopener">💬 {t["bar_wa"]}</a>
+    <a href="{t["book_href"]}" class="mobile-bar-book">{t["bar_book"]}</a>
+</div>'''
+
+
+def booking_form(ctx, lang="en"):
+    """WhatsApp booking form. js/booking.js validates it, builds the message
+    from the data-msg labels, and pre-selects ?service=<slug>&area=<slug>."""
+    t = T[lang]
+    P, B = ctx["prices"], ctx["bhopal"]
+    hi = ctx.get("hi", {})
+    svc_hi = hi.get("service_names", {})
+    area_hi = hi.get("area_names", {})
+    def sname(sv):
+        return svc_hi.get(sv["slug"], sv["name"]) if lang == "hi" else sv["name"]
+    def aname(a):
+        return area_hi.get(a["name"], a["name"]) if lang == "hi" else a["name"]
+    svc_opts = "\n".join(f'            <option value="{e(sname(sv))}" data-slug="{sv["slug"]}">{e(sname(sv))}</option>' for sv in ctx["services"]["services"])
+    groups = []
+    for z in B["zones"]:
+        zl = hi.get("zone_names", {}).get(z, z) if lang == "hi" else z
+        opts = "\n".join(f'                <option value="{e(aname(a))}" data-slug="{slugify(a["name"])}">{e(aname(a))}</option>' for a in B["areas"] if a["zone"] == z)
+        groups.append(f'            <optgroup label="{e(zl)}">\n{opts}\n            </optgroup>')
+    fine = t["fine"].format(min=P.facts["free_pickup_min"], off=P.facts["first_order_off"])
+    status = wa_link(t["status_msg"])
+    return f'''<form class="book-form" id="book" novalidate data-wa="{PHONE_ORDERS}" data-intro="{e(t["intro"])}"
+      data-err-required="{e(t["err_required"])}" data-err-phone="{e(t["err_phone"])}" data-sent="{e(t["sent"])} {PHONE_ORDERS_DISPLAY}">
+    <h2>{e(t["book_title"])}</h2>
+    <p class="book-sub">{e(t["book_sub"])}</p>
+    <div class="book-grid">
+        <label class="book-wide">{e(t["f_service"])}
+            <select name="service" data-msg="{e(t["f_service"])}">
+{svc_opts}
+            <option value="{e(t["f_service_any"])}" data-slug="any">{e(t["f_service_any"])}</option>
+            </select>
+        </label>
+        <label>{e(t["f_name"])}
+            <input name="name" type="text" autocomplete="name" placeholder="{e(t["f_name_ph"])}" required data-msg="{e(t["f_name"])}">
+        </label>
+        <label>{e(t["f_phone"])}
+            <input name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="{e(t["f_phone_ph"])}" required data-msg="{e(t["f_phone"])}">
+        </label>
+        <label class="book-wide">{e(t["f_area"])}
+            <select name="area" required data-msg="{e(t["f_area"])}">
+            <option value="">{e(t["f_area_choose"])}</option>
+{chr(10).join(groups)}
+            <option value="{e(t["f_area_other"])}" data-slug="other">{e(t["f_area_other"])}</option>
+            </select>
+        </label>
+        <label class="book-wide">{e(t["f_address"])}
+            <input name="address" type="text" autocomplete="street-address" placeholder="{e(t["f_address_ph"])}" required data-msg="{e(t["f_address"])}">
+        </label>
+        <label>{e(t["f_date"])}
+            <input name="date" type="date" required data-msg="{e(t["msg_date"])}">
+        </label>
+        <label>{e(t["f_time"])}
+            <select name="time" data-msg="{e(t["msg_time"])}">
+{chr(10).join(f'            <option>{e(x)}</option>' for x in t["t"])}
+            </select>
+        </label>
+        <label class="book-wide">{e(t["f_notes"])}
+            <textarea name="notes" rows="2" placeholder="{e(t["f_notes_ph"])}" data-msg="{e(t["notes_msg"])}"></textarea>
+        </label>
+    </div>
+    <p class="book-error" role="alert" hidden></p>
+    <button type="submit" class="btn book-submit">💬 {e(t["submit"])}</button>
+    <p class="book-fine">{e(fine)}</p>
+    <p class="book-status"><a href="{e(status)}" target="_blank" rel="noopener">{e(t["status"])}</a></p>
+</form>'''
+
+
+def book_href(service=None, area=None, lang="en"):
+    q = {}
+    if service:
+        q["service"] = service
+    if area:
+        q["area"] = area
+    base = "/hi/" if lang == "hi" else "/book/"
+    return base + ("?" + urllib.parse.urlencode(q) if q else "") + "#book"
+
+
+def footer_cols(ctx, indent, lang="en"):
     svc = ctx["services_by_slug"]
     s_links = "\n".join(f'{indent}            <li><a href="/services/{sl}/">{e(svc[sl]["name"])}</a></li>' for sl in ctx["services"]["footer"])
     a_links = "\n".join(f'{indent}            <li><a href="/bhopal/{slugify(n)}/">Laundry in {e(n)}</a></li>' for n in ctx["bhopal"]["footer_areas"])
     main = next(o for o in ctx["bhopal"]["outlets"] if o.get("main"))
     return f'''{indent}<div class="footer-col">
 {indent}    <h4>Cleanzit</h4>
-{indent}    <p>Laundry, dry cleaning &amp; home cleaning in Bhopal — and India's happiest laundry franchise.</p>
+{indent}    <p>Laundry, dry cleaning, steam ironing &amp; home cleaning in Bhopal, with free doorstep pickup.</p>
 {indent}    <ul>
 {indent}        <li><a href="/about.html">About Us</a></li>
 {indent}        <li><a href="/pricing.html">Pricing</a></li>
 {indent}        <li><a href="/stores.html">Stores</a></li>
 {indent}        <li><a href="/guides/">Guides</a></li>
 {indent}        <li><a href="/contact.html">Contact</a></li>
+{indent}        <li><a href="/hi/" lang="hi">हिंदी में देखें</a></li>
+{indent}        <li><a href="/franchise.html">Franchise enquiries</a></li>
 {indent}    </ul>
 {indent}</div>
 {indent}<div class="footer-col">
@@ -193,8 +347,10 @@ def footer_cols(ctx, indent):
 {indent}        <li><a href="tel:+{PHONE_CALL}">{PHONE_CALL_DISPLAY}</a></li>
 {indent}        <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
 {indent}        <li>{e(full_address(main))}</li>
+{indent}        <li>{e(ctx["bhopal"]["open_note"])}</li>
 {indent}    </ul>
-{indent}</div>'''
+{indent}</div>
+{indent_block(mobile_bar(lang), indent)}'''
 
 
 def ld_script(obj, indent="    "):
@@ -222,8 +378,19 @@ def faq_ld(qas, url):
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qas]}
 
 
-def steps_html(ctx, mode="pickup"):
+def steps_html(ctx, mode="pickup", lang="en"):
     f = ctx["prices"].facts
+    if lang == "hi":
+        if mode == "home":
+            steps = [("विज़िट बुक करें", "WhatsApp या कॉल पर तारीख और समय चुनें।"),
+                     ("हम आपके घर आते हैं", "हमारी होम-सर्विस टीम आपके घर पर सफाई करती है।"),
+                     ("साफ-सुथरा घर", "काम पूरा होने पर भुगतान करें।")]
+        else:
+            steps = [("पिकअप बुक करें", "फॉर्म भरें या WhatsApp / कॉल पर अपना सुविधाजनक समय बताएं।"),
+                     ("हम ले जाकर साफ करते हैं", "हम आपके घर से कपड़े लेते हैं; हर कपड़े पर टैग, जांच और फैब्रिक के हिसाब से सफाई।"),
+                     (f"{f['delivery_days']} दिन में डिलीवरी", f"साफ, फिनिश और पैक — ₹{f['free_pickup_min']} से ज़्यादा के ऑर्डर पर पिकअप और डिलीवरी फ्री।")]
+        li = "\n".join(f"    <li><strong>{e(t)}</strong><span>{e(d)}</span></li>" for t, d in steps)
+        return f'<ol class="lp-steps">\n{li}\n</ol>'
     if mode == "home":
         steps = [("Book a visit", "WhatsApp or call us and pick a date and time slot."),
                  ("We come to you", "Our home-services team cleans at your place."),
@@ -236,9 +403,9 @@ def steps_html(ctx, mode="pickup"):
     return f'<ol class="lp-steps">\n{li}\n</ol>'
 
 
-def price_rows_table(ctx, refs, caption):
+def price_rows_table(ctx, refs, caption, lang="en"):
     P = ctx["prices"]
-    rows = "\n".join(f'            <tr><th scope="row">{e(c["label"])}</th><td>{e(c["display"])}</td></tr>' for c in (P.cell(r) for r in refs))
+    rows = "\n".join(f'            <tr><th scope="row">{e(cell_label(ctx, c, lang))}</th><td>{e(cell_display(ctx, c, lang))}</td></tr>' for c in (P.cell(r) for r in refs))
     return f'''<div class="lp-prices">
     <table>
         <caption class="sr-only">{e(caption)}</caption>
@@ -249,19 +416,22 @@ def price_rows_table(ctx, refs, caption):
 </div>'''
 
 
-def home_offer_table(ctx, ids, caption):
+def home_offer_table(ctx, ids, caption, lang="en"):
     P = ctx["prices"]
     hs = P.data["home_services"]
     rows = []
     for hid in ids:
         h = P.home[hid]
-        unit = f" / {h['unit']}" if h["unit"] else ""
+        u = ctx["hi"]["unit_names"].get(h["unit"], h["unit"]) if lang == "hi" else h["unit"]
+        unit = f" / {u}" if u else ""
         if P.offer_on and h["was"] != h["now"]:
             val = f'<del>{P.rupees(h["was"], False)}{unit}</del> <strong>{P.rupees(h["now"], False)}{unit}</strong>'
         else:
             val = f"{P.rupees(h['now'], True)}{unit}"
-        rows.append(f'            <tr><th scope="row">{e(h["name"])} (at home)</th><td>{val}</td></tr>')
-    label = f'<p class="lp-offer-tag">🪔 {e(hs["label"])} — starting prices</p>' if P.offer_on else ""
+        name = f'{ctx["hi"]["item_names"].get(hid, h["name"])} (घर पर)' if lang == "hi" else f'{h["name"]} (at home)'
+        rows.append(f'            <tr><th scope="row">{e(name)}</th><td>{val}</td></tr>')
+        tag = "दिवाली से पहले का ऑफर — शुरुआती कीमतें" if lang == "hi" else f"{hs['label']} — starting prices"
+    label = f'<p class="lp-offer-tag">🪔 {e(tag)}</p>' if P.offer_on else ""
     return f'''{label}<div class="lp-prices">
     <table>
         <caption class="sr-only">{e(caption)}</caption>
@@ -272,19 +442,34 @@ def home_offer_table(ctx, ids, caption):
 </div>'''
 
 
-def outlet_card(o, closest=False, heading="h3"):
+OPEN_NOTE = "Open 7 days a week"   # overwritten from data/bhopal.json in main()
+
+
+HI_AREAS = {}   # filled from data/hi.json in main()
+
+
+def outlet_card(o, closest=False, heading="h3", lang="en"):
     classes = "lp-outlet" + (" is-main" if o.get("main") else "") + (" is-closest" if closest else "")
-    tag = "Closest to you" if closest else ("Main store" if o.get("main") else "Outlet")
-    if closest and o.get("main"):
-        tag += " · Main store"
+    if lang == "hi":
+        tag = "आपके सबसे पास" if closest else ("मुख्य स्टोर" if o.get("main") else "आउटलेट")
+        name = f"Cleanzit {HI_AREAS.get(o['short'], o['short'])}"
+        open_note, links = "हफ्ते के सातों दिन खुला", ("रास्ता और समय", "WhatsApp", "कॉल")
+        wa = f"नमस्ते Cleanzit, मुझे आपके {HI_AREAS.get(o['short'], o['short'])} आउटलेट से पिकअप बुक करना है।"
+    else:
+        tag = "Closest to you" if closest else ("Main store" if o.get("main") else "Outlet")
+        if closest and o.get("main"):
+            tag += " · Main store"
+        name, open_note, links = o["name"], OPEN_NOTE, ("Directions & timings", "WhatsApp", "Call")
+        wa = "Hi Cleanzit, I'd like to book a pickup from your " + o["short"] + " outlet."
     return f'''<div class="{classes}">
     <span class="lp-tag">{e(tag)}</span>
-    <{heading}>{e(o["name"])}</{heading}>
+    <{heading}>{e(name)}</{heading}>
     <address>{e(full_address(o))}</address>
+    <p class="lp-open">🕒 {e(open_note)}</p>
     <div class="lp-outlet-links">
-        <a href="{e(maps_link(o))}" target="_blank" rel="noopener">Directions &amp; timings</a>
-        <a class="wa" href="{e(wa_link("Hi Cleanzit, I'd like to book a pickup from your " + o["short"] + " outlet."))}" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="tel:+{PHONE_ORDERS}">Call</a>
+        <a href="{e(maps_link(o))}" target="_blank" rel="noopener">{e(links[0])}</a>
+        <a class="wa" href="{e(wa_link(wa))}" target="_blank" rel="noopener">{e(links[1])}</a>
+        <a href="tel:+{PHONE_ORDERS}">{e(links[2])}</a>
     </div>
 </div>'''
 
@@ -311,13 +496,18 @@ def outlet_ld(o):
             "parentOrganization": ORG_REF}
 
 
-def area_groups(ctx, per_zone=None):
+def area_groups(ctx, per_zone=None, lang="en"):
     B = ctx["bhopal"]
     out = []
     for zone in B["zones"]:
         areas = [a for a in B["areas"] if a["zone"] == zone][:per_zone]
-        chips = "\n".join(f'        <a href="/bhopal/{slugify(a["name"])}/">Laundry in {e(a["name"])}</a>' for a in areas)
-        out.append(f'<div class="lp-area-group">\n    <h3>{e(zone)}</h3>\n    <div class="lp-chips">\n{chips}\n    </div>\n</div>')
+        if lang == "hi":
+            zl = ctx["hi"]["zone_names"][zone]
+            chips = "\n".join(f'        <a href="/bhopal/{slugify(a["name"])}/">{e(ctx["hi"]["area_names"][a["name"]])} में लॉन्ड्री</a>' for a in areas)
+        else:
+            zl = zone
+            chips = "\n".join(f'        <a href="/bhopal/{slugify(a["name"])}/">Laundry in {e(a["name"])}</a>' for a in areas)
+        out.append(f'<div class="lp-area-group">\n    <h3>{e(zl)}</h3>\n    <div class="lp-chips">\n{chips}\n    </div>\n</div>')
     return "\n".join(out)
 
 
@@ -326,7 +516,7 @@ def service_chips(ctx, slugs=None, label_fn=lambda s: s["name"]):
     return "\n".join(f'    <a href="/services/{s["slug"]}/">{s["icon"]} {e(label_fn(s))}</a>' for s in svc)
 
 
-def service_start(ctx, s):
+def service_start(ctx, s, lang="en"):
     """Lowest price across a service's price refs and home offers -> (display, num) or None."""
     P = ctx["prices"]
     if s.get("start"):
@@ -336,7 +526,10 @@ def service_start(ctx, s):
         if not cells:
             return None
         c = min(cells, key=lambda c: c["num"])
-    return f"₹{c['num']:,}" + (f" / {c['unit']}" if c["unit"] else ""), c["num"]
+    unit = c["unit"]
+    if lang == "hi":
+        unit = ctx["hi"]["unit_names"].get(unit, unit)
+    return f"₹{c['num']:,}" + (f" / {unit}" if unit else ""), c["num"]
 
 
 def clamp_desc(*parts, limit=160):
@@ -348,10 +541,23 @@ def clamp_desc(*parts, limit=160):
     return " ".join(parts)
 
 
-def page_shell(ctx, *, title, description, canonical, body, ld, active, og_type="website"):
+def hreflang_links(alternates, indent="    "):
+    """alternates: {"en": url, "hi": url}. English is x-default."""
+    if not alternates:
+        return ""
+    out = [f'{indent}<link rel="alternate" hreflang="{code}-IN" href="{u}">' for code, u in sorted(alternates.items())]
+    out.append(f'{indent}<link rel="alternate" hreflang="x-default" href="{alternates["en"]}">')
+    return "\n".join(out)
+
+
+def page_shell(ctx, *, title, description, canonical, body, ld, active, og_type="website", lang="en", alternates=None):
     lds = "\n".join(ld_script(b) for b in ld)
+    alt_links = hreflang_links(alternates)
+    alt_nav = (alternates or {}).get("en" if lang == "hi" else "hi", "").replace(BASE, "") or None
+    hind = ('\n    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600;700&display=swap" rel="stylesheet">'
+            if lang == "hi" else "")
     return f'''<!DOCTYPE html>
-<html lang="en-IN">
+<html lang="{lang}-IN">
 
 <head>
     <meta charset="UTF-8">
@@ -360,12 +566,13 @@ def page_shell(ctx, *, title, description, canonical, body, ld, active, og_type=
     <title>{e(title)}</title>
     <meta name="description" content="{e(description)}">
     <link rel="canonical" href="{canonical}">
+{alt_links}
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <meta name="geo.region" content="IN-MP">
     <meta name="geo.placename" content="Bhopal, Madhya Pradesh">
     <meta property="og:type" content="{og_type}">
     <meta property="og:site_name" content="Cleanzit">
-    <meta property="og:locale" content="en_IN">
+    <meta property="og:locale" content="{lang}_IN">
     <meta property="og:title" content="{e(title)}">
     <meta property="og:description" content="{e(description)}">
     <meta property="og:url" content="{canonical}">
@@ -374,7 +581,7 @@ def page_shell(ctx, *, title, description, canonical, body, ld, active, og_type=
     <link rel="icon" href="/assets/logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">{hind}
     <link rel="stylesheet" href="/css/styles.css">
 {lds}
 </head>
@@ -397,7 +604,7 @@ def page_shell(ctx, *, title, description, canonical, body, ld, active, og_type=
             <div class="mobile-toggle" aria-label="Toggle Navigation">☰</div>
             <nav>
                 <ul class="nav-links">
-{nav_items(active, "                    ")}
+{nav_items(active, "                    ", lang, alt_nav)}
                 </ul>
             </nav>
         </div>
@@ -410,7 +617,7 @@ def page_shell(ctx, *, title, description, canonical, body, ld, active, og_type=
     <footer>
         <div class="container">
             <div class="footer-content">
-{footer_cols(ctx, "                ")}
+{footer_cols(ctx, "                ", lang)}
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Cleanzit India. All rights reserved.</p>
@@ -423,6 +630,7 @@ def page_shell(ctx, *, title, description, canonical, body, ld, active, og_type=
     </a>
 
     <script src="/js/app.js"></script>
+    <script src="/js/booking.js" defer></script>
 </body>
 
 </html>
@@ -449,9 +657,10 @@ def hero(trail, h1_html, lede, ctas):
         </section>'''
 
 
-def cta_pair(wa_text, wa_label):
-    return (f'                    <a class="btn" href="{e(wa_link(wa_text))}" target="_blank" rel="noopener">💬 {e(wa_label)}</a>\n'
-            f'                    <a class="btn btn-outline" href="tel:+{PHONE_ORDERS}">📞 Call {PHONE_ORDERS_DISPLAY}</a>')
+def cta_pair(href, label, lang="en"):
+    call = "कॉल करें" if lang == "hi" else "Call"
+    return (f'                    <a class="btn" href="{e(href)}">📅 {e(label)}</a>\n'
+            f'                    <a class="btn btn-outline" href="tel:+{PHONE_ORDERS}">📞 {call} {PHONE_ORDERS_DISPLAY}</a>')
 
 
 # ============================================================ service pages
@@ -485,7 +694,7 @@ def build_service(ctx, s):
     logistics = "anywhere in Bhopal" if at_home else f"free pickup &amp; delivery above ₹{P.facts['free_pickup_min']}"
     body = "\n\n".join(part for part in [
         hero(trail, e(s["h1"]), f'{e(fill(s["short"]))} {e(start_txt)} · {logistics} · {P.facts["first_order_off"]}% off your first order.',
-             cta_pair(f"Hi Cleanzit, I'd like to book {s['name'].lower()} in Bhopal.", "Book on WhatsApp")),
+             cta_pair(book_href(s["slug"]), "Book a Pickup" if s.get("mode") != "home" else "Book a Visit")),
         section(f'''                <h2>About Our {e(s["name"])} Service</h2>
                 <div class="lp-article">
 {intro}
@@ -520,7 +729,120 @@ def build_service(ctx, s):
     ld = [{"@context": "https://schema.org", "@graph": [breadcrumb_ld(trail), svc_ld, faq_ld(qas, url)]}]
     desc = clamp_desc(f"{fill(s['short'])} {start_txt}.", "At your home in Bhopal." if at_home else f"Free pickup above ₹{P.facts['free_pickup_min']} in Bhopal.",
                       f"{P.facts['first_order_off']}% off your first order.")
-    return page_shell(ctx, title=fill(s["title"]), description=desc, canonical=url, body=body, ld=ld, active="/services.html")
+    alternates = {"en": url, "hi": f"{BASE}/hi/services/{s['slug']}/"} if s["slug"] in ctx["hi_services"] else None
+    return page_shell(ctx, title=fill(s["title"]), description=desc, canonical=url, body=body, ld=ld, active="/services.html",
+                      alternates=alternates)
+
+
+def build_book_page(ctx):
+    P = ctx["prices"]
+    url = f"{BASE}/book/"
+    trail = [("Home", BASE + "/"), ("Book a Pickup", url)]
+    f = P.facts
+    body = "\n\n".join([
+        f'''        <section class="lp-hero lp-hero-slim">
+            <div class="container">
+                {crumbs_html(trail)}
+                <h1>Book a Free <span>Pickup</span></h1>
+                <p class="lp-lede">Fill in the form and send it to us on WhatsApp — we'll confirm your pickup slot. Free pickup &amp; delivery above ₹{f["free_pickup_min"]}, delivered in {f["delivery_days"]} days, open 7 days a week.</p>
+            </div>
+        </section>''',
+        section(f'''                <div class="book-layout">
+{indent_block(booking_form(ctx), "                    ")}
+                    <aside class="book-aside">
+                        <h2>What happens next</h2>
+{indent_block(steps_html(ctx), "                        ")}
+                        <p class="lp-sub">Prefer to talk? Call <a href="tel:+{PHONE_ORDERS}">{PHONE_ORDERS_DISPLAY}</a>.</p>
+                        <p class="lp-sub"><a href="/pricing.html#estimate">Estimate your bill first →</a></p>
+                    </aside>
+                </div>''', alt=True),
+    ])
+    ld = [{"@context": "https://schema.org", "@graph": [breadcrumb_ld(trail)]}]
+    return page_shell(ctx, title="Book a Laundry Pickup in Bhopal | Cleanzit",
+                      description=f"Book a free laundry & dry cleaning pickup in Bhopal in a minute — pick a service, area, date and time, and send it on WhatsApp. Free pickup above ₹{f['free_pickup_min']}.",
+                      canonical=url, body=body, ld=ld, active="/book/")
+
+
+def faqs_from_html(text):
+    return [(re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", q))).strip(),
+             re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", a))).strip())
+            for q, a in re.findall(r"<summary[^>]*>(.*?)</summary>\s*<p[^>]*>(.*?)</p>", text, re.S)]
+
+
+def build_service_hi(ctx, s, h):
+    """Hindi service page: English data for prices/structure, Hindi copy from data/hi.json."""
+    P = ctx["prices"]
+    fill = P.fill
+    f = P.facts
+    url = f"{BASE}/hi/services/{s['slug']}/"
+    name = ctx["hi"]["service_names"][s["slug"]]
+    trail = [("होम", BASE + "/hi/"), (h["h1"], url)]
+    at_home = s.get("mode") == "home"
+    start = service_start(ctx, s, "hi")
+    start_txt = f"{start[0]} से शुरू" if start else "कीमत के लिए पूछें"
+    logistics = "पूरे भोपाल में" if at_home else f"₹{f['free_pickup_min']} से ज़्यादा पर फ्री पिकअप और डिलीवरी"
+    qas = [(fill(q), fill(a)) for q, a in h["faqs"]]
+    parts = []
+    if s["prices"]:
+        parts.append(price_rows_table(ctx, s["prices"], f"{h['h1']} — कीमतें", "hi"))
+    if s.get("home"):
+        parts.append(home_offer_table(ctx, s["home"], f"{h['h1']} — घर पर", "hi"))
+    related = "\n".join(f'    <a href="{hi_service_href(ctx, r)}">{ctx["services_by_slug"][r]["icon"]} {e(ctx["hi"]["service_names"][r])}</a>'
+                         for r in s["related"])
+    body = "\n\n".join(x for x in [
+        hero(trail, e(h["h1"]), e(f"{fill(h['short'])} {start_txt} · {logistics} · पहले ऑर्डर पर {f['first_order_off']}% छूट।"),
+             cta_pair(book_href(s["slug"], lang="hi"), "विज़िट बुक करें" if at_home else "पिकअप बुक करें", "hi")),
+        section(f'''                <h2>सर्विस के बारे में</h2>
+                <div class="lp-article">
+{chr(10).join(f"                <p>{e(fill(x))}</p>" for x in h["intro"])}
+                <h3>क्या-क्या शामिल है</h3>
+                <ul class="lp-checks">
+{chr(10).join(f"                    <li>{e(fill(x))}</li>" for x in h["includes"])}
+                </ul>
+                </div>''', alt=True),
+        section(f'''                <h2>भोपाल में {e(name)} की कीमतें</h2>
+                <p class="lp-sub">“+” का मतलब है “से शुरू” — आखिरी कीमत कपड़े और उसकी हालत पर निर्भर करती है। <a href="/pricing.html">पूरी रेट लिस्ट →</a></p>
+''' + "\n".join(parts)) if parts else "",
+        section(f"                <h2>कैसे काम करता है</h2>\n{steps_html(ctx, s.get('mode', 'pickup'), 'hi')}", alt=True),
+        section(f'''                <h2>{e(h["tips_title"])}</h2>
+                <div class="lp-article">
+                <ul class="lp-checks">
+{chr(10).join(f"                    <li>{e(fill(x))}</li>" for x in h["tips"])}
+                </ul>
+                </div>'''),
+        section(f"                <h2>अक्सर पूछे जाने वाले सवाल</h2>\n{faq_block(qas)}", alt=True),
+        section(f'''                <h2>दूसरी सेवाएं</h2>
+                <div class="lp-chips">
+{related}
+                </div>
+                <p class="lp-sub" style="margin-top:1.5rem;"><a href="/hi/#areas">भोपाल के सभी इलाके देखें →</a></p>'''),
+    ] if x)
+    offers = [P.offer_ld(P.cell(r)) for r in s["prices"]] + [P.offer_ld(P.cell("home:" + x)) for x in s.get("home", [])]
+    svc_ld = {"@type": "Service", "@id": url + "#service", "name": h["h1"], "serviceType": name, "inLanguage": "hi-IN",
+              "description": fill(h["short"]), "url": url, "provider": ORG_REF, "areaServed": {"@type": "City", "name": "Bhopal"}}
+    if offers:
+        svc_ld["hasOfferCatalog"] = {"@type": "OfferCatalog", "name": f"{name} — कीमतें", "itemListElement": offers}
+    ld = [{"@context": "https://schema.org", "@graph": [breadcrumb_ld(trail), svc_ld, faq_ld(qas, url)]}]
+    desc = clamp_desc(f"{fill(h['short'])} {start_txt}।", f"{logistics}।", f"पहले ऑर्डर पर {f['first_order_off']}% छूट।")
+    return page_shell(ctx, title=fill(h["title"]), description=desc, canonical=url, body=body, ld=ld, active="/hi/#services",
+                      lang="hi", alternates={"en": f"{BASE}/services/{s['slug']}/", "hi": url})
+
+
+def build_hi_home(ctx):
+    url = f"{BASE}/hi/"
+    body = render_template(ctx, "content/hi/home.html", lang="hi")
+    qas = faqs_from_html(body)
+    if not qas:
+        fail("content/hi/home.html: no FAQ found")
+    B = ctx["bhopal"]
+    ld = [{"@context": "https://schema.org", "@graph": [
+        {"@type": "WebPage", "@id": url, "url": url, "name": "भोपाल में लॉन्ड्री और ड्राई क्लीनिंग — Cleanzit", "inLanguage": "hi-IN",
+         "about": ORG_REF},
+        *[outlet_ld(o) for o in B["outlets"]], faq_ld(qas, url)]}]
+    f = ctx["prices"].facts
+    return page_shell(ctx, title="भोपाल में लॉन्ड्री और ड्राई क्लीनिंग | फ्री पिकअप | Cleanzit",
+                      description=ctx["prices"].fill("भोपाल में लॉन्ड्री, ड्राई क्लीनिंग और प्रेस — {p:wash-fold:price}/किलो से। ₹{fact:free_pickup_min} से ज़्यादा पर फ्री पिकअप, {fact:delivery_days} दिन में डिलीवरी, पहले ऑर्डर पर {fact:first_order_off}% छूट।"),
+                      canonical=url, body=body, ld=ld, active="/hi/", lang="hi", alternates={"en": f"{BASE}/", "hi": url})
 
 
 def build_services_redirect():
@@ -564,7 +886,7 @@ def build_guide(ctx, g):
     body_html = "\n".join("                " + l for l in g["html"].splitlines())
     parts = [
         hero(trail, e(g["h1"]), e(g["description"]),
-             cta_pair("Hi Cleanzit, I'd like to book a pickup in Bhopal.", "Book a Pickup")),
+             cta_pair(book_href(), "Book a Pickup")),
         section(f'''                <article class="lp-article lp-guide">
 {body_html}
                 </article>'''),
@@ -595,7 +917,7 @@ def build_guides_index(ctx):
     body = "\n\n".join([
         hero(trail, "Laundry &amp; Fabric Care <span>Guides</span>",
              "Practical advice from the Cleanzit team — care labels, stains, silk, woollens and more.",
-             cta_pair("Hi Cleanzit, I'd like to book a pickup in Bhopal.", "Book a Pickup")),
+             cta_pair(book_href(), "Book a Pickup")),
         section(f'''                <div class="lp-cards">
 {cards}
                 </div>'''),
@@ -625,6 +947,8 @@ def build_hub(ctx):
          P.fill("Wash & Fold is {p:wash-fold:price} per kg and Wash & Steam Iron is {p:wash-iron:price} per kg. Shirt dry cleaning is {p:shirt:dry}. New customers get {fact:first_order_off}% off their first order.")),
         ("How long does laundry and dry cleaning take?",
          f"Standard delivery is within {f['delivery_days']} days for laundry, dry cleaning, woolens, household items and shoes."),
+        ("Are Cleanzit outlets open on Sunday?",
+         f"Yes — all {n_out} Cleanzit outlets in Bhopal are open 7 days a week, including Sunday. Check each outlet's timings on Google Maps, or book a pickup any day on WhatsApp."),
         ("Which areas of Bhopal does Cleanzit cover?",
          "Free doorstep pickup and delivery across Bhopal — " + "; ".join(
              z + ": " + ", ".join(a["name"] for a in B["areas"] if a["zone"] == z) for z in B["zones"]) + "."),
@@ -634,7 +958,7 @@ def build_hub(ctx):
                   "Laundry {p:wash-fold:price}/kg, shirt dry cleaning {p:shirt:dry}, delivered in {fact:delivery_days} days — and {fact:first_order_off}% off your first order.")
     body = "\n\n".join([
         hero(trail, "Laundry &amp; Dry Cleaning in <span>Bhopal</span>", lede,
-             cta_pair("Hi Cleanzit, I'd like to book a laundry pickup in Bhopal.", "Book a Pickup")),
+             cta_pair(book_href(), "Book a Pickup")),
         section(f'''                <h2>Our Outlets in Bhopal</h2>
                 <p class="lp-sub">Drop in at any outlet, or let us come to you — every outlet runs free pickup &amp; delivery.</p>
                 <div class="lp-outlets">
@@ -692,7 +1016,7 @@ def build_area(ctx, area):
         P.fill("laundry {p:wash-fold:price}/kg, shirt dry cleaning {p:shirt:dry}, back to you in {fact:delivery_days} days. {fact:first_order_off}% off your first order.")
     body = "\n\n".join([
         hero(trail, f"Laundry &amp; Dry Cleaning in <span>{e(name)}</span>, Bhopal", lede,
-             cta_pair(f"Hi Cleanzit, I'd like to book a laundry pickup in {name}, Bhopal.", f"Book a Pickup in {name}")),
+             cta_pair(book_href(area=slugify(name)), f"Book a Pickup in {name}")),
         section(f'''                <h2>Your Closest Cleanzit Outlet</h2>
                 <p class="lp-sub">Drop off in person, or book a pickup and we'll come to you in {e(name)}.</p>
                 <div class="lp-outlets" style="max-width:520px;">
@@ -878,61 +1202,153 @@ def pricing_ld(ctx):
 
 
 def calculator(ctx):
+    """'Build your laundry bag' estimator: category tabs + a bill styled as a
+    Cleanzit garment tag. Arithmetic lives in js/estimator.js."""
     P = ctx["prices"]
     f = P.facts
-    rows = []
-    for ref in P.data["calculator"]:
-        c = P.cell(ref)
-        it = c["item"]
-        cat = P.cat_of[it["id"]]
-        col = ref.split(":")[1]
-        kind = cat["columns"][col] if len(cat["columns"]) > 1 else ""
-        sub = (f"{kind} · " if kind else "") + c["display"]
-        rows.append(f'''    <div class="calc-row" data-label="{e(c["label"])}" data-price="{c["num"]}" data-from="{1 if c["plus"] else 0}" data-unit="{e(c["unit"])}">
-        <div class="calc-name"><strong>{e(it["name"])}</strong><span>{e(sub)}</span></div>
-        <div class="calc-qty">
-            <button type="button" data-step="-1" aria-label="Remove one: {e(c["label"])}">−</button>
-            <output>0</output>
-            <button type="button" data-step="1" aria-label="Add one: {e(c["label"])}">+</button>
-        </div>
-    </div>''')
-    return f'''<h2>Estimate Your Bill</h2>
-<p class="lp-sub">Add your items to see an instant estimate, then send the list to us on WhatsApp to book a pickup.</p>
-<div class="calc" data-free-min="{f["free_pickup_min"]}" data-first-off="{f["first_order_off"]}" data-wa="{PHONE_ORDERS}">
-<div class="calc-items">
-{chr(10).join(rows)}
+    tabs, panels = [], []
+    for gi, grp in enumerate(P.data["calculator"]):
+        gid = f"bag-{slugify(grp['group'])}"
+        tabs.append(f'    <button type="button" role="tab" class="bag-tab" aria-controls="{gid}" aria-selected="{"true" if gi == 0 else "false"}">'
+                    f'{grp["icon"]} {e(grp["group"])} <span class="bag-count" hidden>0</span></button>')
+        rows = []
+        for ref in grp["items"]:
+            c = P.cell(ref)
+            it = c["item"]
+            cat = P.cat_of[it["id"]]
+            col = ref.split(":")[1]
+            kind = cat["columns"][col] if len(cat["columns"]) > 1 else ""
+            unit_word = "kg" if c["unit"] == "kg" else ""
+            rows.append(f'''        <li class="bag-item" data-label="{e(c["label"])}" data-price="{c["num"]}" data-from="{1 if c["plus"] else 0}" data-unit="{e(c["unit"])}">
+            <span class="bag-name">{e(it["name"])}{f' <small>{e(kind.lower())}</small>' if kind else ""}</span>
+            <span class="bag-price">{e(c["display"])}</span>
+            <span class="bag-step">
+                <button type="button" data-step="-1" aria-label="Remove one: {e(c["label"])}">−</button>
+                <output>0</output>{f'<i>{unit_word}</i>' if unit_word else ""}
+                <button type="button" data-step="1" aria-label="Add one: {e(c["label"])}">+</button>
+            </span>
+        </li>''')
+        panels.append(f'    <ul class="bag-list" id="{gid}" role="tabpanel">\n' + "\n".join(rows) + "\n    </ul>")
+    return f'''<h2>Build Your Laundry Bag</h2>
+<p class="lp-sub">Pick what you're sending — your bill updates as you go, and you can book with the same list.</p>
+<div class="bag" data-free-min="{f["free_pickup_min"]}" data-first-off="{f["first_order_off"]}">
+<div class="bag-picker">
+    <div class="bag-tabs" role="tablist" aria-label="Item categories">
+{chr(10).join(tabs)}
+    </div>
+{chr(10).join(panels)}
 </div>
-<aside class="calc-summary">
-    <h3>Your Estimate</h3>
-    <dl aria-live="polite">
-        <div><dt>Items</dt><dd data-out="count">0</dd></div>
-        <div><dt>Estimated total</dt><dd data-out="total">₹0</dd></div>
-        <div><dt>Pickup &amp; delivery</dt><dd data-out="pickup">Free above ₹{f["free_pickup_min"]}</dd></div>
-        <div><dt>First order ({f["first_order_off"]}% off)</dt><dd data-out="first">₹0</dd></div>
+<aside class="bag-tag" aria-live="polite">
+    <div class="tag-head"><span class="tag-hole" aria-hidden="true"></span>Cleanzit · your bill</div>
+    <ul class="tag-lines"><li class="tag-empty">Your bag is empty — add items to see your bill.</li></ul>
+    <dl class="tag-sums">
+        <div><dt>Subtotal</dt><dd data-out="sub">₹0</dd></div>
+        <div><dt>First order −{f["first_order_off"]}%</dt><dd data-out="disc">−₹0</dd></div>
+        <div class="tag-total"><dt>First order total</dt><dd data-out="total">₹0</dd></div>
     </dl>
-    <p class="calc-note" data-out="note">Prices marked “+” are starting prices; the final bill depends on fabric and condition.</p>
-    <a class="btn calc-wa" data-out="wa" href="{e(wa_link("Hi Cleanzit, I'd like to book a pickup."))}" target="_blank" rel="noopener">💬 Book on WhatsApp</a>
+    <div class="tag-meter" role="img" aria-label="Progress towards free pickup"><span data-out="meter"></span></div>
+    <p class="tag-pickup" data-out="pickup">Add ₹{f["free_pickup_min"]} of items for free pickup</p>
+    <p class="tag-note">“+” = starting price; the final bill depends on fabric and condition. Returning customers pay the subtotal.</p>
+    <a class="btn tag-cta" data-out="cta" href="/book/#book">Book pickup with this bag →</a>
 </aside>
 </div>
-<noscript><p class="lp-sub">Turn on JavaScript to use the estimator — or see the full price list above.</p></noscript>
+<noscript><p class="lp-sub">Turn on JavaScript to use the bill builder — or see the full price list above.</p></noscript>
 <script src="/js/estimator.js" defer></script>'''
 
 
 # ============================================================ other hand-written page regions
-def service_grid(ctx, slugs, detailed):
+def service_grid(ctx, slugs, detailed, lang="en"):
     cards = []
     for sl in slugs:
         s = ctx["services_by_slug"][sl]
-        st = service_start(ctx, s)
-        price = f"Starting {st[0]}" if st else "Ask for a quote"
+        st = service_start(ctx, s, lang)
+        if lang == "hi":
+            price = f"{st[0]} से शुरू" if st else "कीमत के लिए पूछें"
+            name, href = ctx["hi"]["service_names"][sl], hi_service_href(ctx, sl)
+        else:
+            price = f"Starting {st[0]}" if st else "Ask for a quote"
+            name, href = s["name"], f"/services/{sl}/"
         blurb = f"\n        <p>{e(ctx['prices'].fill(s['short']))}</p>" if detailed else ""
         more = '\n        <span class="lp-more">Learn more →</span>' if detailed else ""
-        cards.append(f'''    <a class="lp-service{' is-detailed' if detailed else ''}" href="/services/{sl}/">
+        cards.append(f'''    <a class="lp-service{' is-detailed' if detailed else ''}" href="{href}">
         <span class="lp-service-icon" aria-hidden="true">{s["icon"]}</span>
-        <h3>{e(s["name"])}</h3>{blurb}
+        <h3>{e(name)}</h3>{blurb}
         <strong>{e(price)}</strong>{more}
     </a>''')
     return '<div class="lp-service-grid">\n' + "\n".join(cards) + "\n</div>"
+
+
+def stats_html(ctx):
+    B = ctx["bhopal"]
+    items = [(str(len(B["outlets"])), "Outlets in Bhopal"), (str(len(B["areas"])), "Areas with free pickup"),
+             ("7", "Days a week"), ("10,000+", "Happy families")]
+    cells = "\n".join(f'''            <div class="stat-item">
+                <span class="stat-number">{n}</span>
+                <span class="stat-label">{e(l)}</span>
+            </div>''' for n, l in items)
+    return f'''        <section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+{cells}
+        </div>
+    </div>
+</section>'''
+
+
+def offers_html(ctx):
+    P = ctx["prices"]
+    f = P.facts
+    hs = P.data["home_services"]
+    top = max(int(m["discount"]) for m in P.data["membership"])
+    cards = [("🎉", f"{f['first_order_off']}% off", "your first order", "New to Cleanzit? Your first laundry or dry cleaning order is discounted automatically.", "/book/", "Book your first pickup"),
+             ("🚚", "Free pickup", f"on orders above ₹{f['free_pickup_min']}", "Doorstep pickup and delivery anywhere we serve in Bhopal.", "/bhopal/", "Check your area"),
+             ("🎖️", f"Up to {top}% off", "with membership", "Top up once and get a member discount on select services.", "/pricing.html", "See membership plans")]
+    if P.offer_on:
+        cards.insert(2, ("🪔", hs["label"], hs["headline"].replace("Upto", "Up to"), "Sofa, carpet, mattress, curtain, floor and kitchen cleaning at your home.",
+                         "/services/home-deep-cleaning-bhopal/", "See home cleaning"))
+    out = "\n".join(f'''    <a class="offer-card" href="{href}">
+        <span class="offer-icon" aria-hidden="true">{icon}</span>
+        <strong>{e(big)}</strong>
+        <em>{e(small)}</em>
+        <p>{e(text)}</p>
+        <span class="lp-more">{e(cta)} →</span>
+    </a>''' for icon, big, small, text, href, cta in cards)
+    return f'<div class="offer-grid">\n{out}\n</div>'
+
+
+def guides_html(ctx):
+    cards = "\n".join(f'''    <a class="lp-card" href="/guides/{g["slug"]}/">
+        <strong>{e(g["h1"])}</strong>
+        <span>{e(g["description"])}</span>
+    </a>''' for g in ctx["guides"])
+    return f'<div class="lp-cards">\n{cards}\n</div>'
+
+
+def render_template(ctx, path, extra=None, lang="en"):
+    """content/*.html template -> HTML: {{component}} tokens, then price placeholders."""
+    raw = open(os.path.join(ROOT, path), encoding="utf-8").read()
+    raw = re.sub(r"^\s*<!--.*?-->\s*\n", "", raw, count=1, flags=re.S)
+    B = ctx["bhopal"]
+    all_slugs = [x["slug"] for x in ctx["services"]["services"]]
+    comps = {
+        "booking_form": lambda: indent_block(booking_form(ctx, lang), "                    "),
+        "stats": lambda: stats_html(ctx),
+        "services_grid": lambda: indent_block(service_grid(ctx, all_slugs if lang == "hi" else ctx["services"]["home_page"], False, lang), "                "),
+        "offers": lambda: indent_block(offers_html(ctx), "                "),
+        "steps": lambda: indent_block(steps_html(ctx, lang=lang), "                "),
+        "areas": lambda: indent_block(area_groups(ctx, per_zone=None if lang == "hi" else 6, lang=lang), "                "),
+        "outlets": lambda: indent_block('<div class="lp-outlets">\n' + "\n".join(outlet_card(o, lang=lang) for o in B["outlets"]) + "\n</div>", "                "),
+        "guides": lambda: indent_block(guides_html(ctx), "                "),
+        "outlet_count": lambda: str(len(B["outlets"])),
+        "area_count": lambda: str(len(B["areas"])),
+    }
+    comps.update(extra or {})
+    def sub(m):
+        name = m.group(1)
+        if name not in comps:
+            fail(f"{path}: unknown component {{{{{name}}}}}")
+        return comps[name]()
+    return ctx["prices"].fill(re.sub(r"\{\{(\w+)\}\}", sub, raw)).rstrip("\n")
 
 
 def indent_block(text, indent):
@@ -953,7 +1369,20 @@ def replace_region(path, name, make):
 
 
 STATIC_ACTIVE = {"index.html": "", "about.html": "/about.html", "services.html": "/services.html", "pricing.html": "/pricing.html",
-                 "stores.html": "/stores.html", "contact.html": "/contact.html"}
+                 "stores.html": "/stores.html", "contact.html": "/contact.html", "franchise.html": ""}
+
+
+def visible_faqs(page):
+    """Question/answer pairs exactly as shown in a hand-written page's <details>
+    blocks, so its FAQPage markup can never drift from what visitors see."""
+    s = open(os.path.join(ROOT, page), encoding="utf-8").read()
+    qas = []
+    for q, a in re.findall(r"<summary[^>]*>(.*?)</summary>\s*<p[^>]*>(.*?)</p>", s, re.S):
+        clean = lambda x: re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", x))).replace("▼", "").strip()
+        qas.append((clean(q), clean(a)))
+    if not qas:
+        fail(f"{page}: no FAQ found for faq-ld")
+    return qas
 
 
 def fill_static_pages(ctx):
@@ -965,8 +1394,7 @@ def fill_static_pages(ctx):
     replace_region("stores.html", "outlets", lambda ind: indent_block("\n".join(outlet_card(o, heading="h2") for o in B["outlets"]), ind))
     replace_region("stores.html", "outlets-ld", lambda ind: ld_script(outlets_ld, ind))
     replace_region("index.html", "outlets-ld", lambda ind: ld_script(outlets_ld, ind))
-    replace_region("index.html", "areas", lambda ind: indent_block(area_groups(ctx, per_zone=6), ind))
-    replace_region("index.html", "home-services", lambda ind: indent_block(service_grid(ctx, ctx["services"]["home_page"], False), ind))
+    replace_region("index.html", "home-main", lambda ind: render_template(ctx, "content/home.html"))
     replace_region("services.html", "service-cards", lambda ind: indent_block(service_grid(ctx, [s["slug"] for s in ctx["services"]["services"]], True), ind))
     panels = {"laundry": panel_laundry, "men": lambda c: panel_table(c, "men"), "women": lambda c: panel_table(c, "women"),
               "woolen": lambda c: panel_table(c, "woolen"), "household": lambda c: panel_table(c, "household"),
@@ -974,6 +1402,8 @@ def fill_static_pages(ctx):
     for pid, fn in panels.items():
         replace_region("pricing.html", f"panel-{pid}", lambda ind, fn=fn: indent_block(fn(ctx), ind))
     replace_region("pricing.html", "pricing-ld", lambda ind: ld_script(pricing_ld(ctx), ind))
+    for page, anchor in (("contact.html", "contact.html"), ("franchise.html", "franchise.html")):
+        replace_region(page, "faq-ld", lambda ind, page=page, anchor=anchor: ld_script({"@context": "https://schema.org", **faq_ld(visible_faqs(page), f"{BASE}/{anchor}")}, ind))
     replace_region("pricing.html", "calculator", lambda ind: indent_block(calculator(ctx), ind))
 
 
@@ -1030,7 +1460,9 @@ def fill_llms(ctx):
         out += [f"- {s['h1']}: {BASE}/services/{s['slug']}/" for s in ctx["services"]["services"]]
         out += ["", "Guides:"]
         out += [f"- {g['h1']}: {BASE}/guides/{g['slug']}/" for g in ctx["guides"]]
-        out += ["", f"Full price list: {BASE}/pricing.html", f"Bhopal outlets and areas: {BASE}/bhopal/"]
+        out += ["", "Hindi (हिंदी):", f"- Hindi homepage: {BASE}/hi/"]
+        out += [f"- {h['h1']}: {BASE}/hi/services/{h['slug']}/" for h in ctx["hi"]["services"]]
+        out += ["", f"Book a pickup: {BASE}/book/", f"Full price list: {BASE}/pricing.html", f"Bhopal outlets and areas: {BASE}/bhopal/"]
         return "\n".join(out)
 
     replace_region("llms.txt", "areas", areas)
@@ -1061,8 +1493,13 @@ def main():
     prices = Prices(load("data/prices.json"))
     services = load("data/services.json")
     bhopal = load("data/bhopal.json")
+    global OPEN_NOTE
+    OPEN_NOTE = bhopal["open_note"]
     guides = load_guides(prices)
-    ctx = {"prices": prices, "services": services, "bhopal": bhopal, "guides": guides,
+    hi = load("data/hi.json")
+    HI_AREAS.update(hi["area_names"])
+    ctx = {"prices": prices, "services": services, "bhopal": bhopal, "guides": guides, "hi": hi,
+           "hi_services": {h["slug"]: h for h in hi["services"]},
            "services_by_slug": {s["slug"]: s for s in services["services"]},
            "guides_by_slug": {g["slug"]: g for g in guides},
            "outlets_by_id": {o["id"]: o for o in bhopal["outlets"]}}
@@ -1089,8 +1526,9 @@ def main():
                 fail(f"guide {g['slug']} links unknown service {r!r}")
     for r in bhopal["headline_prices"]:
         prices.cell(r)
-    for ref in prices.data["calculator"]:
-        prices.cell(ref)
+    for grp in prices.data["calculator"]:
+        for ref in grp["items"]:
+            prices.cell(ref)
     names = {a["name"] for a in bhopal["areas"]}
     if len(names) != len(bhopal["areas"]):
         fail("duplicate area name")
@@ -1105,14 +1543,39 @@ def main():
     slugs = [slugify(a["name"]) for a in bhopal["areas"]]
     if len(set(slugs)) != len(slugs):
         fail("two areas produce the same URL slug")
+    for a in bhopal["areas"]:
+        if a["name"] not in hi["area_names"]:
+            fail(f"data/hi.json: no Hindi name for area {a['name']!r}")
+    for z in bhopal["zones"]:
+        if z not in hi["zone_names"]:
+            fail(f"data/hi.json: no Hindi name for zone {z!r}")
+    for sv in services["services"]:
+        if sv["slug"] not in hi["service_names"]:
+            fail(f"data/hi.json: no Hindi name for service {sv['slug']!r}")
+    for h in hi["services"]:
+        if h["slug"] not in svc:
+            fail(f"data/hi.json: Hindi page for unknown service {h['slug']!r}")
+        base = svc[h["slug"]]
+        for r in base["prices"]:
+            iid = r.split(":")[0]
+            if iid not in hi["item_names"]:
+                fail(f"data/hi.json: no Hindi name for price item {iid!r} (used on {h['slug']})")
 
     # ---- pages
     urls = [(f"{BASE}/", "1.0"), (f"{BASE}/pricing.html", "0.9"), (f"{BASE}/services.html", "0.9"),
-            (f"{BASE}/stores.html", "0.7"), (f"{BASE}/about.html", "0.5"), (f"{BASE}/contact.html", "0.6")]
+            (f"{BASE}/stores.html", "0.7"), (f"{BASE}/about.html", "0.5"), (f"{BASE}/contact.html", "0.6"),
+            (f"{BASE}/franchise.html", "0.4")]
     for s in services["services"]:
         write(f"services/{s['slug']}/index.html", build_service(ctx, s))
         urls.append((f"{BASE}/services/{s['slug']}/", "0.8"))
     write("services/index.html", build_services_redirect())
+    write("book/index.html", build_book_page(ctx))
+    urls.append((f"{BASE}/book/", "0.8"))
+    write("hi/index.html", build_hi_home(ctx))
+    urls.append((f"{BASE}/hi/", "0.8"))
+    for h in hi["services"]:
+        write(f"hi/services/{h['slug']}/index.html", build_service_hi(ctx, svc[h["slug"]], h))
+        urls.append((f"{BASE}/hi/services/{h['slug']}/", "0.7"))
     write("guides/index.html", build_guides_index(ctx))
     urls.append((f"{BASE}/guides/", "0.6"))
     for g in guides:
@@ -1124,6 +1587,7 @@ def main():
         write(f"bhopal/{slugify(a['name'])}/index.html", build_area(ctx, a))
         urls.append((f"{BASE}/bhopal/{slugify(a['name'])}/", "0.7"))
     removed = (prune("services", {s["slug"] for s in services["services"]}) + prune("guides", {g["slug"] for g in guides})
+               + prune("hi/services", set(ctx["hi_services"]))
                + prune("bhopal", set(slugs)))
 
     check_handwritten_prices(ctx)
@@ -1131,7 +1595,7 @@ def main():
     fill_llms(ctx)
     write_sitemap(ctx, urls)
     print(f"built {len(services['services'])} service pages, {len(guides)} guides, Bhopal hub + {len(bhopal['areas'])} areas "
-          f"({removed} stale removed); refreshed 6 hand-written pages + llms.txt; sitemap.xml has {len(urls)} URLs")
+          f"+ {len(hi['services']) + 1} Hindi pages ({removed} stale removed); refreshed {len(STATIC_PAGES)} hand-written pages + llms.txt; sitemap.xml has {len(urls)} URLs")
 
 
 if __name__ == "__main__":
