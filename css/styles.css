@@ -63,6 +63,8 @@ body {
 
 img {
     max-width: 100%;
+    height: auto;
+    /* keeps width/height attributes (set to prevent layout shift) from distorting images */
     display: block;
 }
 
@@ -1357,4 +1359,395 @@ body.offer-banner-hidden .offer-banner {
 .lp-center {
     text-align: center;
     margin-top: 1.75rem;
+}
+
+/* ============================================================
+   Service pages, guides, service grids and the price estimator
+   (markup from tools/build_site.py).
+   ============================================================ */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.lp-article {
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--color-text);
+}
+
+.lp-article p {
+    margin-bottom: 1rem;
+}
+
+.lp-article h2 {
+    text-align: left;
+    font-size: 1.35rem;
+    margin: 2rem 0 0.75rem;
+}
+
+.lp-article h3 {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.75rem;
+}
+
+.lp-article ul,
+.lp-article ol {
+    padding-left: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.lp-article li {
+    margin-bottom: 0.45rem;
+}
+
+.lp-article a,
+.lp-sub a,
+.lp-learn a,
+.lp-center a:not(.btn) {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.lp-article ul.lp-checks {
+    list-style: none;
+    padding-left: 0;
+}
+
+.lp-checks li {
+    position: relative;
+    padding-left: 1.75rem;
+}
+
+.lp-checks li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #0f9d77;
+    font-weight: 700;
+}
+
+.lp-learn {
+    margin-top: 1rem;
+    font-size: 0.92rem;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.lp-offer-tag {
+    text-align: center;
+    font-weight: 600;
+    color: #B00D32;
+    margin: 1.5rem 0 0.75rem;
+}
+
+.lp-prices + .lp-offer-tag {
+    margin-top: 2rem;
+}
+
+.lp-prices del {
+    color: #94a3b8;
+    font-weight: 500;
+    margin-right: 0.35rem;
+}
+
+.lp-offer-price {
+    display: inline-block;
+    background: #D0103A;
+    color: #fff;
+    font-weight: 700;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    margin-left: 0.35rem;
+}
+
+.lp-home-card {
+    display: block;
+    background: #fff;
+    padding: 1.75rem;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lp-home-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.lp-home-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+}
+
+.lp-home-card p {
+    color: var(--color-text-light);
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+}
+
+.lp-service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 2.5rem auto 0;
+}
+
+.lp-service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    background: var(--color-bg-blue);
+    border-radius: 16px;
+    padding: 1.5rem 1.25rem;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.lp-service:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+.lp-service-icon {
+    font-size: 2.4rem;
+}
+
+.lp-service h3 {
+    color: var(--color-primary);
+    font-size: 1.05rem;
+}
+
+.lp-service p {
+    color: var(--color-text-light);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.lp-service strong {
+    color: var(--color-primary);
+    font-size: 0.95rem;
+}
+
+.lp-service .lp-more {
+    margin-top: auto;
+    padding-top: 0.4rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #0f7a8a;
+}
+
+.lp-service-grid:has(.is-detailed) {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.lp-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.lp-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--color-bg-blue);
+    border-radius: 16px;
+    padding: 1.75rem;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.lp-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+.lp-card strong {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    line-height: 1.35;
+}
+
+.lp-card span {
+    color: var(--color-text-light);
+    font-size: 0.93rem;
+}
+
+.lp-chips a {
+    white-space: nowrap;
+}
+
+/* ---- estimator ---- */
+.calc {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.calc-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.75rem;
+}
+
+.calc-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 0.75rem 0.9rem;
+    min-width: 0;
+}
+
+.calc-row.has-qty {
+    border-color: var(--color-primary);
+    background: var(--color-bg-blue);
+}
+
+.calc-name {
+    min-width: 0;
+}
+
+.calc-name strong {
+    display: block;
+    color: var(--color-primary);
+    font-size: 0.93rem;
+    line-height: 1.3;
+}
+
+.calc-name span {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}
+
+.calc-qty {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+.calc-qty button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.calc-qty button[data-step="1"] {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.calc-qty output {
+    min-width: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.calc-summary {
+    position: sticky;
+    top: calc(var(--banner-height) + var(--header-height) + 1rem);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 1.75rem;
+}
+
+.calc-summary h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.calc-summary dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.93rem;
+}
+
+.calc-summary dd {
+    font-weight: 700;
+    text-align: right;
+}
+
+.calc-summary dd[data-out="total"] {
+    font-size: 1.4rem;
+    color: var(--color-secondary);
+}
+
+.calc-note {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin: 1rem 0;
+}
+
+.calc-summary .calc-wa {
+    display: block;
+    text-align: center;
+    background: #25D366;
+    color: #fff;
+}
+
+@media (max-width: 860px) {
+    .calc {
+        grid-template-columns: 1fr;
+    }
+
+    .calc-summary {
+        position: static;
+    }
+}
+
+/* Primary buttons are navy — invisible on the navy CTA bands of the
+   hand-written pages, so invert them there (same treatment as .lp-hero). */
+section[style*="background: var(--color-primary)"] .btn:not(.btn-outline) {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+section[style*="background: var(--color-primary)"] .btn:not(.btn-outline):hover {
+    background-color: var(--color-secondary-hover);
+}
+
+.footer-col p + ul {
+    margin-top: 1rem;
 }

@@ -1,0 +1,751 @@
+{
+  "_readme": "Service pages under /services/<slug>/. Text may use {p:ITEM:COLUMN}, {now:HOME_ID}, {was:HOME_ID} and {fact:KEY} placeholders, filled from data/prices.json by tools/build_site.py, so prices are never typed twice. 'prices' lists price-list rows (ITEM:COLUMN) shown on the page; 'home' lists home-service offers. 'guide' links a related guide in content/guides/. 'mode': 'home' marks services done at the customer's home (changes the how-it-works steps). Optional 'start' (ITEM:COLUMN or home:ID) picks the 'Starting ₹X' price; otherwise the lowest listed price is used.",
+  "services": [
+    {
+      "slug": "laundry-service-bhopal",
+      "icon": "🧺",
+      "name": "Laundry by KG",
+      "h1": "Laundry Service in Bhopal",
+      "title": "Laundry Service in Bhopal | Wash & Fold {p:wash-fold:price}/kg | Cleanzit",
+      "short": "Wash & fold or wash & steam iron for everyday clothes, charged per kilogram.",
+      "intro": [
+        "Cleanzit's laundry-by-weight service is built for everyday clothes — shirts, T-shirts, jeans, kurtas, nightwear, towels and bed linen. We pick up from your door anywhere in Bhopal, wash, dry and either fold or steam iron, and deliver back within {fact:delivery_days} days.",
+        "You pay by weight, not per piece: Wash & Fold is {p:wash-fold:price}/kg, Wash & Steam Iron is {p:wash-iron:price}/kg and Premium Wash & Steam Iron is {p:premium-wash-iron:price}/kg. A kilogram is roughly five everyday garments."
+      ],
+      "includes": [
+        "Doorstep pickup and delivery (free on orders above ₹{fact:free_pickup_min})",
+        "Individual tagging so every garment comes back to you",
+        "Stain inspection and spot pre-treatment",
+        "Anti-bacterial wash and drying",
+        "Folding, or steam ironing on the Wash & Steam Iron plans",
+        "Optional add-ons: starch (kalaf) and roll press"
+      ],
+      "prices": [
+        "wash-fold:price",
+        "wash-iron:price",
+        "premium-wash-iron:price"
+      ],
+      "tips_title": "Getting the most from laundry by kg",
+      "tips": [
+        "Keep dry-clean-only pieces (silk, heavy embroidery, suits) out of the laundry bag — send those for dry cleaning instead.",
+        "Empty pockets: pens and tissues can mark a whole load.",
+        "Tell us about any stain when you hand over the bag so it can be pre-treated before washing.",
+        "Pick Wash & Fold for home clothes and towels, and Wash & Steam Iron for office and school wear."
+      ],
+      "faqs": [
+        [
+          "How much does laundry cost per kg in Bhopal?",
+          "At Cleanzit, Wash & Fold is {p:wash-fold:price} per kg, Wash & Steam Iron is {p:wash-iron:price} per kg and Premium Wash & Steam Iron is {p:premium-wash-iron:price} per kg. New customers get {fact:first_order_off}% off the first order."
+        ],
+        [
+          "How many clothes are in 1 kg of laundry?",
+          "Roughly five everyday garments — for example a mix of shirts, T-shirts and trousers. Heavier items such as jeans and towels weigh more."
+        ],
+        [
+          "Is pickup free?",
+          "Pickup and delivery are free on orders above ₹{fact:free_pickup_min} anywhere in Bhopal."
+        ],
+        [
+          "How long does laundry take?",
+          "Standard delivery is within {fact:delivery_days} days. Express same-day service is available for an extra charge — ask when you book."
+        ]
+      ],
+      "related": [
+        "steam-ironing-bhopal",
+        "dry-cleaning-bhopal",
+        "blanket-quilt-cleaning-bhopal"
+      ],
+      "guide": "dry-cleaning-vs-washing"
+    },
+    {
+      "slug": "dry-cleaning-bhopal",
+      "icon": "👔",
+      "name": "Dry Cleaning",
+      "h1": "Dry Cleaning in Bhopal",
+      "title": "Dry Cleaning in Bhopal | Shirt {p:shirt:dry}, Suit {p:suit-2:dry} | Cleanzit",
+      "short": "Suits, blazers, sarees, dresses and delicate fabrics, cleaned with fabric-appropriate processes.",
+      "intro": [
+        "Some garments should never go in a washing machine: wool suits, blazers, silk sarees, embroidered kurtas and anything labelled dry clean only. Cleanzit dry cleans them with a process chosen for the fabric, not one method for everything.",
+        "Every piece is inspected before we accept it. If a garment carries a risk — a weak seam, loose embellishment, a colour that may bleed — we tell you before cleaning, not after. Prices start at {p:shirt:dry} for a shirt or trouser and {p:suit-2:dry} for a two-piece suit, with free pickup across Bhopal on orders above ₹{fact:free_pickup_min}."
+      ],
+      "includes": [
+        "Pre-acceptance inspection and fabric assessment",
+        "Individual tagging",
+        "Stain analysis and spot pre-treatment",
+        "Fabric-appropriate cleaning",
+        "Steam finishing and a quality check",
+        "Packed and delivered within {fact:delivery_days} days"
+      ],
+      "prices": [
+        "shirt:dry",
+        "trouser:dry",
+        "coat:dry",
+        "suit-2:dry",
+        "suit-3:dry",
+        "jacket-men:dry",
+        "kurta-short:dry",
+        "saree:dry",
+        "suit-women-2:dry",
+        "dress:dry"
+      ],
+      "tips_title": "Dry cleaning tips",
+      "tips": [
+        "Look for the circle symbol on the care label — it means the garment is meant for dry cleaning.",
+        "Point out stains and say what caused them (oil, turmeric, tea); the right pre-treatment depends on the stain.",
+        "Take garments out of the delivery plastic before storing them for long; fabric keeps better with airflow.",
+        "Clean seasonal clothes before putting them away — stains that are left sitting tend to set."
+      ],
+      "faqs": [
+        [
+          "How much does dry cleaning cost in Bhopal?",
+          "At Cleanzit a shirt or trouser is {p:shirt:dry}, a coat or blazer {p:coat:dry}, a 2-piece suit {p:suit-2:dry} and a 3-piece suit {p:suit-3:dry}. Sarees start at {p:saree:dry}. See the full price list for every item."
+        ],
+        [
+          "What does the '+' after a price mean?",
+          "It means 'starting from'. The final price depends on the fabric, embroidery and condition of the garment — ask us for a quote when you book."
+        ],
+        [
+          "How long does dry cleaning take?",
+          "Standard delivery is within {fact:delivery_days} days. Express same-day service is available for an extra charge."
+        ],
+        [
+          "Will you tell me if a garment might get damaged?",
+          "Yes. Every garment is inspected first, and if it carries a risk we explain it before processing so you can decide."
+        ]
+      ],
+      "related": [
+        "saree-lehenga-dry-cleaning-bhopal",
+        "woolen-dry-cleaning-bhopal",
+        "steam-ironing-bhopal"
+      ],
+      "guide": "dry-cleaning-vs-washing"
+    },
+    {
+      "slug": "steam-ironing-bhopal",
+      "icon": "🌬️",
+      "name": "Steam Ironing",
+      "h1": "Steam Ironing Service in Bhopal",
+      "title": "Ironing Service in Bhopal | Steam Iron from {p:shirt:iron} | Cleanzit",
+      "short": "Crisp, wrinkle-free steam pressing for everyday and formal wear.",
+      "intro": [
+        "Short on time for ironing? Cleanzit steam irons your clothes and delivers them back ready to wear. Steam pressing relaxes creases without scorching and leaves a crisp finish on cotton, linen and blends.",
+        "Shirts and trousers are {p:shirt:iron} each. Kurtas, sarees, suits and lehengas are priced individually below. Starch (kalaf) and roll press are available on request."
+      ],
+      "includes": [
+        "Doorstep pickup and delivery (free on orders above ₹{fact:free_pickup_min})",
+        "Steam pressing matched to the fabric",
+        "Starch (kalaf) and roll press on request",
+        "Packed and delivered within {fact:delivery_days} days"
+      ],
+      "prices": [
+        "shirt:iron",
+        "trouser:iron",
+        "coat:iron",
+        "suit-2:iron",
+        "kurta-men:iron",
+        "kurta-short:iron",
+        "saree:iron",
+        "suit-women-2:iron",
+        "lehenga:iron"
+      ],
+      "tips_title": "Keep ironed clothes crisp for longer",
+      "tips": [
+        "Hang shirts and trousers as soon as they arrive rather than leaving them stacked.",
+        "Give clothes some space in the wardrobe; crushing them together brings creases back.",
+        "Ask for starch (kalaf) on cotton kurtas and sarees if you like a firmer finish."
+      ],
+      "faqs": [
+        [
+          "How much is ironing per piece in Bhopal?",
+          "At Cleanzit, shirts and trousers are {p:shirt:iron} per piece, a saree is {p:saree:iron}, and a 2-piece suit is {p:suit-2:iron}."
+        ],
+        [
+          "Do you do starch (kalaf) and roll press?",
+          "Yes, both are available as add-ons. Ask for them when you book."
+        ],
+        [
+          "Is there a minimum order for pickup?",
+          "Pickup and delivery are free on orders above ₹{fact:free_pickup_min}."
+        ]
+      ],
+      "related": [
+        "laundry-service-bhopal",
+        "dry-cleaning-bhopal",
+        "saree-lehenga-dry-cleaning-bhopal"
+      ]
+    },
+    {
+      "slug": "shoe-cleaning-bhopal",
+      "icon": "👟",
+      "name": "Shoe Cleaning",
+      "h1": "Shoe Cleaning in Bhopal",
+      "title": "Shoe Cleaning in Bhopal | Sneakers from {p:shoe-sports-basic:price} | Cleanzit",
+      "short": "Deep cleaning for sports shoes, sneakers, leather, suede and boots.",
+      "intro": [
+        "Sports shoes, sneakers, leather shoes, suede and boots each need different handling. Cleanzit cleans them by material — so white sneakers get their soles and uppers cleaned properly, and leather and suede are not soaked the way canvas can be.",
+        "Basic sports shoes start at {p:shoe-sports-basic:price} a pair, branded sports shoes are {p:shoe-sports-branded:price}, and leather or suede is {p:shoe-leather:price}. We pick up from anywhere in Bhopal."
+      ],
+      "includes": [
+        "Inspection of material and condition before cleaning",
+        "Cleaning of uppers, soles and midsoles",
+        "Material-appropriate method for leather and suede",
+        "Packed and delivered within {fact:delivery_days} days"
+      ],
+      "prices": [
+        "shoe-sports-basic:price",
+        "shoe-sports-branded:price",
+        "shoe-high-end:price",
+        "shoe-leather:price",
+        "boots:price"
+      ],
+      "tips_title": "Keep your shoes looking good between cleans",
+      "tips": [
+        "Brush off dry mud before it hardens into the fabric.",
+        "Air-dry wet shoes at room temperature — direct heat can crack leather and warp soles.",
+        "Stuff shoes with paper when drying so they keep their shape.",
+        "Keep water away from suede; brush it instead."
+      ],
+      "faqs": [
+        [
+          "How much does shoe cleaning cost in Bhopal?",
+          "At Cleanzit, basic sports shoes are {p:shoe-sports-basic:price} a pair, branded sports shoes {p:shoe-sports-branded:price}, branded high-end shoes {p:shoe-high-end:price} and leather or suede {p:shoe-leather:price}."
+        ],
+        [
+          "Do you clean suede and leather shoes?",
+          "Yes. They're cleaned with a method suited to the material rather than washed like canvas."
+        ],
+        [
+          "How long does shoe cleaning take?",
+          "Standard delivery is within {fact:delivery_days} days."
+        ]
+      ],
+      "related": [
+        "bag-cleaning-bhopal",
+        "stain-removal-bhopal",
+        "laundry-service-bhopal"
+      ]
+    },
+    {
+      "slug": "bag-cleaning-bhopal",
+      "icon": "👜",
+      "name": "Bag Cleaning",
+      "h1": "Bag Cleaning in Bhopal",
+      "title": "Handbag & Bag Cleaning in Bhopal | Cleanzit",
+      "short": "Handbags, leather bags, cloth bags, suitcases and wallets.",
+      "intro": [
+        "Handbags and everyday bags pick up grime on handles, bases and linings that a wipe won't shift. Cleanzit cleans leather handbags, cloth, canvas and jute bags, suitcases and wallets, using a method suited to each material.",
+        "Cloth bags start at {p:cloth-bag:price}, handbags at {p:handbag:price} and leather handbags at {p:leather-handbag:price}, with doorstep pickup across Bhopal."
+      ],
+      "includes": [
+        "Inspection of material, hardware and lining",
+        "Material-appropriate cleaning",
+        "Packed and delivered within {fact:delivery_days} days"
+      ],
+      "prices": [
+        "cloth-bag:price",
+        "handbag:price",
+        "leather-handbag:price",
+        "suitcase:price",
+        "wallet:price"
+      ],
+      "tips_title": "Bag care tips",
+      "tips": [
+        "Empty every pocket before handing over a bag.",
+        "Store leather bags stuffed with paper, inside a cloth dust bag, away from direct sun.",
+        "Wipe handles regularly — they collect the most dirt and oil."
+      ],
+      "faqs": [
+        [
+          "How much does handbag cleaning cost?",
+          "At Cleanzit, cloth, canvas or jute bags start at {p:cloth-bag:price}, handbags at {p:handbag:price} and leather handbags at {p:leather-handbag:price}. The final price depends on size and condition."
+        ],
+        [
+          "Do you clean leather bags?",
+          "Yes, with a method suited to leather rather than soaking."
+        ]
+      ],
+      "related": [
+        "shoe-cleaning-bhopal",
+        "stain-removal-bhopal",
+        "dry-cleaning-bhopal"
+      ],
+      "start": "cloth-bag:price"
+    },
+    {
+      "slug": "saree-lehenga-dry-cleaning-bhopal",
+      "icon": "🥻",
+      "name": "Saree & Lehenga Care",
+      "h1": "Saree, Lehenga & Ethnic Wear Dry Cleaning in Bhopal",
+      "title": "Saree & Lehenga Dry Cleaning in Bhopal | Cleanzit",
+      "short": "Silk sarees, lehengas, embroidered suits and achkans handled with care.",
+      "intro": [
+        "Silk, zari, sequins and heavy embroidery are easy to damage with the wrong method. Cleanzit inspects every saree, lehenga and ethnic outfit before accepting it, checks the fabric and embellishment, and picks a cleaning method to match. If a piece carries a risk — loose work, a colour that may run — we tell you before cleaning.",
+        "Sarees start at {p:saree:dry}, lehengas at {p:lehenga:dry} and women's 3-piece suits are {p:suit-women-3:dry}. During wedding and festival season, book a pickup a few days before you need an outfit back."
+      ],
+      "includes": [
+        "Pre-acceptance inspection of fabric, zari and embellishment",
+        "Stain analysis, with common wedding stains (turmeric, oil, food) pre-treated",
+        "Fabric-appropriate dry cleaning",
+        "Steam finishing and careful folding",
+        "Delivered within {fact:delivery_days} days"
+      ],
+      "prices": [
+        "saree:dry",
+        "saree:iron",
+        "lehenga:dry",
+        "lehenga:iron",
+        "suit-women-2:dry",
+        "suit-women-3:dry",
+        "dupatta:dry",
+        "kurta-long:dry",
+        "achkan:dry"
+      ],
+      "tips_title": "Caring for silk and embroidered outfits",
+      "tips": [
+        "Spray perfume before dressing, not directly onto silk or zari.",
+        "Store sarees wrapped in muslin or cotton cloth, not plastic.",
+        "Refold silk sarees every few months so creases don't set permanently along the folds.",
+        "Get stains cleaned soon after the event — turmeric and oil get harder to remove over time."
+      ],
+      "faqs": [
+        [
+          "How much does saree dry cleaning cost in Bhopal?",
+          "At Cleanzit saree dry cleaning starts at {p:saree:dry} and steam ironing is {p:saree:iron}. Heavier silk or embroidered sarees are priced after inspection."
+        ],
+        [
+          "How much does it cost to dry clean a lehenga?",
+          "Lehenga dry cleaning starts at {p:lehenga:dry}; the final price depends on the fabric and the amount of work on it."
+        ],
+        [
+          "Is it safe to dry clean a zari or embroidered saree?",
+          "We inspect the zari and embellishment first and choose a suitable method. If something carries a risk, we tell you before cleaning."
+        ],
+        [
+          "How early should I send my outfit before a wedding?",
+          "Standard delivery is {fact:delivery_days} days, so send it at least a few days ahead. Express same-day service is available for an extra charge."
+        ]
+      ],
+      "related": [
+        "dry-cleaning-bhopal",
+        "stain-removal-bhopal",
+        "steam-ironing-bhopal"
+      ],
+      "guide": "saree-lehenga-care",
+      "start": "saree:dry"
+    },
+    {
+      "slug": "woolen-dry-cleaning-bhopal",
+      "icon": "🧣",
+      "name": "Woolen & Winter Wear",
+      "h1": "Woolen & Winter Wear Dry Cleaning in Bhopal",
+      "title": "Sweater, Shawl & Jacket Dry Cleaning in Bhopal | Cleanzit",
+      "short": "Sweaters, shawls, jackets and long coats, cleaned without stretching or shrinking.",
+      "intro": [
+        "Wool shrinks and stretches easily in a home wash. Cleanzit dry cleans sweaters, shawls, jackets, long coats and pashminas so they keep their size and softness.",
+        "Sweaters start at {p:sweater-half:dry}, shawls are {p:shawl:dry} and long coats {p:long-coat:dry}. Get your winter wear cleaned at the start of the season, and again before you pack it away."
+      ],
+      "includes": [
+        "Inspection for stains, pilling and moth damage",
+        "Fabric-appropriate dry cleaning",
+        "Finishing and folding",
+        "Delivered within {fact:delivery_days} days"
+      ],
+      "prices": [
+        "sweater-full:dry",
+        "sweater-half:dry",
+        "sweatshirt:dry",
+        "shawl:dry",
+        "pashmina:dry",
+        "jacket-woolen:dry",
+        "long-coat:dry",
+        "leather-jacket:dry"
+      ],
+      "tips_title": "Storing woolens through summer",
+      "tips": [
+        "Always clean woolens before storing them — moths are drawn to sweat and food residue.",
+        "Fold knitwear; hanging sweaters stretches the shoulders.",
+        "Store in breathable cotton bags rather than sealed plastic.",
+        "Tuck neem leaves or cedar into storage as a natural moth deterrent."
+      ],
+      "faqs": [
+        [
+          "How much does sweater dry cleaning cost in Bhopal?",
+          "At Cleanzit, half-sleeve sweaters are {p:sweater-half:dry} and full-sleeve sweaters start at {p:sweater-full:dry}. Shawls are {p:shawl:dry} and long coats {p:long-coat:dry}."
+        ],
+        [
+          "Can I wash a wool sweater at home?",
+          "Some can be hand-washed in cold water, but many shrink or lose shape. If the label says dry clean only, it's safer to dry clean."
+        ],
+        [
+          "Should I clean woolens before storing them?",
+          "Yes. Stored dirty, they attract moths and stains set over the summer."
+        ]
+      ],
+      "related": [
+        "blanket-quilt-cleaning-bhopal",
+        "dry-cleaning-bhopal",
+        "stain-removal-bhopal"
+      ],
+      "guide": "winter-woolens-care",
+      "start": "sweater-half:dry"
+    },
+    {
+      "slug": "blanket-quilt-cleaning-bhopal",
+      "icon": "🛏️",
+      "name": "Blanket & Quilt Cleaning",
+      "h1": "Blanket & Quilt Cleaning in Bhopal",
+      "title": "Blanket & Quilt Dry Cleaning in Bhopal | from {p:quilt-single:dry} | Cleanzit",
+      "short": "Blankets, quilts (razai), duvets and bed sheets — too big for a home machine.",
+      "intro": [
+        "Blankets, quilts and duvets are too heavy for most home washing machines and take days to dry on a balcony. Cleanzit collects them from your door, cleans them properly and brings them back fresh — ideal before winter starts and again before you store them.",
+        "Single quilts are {p:quilt-single:dry}, single blankets {p:blanket-single:dry} and double blankets {p:blanket-double:dry}. Bed sheets start at {p:bedsheet-single:dry}."
+      ],
+      "includes": [
+        "Doorstep pickup — no carrying heavy bedding to a shop",
+        "Inspection and stain pre-treatment",
+        "Fabric-appropriate cleaning and thorough drying",
+        "Folded, packed and delivered within {fact:delivery_days} days"
+      ],
+      "prices": [
+        "blanket-single:dry",
+        "blanket-double:dry",
+        "quilt-single:dry",
+        "quilt-double:dry",
+        "duvet:dry",
+        "bedsheet-single:dry",
+        "bedsheet-double:dry"
+      ],
+      "tips_title": "Bedding care tips",
+      "tips": [
+        "Clean blankets and quilts at the start of winter and again before storing them for summer.",
+        "Air bedding in sunlight between cleans to keep it fresh.",
+        "Store clean bedding in breathable cotton covers, not sealed plastic.",
+        "Use a cover on quilts so the quilt itself needs cleaning less often."
+      ],
+      "faqs": [
+        [
+          "How much does blanket dry cleaning cost in Bhopal?",
+          "At Cleanzit, single blankets are {p:blanket-single:dry} and double blankets {p:blanket-double:dry}. Quilts are {p:quilt-single:dry} (single) and {p:quilt-double:dry} (double)."
+        ],
+        [
+          "Do you clean razai (quilts)?",
+          "Yes — single quilts are {p:quilt-single:dry} and double quilts {p:quilt-double:dry}."
+        ],
+        [
+          "How often should blankets be cleaned?",
+          "At least once a season: when you take them out for winter, and again before you pack them away."
+        ]
+      ],
+      "related": [
+        "woolen-dry-cleaning-bhopal",
+        "curtain-cleaning-bhopal",
+        "mattress-cleaning-bhopal"
+      ],
+      "guide": "winter-woolens-care",
+      "start": "quilt-single:dry"
+    },
+    {
+      "slug": "curtain-cleaning-bhopal",
+      "icon": "🪟",
+      "name": "Curtain Cleaning",
+      "h1": "Curtain Cleaning in Bhopal",
+      "title": "Curtain Cleaning in Bhopal | from {now:home-curtain} | Cleanzit",
+      "short": "Curtains and blinds, dry cleaned or cleaned at your home.",
+      "intro": [
+        "Curtains quietly collect dust, smoke and cooking grease, and heavy or lined curtains are hard to wash at home. Cleanzit offers two options: we take curtains away for dry cleaning, or our home-services team cleans them at your place.",
+        "Curtain dry cleaning starts at {p:curtain:dry} per curtain, blinds at {p:blind:dry}, and at-home curtain cleaning starts at {now:home-curtain}."
+      ],
+      "includes": [
+        "Take-away dry cleaning or at-home cleaning",
+        "Inspection of fabric and lining",
+        "Stain pre-treatment",
+        "Delivered within {fact:delivery_days} days (take-away)"
+      ],
+      "prices": [
+        "curtain:dry",
+        "blind:dry"
+      ],
+      "home": [
+        "home-curtain"
+      ],
+      "tips_title": "Curtain care tips",
+      "tips": [
+        "Vacuum curtains with a brush attachment every few weeks to slow dust build-up.",
+        "Kitchen and road-facing curtains get dirty fastest and need cleaning more often.",
+        "Note which curtains are lined — lined curtains usually need dry cleaning, not machine washing."
+      ],
+      "faqs": [
+        [
+          "How much does curtain cleaning cost in Bhopal?",
+          "At Cleanzit, curtain dry cleaning starts at {p:curtain:dry} per curtain, and at-home curtain cleaning starts at {now:home-curtain}. Blinds start at {p:blind:dry}."
+        ],
+        [
+          "Can you clean curtains at my home?",
+          "Yes. Our home-services team can clean curtains at your place — book on WhatsApp and we'll schedule a visit."
+        ]
+      ],
+      "related": [
+        "carpet-cleaning-bhopal",
+        "sofa-cleaning-bhopal",
+        "home-deep-cleaning-bhopal"
+      ],
+      "start": "home:home-curtain"
+    },
+    {
+      "slug": "carpet-cleaning-bhopal",
+      "icon": "🧶",
+      "name": "Carpet Cleaning",
+      "h1": "Carpet Cleaning in Bhopal",
+      "title": "Carpet Cleaning in Bhopal | from {now:home-carpet}/sq ft | Cleanzit",
+      "short": "Carpets and rugs deep cleaned, priced per square foot.",
+      "intro": [
+        "Carpets trap dust, pet hair and spills deep in the pile, where a vacuum can't reach. Cleanzit deep cleans carpets and rugs, priced by size so you know the cost upfront.",
+        "Carpet cleaning starts at {p:carpet:dry} per sq ft. At-home carpet cleaning starts at {now:home-carpet} per sq ft."
+      ],
+      "includes": [
+        "Priced by area — easy to estimate upfront",
+        "Inspection for stains and wear",
+        "Stain pre-treatment",
+        "At-home option through our home-services team"
+      ],
+      "prices": [
+        "carpet:dry"
+      ],
+      "home": [
+        "home-carpet"
+      ],
+      "tips_title": "Carpet care tips",
+      "tips": [
+        "Vacuum high-traffic areas at least weekly.",
+        "Blot spills straight away with a dry cloth — rubbing spreads them and pushes them deeper.",
+        "Rotate rugs every few months so they wear evenly.",
+        "To estimate the cost, multiply length by width in feet, then by the per-sq-ft rate."
+      ],
+      "faqs": [
+        [
+          "How much does carpet cleaning cost per sq ft in Bhopal?",
+          "At Cleanzit, carpet cleaning starts at {p:carpet:dry} per sq ft, and at-home carpet cleaning starts at {now:home-carpet} per sq ft."
+        ],
+        [
+          "How do I work out my carpet's size?",
+          "Multiply length by width in feet. A 5 × 8 ft rug is 40 sq ft."
+        ]
+      ],
+      "related": [
+        "sofa-cleaning-bhopal",
+        "curtain-cleaning-bhopal",
+        "home-deep-cleaning-bhopal"
+      ]
+    },
+    {
+      "slug": "sofa-cleaning-bhopal",
+      "icon": "🛋️",
+      "name": "Sofa Cleaning",
+      "h1": "Sofa Cleaning in Bhopal",
+      "title": "Sofa Cleaning in Bhopal | from {now:home-sofa}/seat | Cleanzit",
+      "short": "Fabric sofa cleaning at your home, priced per seat.",
+      "intro": [
+        "Sofas absorb sweat, dust, food spills and pet hair every day. Cleanzit's home-services team cleans fabric sofas at your home, priced per seat, so the sofa never leaves your living room.",
+        "Sofa cleaning starts at {now:home-sofa} per seat."
+      ],
+      "includes": [
+        "Cleaning at your home by our home-services team",
+        "Priced per seat",
+        "Inspection of fabric before cleaning",
+        "Stain pre-treatment"
+      ],
+      "prices": [
+        "sofa:dry"
+      ],
+      "home": [
+        "home-sofa"
+      ],
+      "tips_title": "Keeping your sofa fresh",
+      "tips": [
+        "Vacuum cushions and crevices weekly.",
+        "Blot spills immediately rather than rubbing.",
+        "Flip and rotate cushions so they wear evenly.",
+        "Keep sofas out of direct afternoon sun to slow fading."
+      ],
+      "faqs": [
+        [
+          "How much does sofa cleaning cost in Bhopal?",
+          "At Cleanzit, sofa cleaning starts at {now:home-sofa} per seat, so a 5-seater starts at 5 × that rate."
+        ],
+        [
+          "Do you clean sofas at home?",
+          "Yes — our home-services team cleans sofas at your place. Book on WhatsApp to schedule a visit."
+        ]
+      ],
+      "related": [
+        "carpet-cleaning-bhopal",
+        "mattress-cleaning-bhopal",
+        "home-deep-cleaning-bhopal"
+      ],
+      "mode": "home"
+    },
+    {
+      "slug": "mattress-cleaning-bhopal",
+      "icon": "🛌",
+      "name": "Mattress Cleaning",
+      "h1": "Mattress Cleaning in Bhopal",
+      "title": "Mattress Cleaning in Bhopal | from {now:home-mattress} | Cleanzit",
+      "short": "Deep cleaning for single and double mattresses.",
+      "intro": [
+        "A mattress collects sweat, dust and dead skin every night, and it's almost impossible to clean one properly at home. Cleanzit offers mattress cleaning at your home, and full dry cleaning for single and double mattresses.",
+        "At-home mattress cleaning starts at {now:home-mattress}. Mattress dry cleaning is {p:mattress-single:dry} for a single and {p:mattress-double:dry} for a double."
+      ],
+      "includes": [
+        "At-home cleaning or full dry cleaning",
+        "Inspection and stain pre-treatment",
+        "Single and double sizes"
+      ],
+      "prices": [
+        "mattress-single:dry",
+        "mattress-double:dry"
+      ],
+      "home": [
+        "home-mattress"
+      ],
+      "tips_title": "Mattress care tips",
+      "tips": [
+        "Use a washable mattress protector — it's far easier to clean than the mattress.",
+        "Rotate the mattress every few months so it wears evenly.",
+        "Air the room and let the mattress breathe when you change sheets."
+      ],
+      "faqs": [
+        [
+          "How much does mattress cleaning cost in Bhopal?",
+          "At Cleanzit, at-home mattress cleaning starts at {now:home-mattress}. Mattress dry cleaning is {p:mattress-single:dry} (single) and {p:mattress-double:dry} (double)."
+        ],
+        [
+          "Can you clean my mattress at home?",
+          "Yes. Our home-services team can clean it at your place — book on WhatsApp."
+        ]
+      ],
+      "related": [
+        "sofa-cleaning-bhopal",
+        "blanket-quilt-cleaning-bhopal",
+        "home-deep-cleaning-bhopal"
+      ]
+    },
+    {
+      "slug": "home-deep-cleaning-bhopal",
+      "icon": "🏠",
+      "name": "Home Deep Cleaning",
+      "h1": "Home Deep Cleaning in Bhopal",
+      "title": "Home Deep Cleaning in Bhopal | Kitchen, Floor, Sofa | Cleanzit",
+      "short": "Kitchen, floor, sofa, carpet, mattress and curtain cleaning at your home.",
+      "intro": [
+        "Cleanzit Home Services brings professional cleaning to your home in Bhopal — kitchens, floors, sofas, carpets, mattresses and curtains. It's the easiest way to get the house ready for Diwali, guests or a move.",
+        "Kitchen deep cleaning starts at {now:home-kitchen} and floor cleaning at {now:home-floor} per sq ft. Book on WhatsApp and pick a slot that suits you."
+      ],
+      "includes": [
+        "Cleaning at your home by our home-services team",
+        "Kitchen, floor, sofa, carpet, mattress and curtain cleaning",
+        "Easy WhatsApp booking with flexible scheduling"
+      ],
+      "prices": [],
+      "home": [
+        "home-kitchen",
+        "home-floor",
+        "home-sofa",
+        "home-carpet",
+        "home-mattress",
+        "home-curtain"
+      ],
+      "tips_title": "Planning a deep clean",
+      "tips": [
+        "Book early before festivals like Diwali so you get the slot you want.",
+        "Clear worktops and shelves before a kitchen clean so every surface can be reached.",
+        "Combine services (for example sofa + carpet) so everything is done in one visit."
+      ],
+      "faqs": [
+        [
+          "How much does kitchen deep cleaning cost in Bhopal?",
+          "At Cleanzit, kitchen deep cleaning starts at {now:home-kitchen}. The final price depends on kitchen size and condition."
+        ],
+        [
+          "How much is floor cleaning per sq ft?",
+          "Floor cleaning starts at {now:home-floor} per sq ft."
+        ],
+        [
+          "Which home cleaning services do you offer?",
+          "Kitchen, floor, sofa, carpet, mattress and curtain cleaning at your home in Bhopal."
+        ]
+      ],
+      "related": [
+        "sofa-cleaning-bhopal",
+        "carpet-cleaning-bhopal",
+        "curtain-cleaning-bhopal"
+      ],
+      "mode": "home",
+      "start": "home:home-kitchen"
+    },
+    {
+      "slug": "stain-removal-bhopal",
+      "icon": "🧴",
+      "name": "Stain Removal",
+      "h1": "Stain Removal Service in Bhopal",
+      "title": "Stain Removal (Spotting) in Bhopal | Haldi, Oil, Tea | Cleanzit",
+      "short": "Spot treatment for turmeric, oil, tea, ink and other stubborn stains.",
+      "intro": [
+        "Turmeric, oil, tea, ink and food stains each need a different treatment, and the wrong one can set a stain for good. Cleanzit analyses each stain before cleaning and pre-treats it by type. Spotting (stain treatment) and colour enhancement are also available as additional services.",
+        "We're honest about results: fresh stains usually come out, but old or heat-set stains sometimes can't be fully removed. If we think a stain won't come out, or treating it carries a risk to the fabric, we tell you before we start."
+      ],
+      "includes": [
+        "Stain analysis at inspection",
+        "Spot pre-treatment matched to the stain",
+        "Spotting and colour enhancement as additional services"
+      ],
+      "prices": [],
+      "tips_title": "Stain first aid before you call us",
+      "tips": [
+        "Act fast — the fresher the stain, the better the chance of removing it.",
+        "Blot, don't rub: rubbing spreads a stain and pushes it into the fibres.",
+        "Rinse food and tea stains from the back of the fabric with cold water; hot water can set them.",
+        "For oil, sprinkle talc or cornflour to soak it up, then brush it off.",
+        "Don't iron over a stain — heat sets it."
+      ],
+      "faqs": [
+        [
+          "Can you remove turmeric (haldi) stains?",
+          "Fresh turmeric stains usually respond well to treatment. Old ones are harder, so send the garment as soon as you can and tell us what caused the stain."
+        ],
+        [
+          "Is stain removal charged separately?",
+          "Spotting is one of our additional services — ask us when you book and we'll confirm."
+        ],
+        [
+          "Will every stain come out?",
+          "Not always. Old or heat-set stains sometimes can't be fully removed. We assess each stain first and tell you before treating it."
+        ]
+      ],
+      "related": [
+        "dry-cleaning-bhopal",
+        "saree-lehenga-dry-cleaning-bhopal",
+        "laundry-service-bhopal"
+      ],
+      "guide": "stain-first-aid"
+    }
+  ],
+  "home_page": [
+    "laundry-service-bhopal",
+    "dry-cleaning-bhopal",
+    "steam-ironing-bhopal",
+    "saree-lehenga-dry-cleaning-bhopal",
+    "shoe-cleaning-bhopal",
+    "blanket-quilt-cleaning-bhopal",
+    "sofa-cleaning-bhopal",
+    "home-deep-cleaning-bhopal"
+  ],
+  "footer": [
+    "laundry-service-bhopal",
+    "dry-cleaning-bhopal",
+    "steam-ironing-bhopal",
+    "shoe-cleaning-bhopal",
+    "saree-lehenga-dry-cleaning-bhopal",
+    "sofa-cleaning-bhopal",
+    "carpet-cleaning-bhopal"
+  ]
+}

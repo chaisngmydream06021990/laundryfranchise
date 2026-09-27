@@ -1,0 +1,520 @@
+{
+  "_readme": "Single source of truth for every price on the site. Values are strings in rupees; a trailing '+' means 'starting from'. Used by tools/build_site.py for pricing.html tables/cards/JSON-LD, every service page, services.html 'starting at' figures, llms.txt and the price calculator. Items marked \"source\": \"site\" are not on the current printed price list and kept from the earlier website — confirm or update them.",
+  "facts": {
+    "free_pickup_min": "300",
+    "delivery_days": "3",
+    "first_order_off": "20"
+  },
+  "additional_services": [
+    "Spotting (stain treatment)",
+    "Colour enhancement",
+    "Starch (kalaf)",
+    "Roll press"
+  ],
+  "categories": [
+    {
+      "id": "laundry",
+      "name": "Laundry (per kg)",
+      "delivery": "3 days",
+      "columns": {
+        "price": "Price"
+      },
+      "items": [
+        {
+          "id": "wash-fold",
+          "name": "Wash & Fold",
+          "price": "60",
+          "unit": "kg",
+          "icon": "🧺",
+          "note": "Washed, dried & neatly folded"
+        },
+        {
+          "id": "wash-iron",
+          "name": "Wash & Steam Iron",
+          "price": "90",
+          "unit": "kg",
+          "icon": "⚡",
+          "note": "Washed, dried & steam ironed"
+        },
+        {
+          "id": "premium-wash-iron",
+          "name": "Premium Wash & Steam Iron",
+          "price": "130",
+          "unit": "kg",
+          "icon": "✨",
+          "note": "Premium care wash with steam ironing"
+        }
+      ]
+    },
+    {
+      "id": "men",
+      "name": "Men's Wear",
+      "delivery": "3 days",
+      "columns": {
+        "dry": "Dry Clean",
+        "iron": "Steam Iron"
+      },
+      "items": [
+        {
+          "id": "shirt",
+          "name": "Shirt / T-Shirt",
+          "dry": "60",
+          "iron": "15"
+        },
+        {
+          "id": "trouser",
+          "name": "Trouser / Jeans",
+          "dry": "60",
+          "iron": "15"
+        },
+        {
+          "id": "coat",
+          "name": "Coat / Blazer",
+          "dry": "150",
+          "iron": "50"
+        },
+        {
+          "id": "suit-2",
+          "name": "Men's suit (2 pcs)",
+          "dry": "200",
+          "iron": "75"
+        },
+        {
+          "id": "suit-3",
+          "name": "Men's suit (3 pcs)",
+          "dry": "300",
+          "iron": "100"
+        },
+        {
+          "id": "kurta-men",
+          "name": "Men's kurta",
+          "dry": "70+",
+          "iron": "15+"
+        },
+        {
+          "id": "pyjama",
+          "name": "Pyjama",
+          "dry": "60+",
+          "iron": "15"
+        },
+        {
+          "id": "jacket-men",
+          "name": "Men's jacket",
+          "dry": "150+",
+          "iron": "62"
+        },
+        {
+          "id": "achkan",
+          "name": "Achkan",
+          "dry": "250",
+          "iron": "100",
+          "source": "site"
+        }
+      ]
+    },
+    {
+      "id": "women",
+      "name": "Women's Wear",
+      "delivery": "3 days",
+      "columns": {
+        "dry": "Dry Clean",
+        "iron": "Steam Iron"
+      },
+      "items": [
+        {
+          "id": "kurta-short",
+          "name": "Kurta (short)",
+          "dry": "60",
+          "iron": "15"
+        },
+        {
+          "id": "kurta-long",
+          "name": "Kurta (long)",
+          "dry": "72+",
+          "iron": "20"
+        },
+        {
+          "id": "saree",
+          "name": "Saree / Blouse",
+          "dry": "120+",
+          "iron": "50"
+        },
+        {
+          "id": "salwar",
+          "name": "Salwar",
+          "dry": "50",
+          "iron": "15"
+        },
+        {
+          "id": "plazo",
+          "name": "Plazo",
+          "dry": "60+",
+          "iron": "18+"
+        },
+        {
+          "id": "dupatta",
+          "name": "Dupatta",
+          "dry": "35+",
+          "iron": "18+"
+        },
+        {
+          "id": "suit-women-2",
+          "name": "Women's suit (2 pcs)",
+          "dry": "150",
+          "iron": "50"
+        },
+        {
+          "id": "suit-women-3",
+          "name": "Women's suit (3 pcs)",
+          "dry": "180",
+          "iron": "62"
+        },
+        {
+          "id": "lehenga",
+          "name": "Lehenga",
+          "dry": "375+",
+          "iron": "190+"
+        },
+        {
+          "id": "skirt-short",
+          "name": "Skirt (short)",
+          "dry": "70",
+          "iron": "25"
+        },
+        {
+          "id": "skirt-long",
+          "name": "Skirt (long)",
+          "dry": "125",
+          "iron": "37+"
+        },
+        {
+          "id": "dress",
+          "name": "Dress",
+          "dry": "120+",
+          "iron": "50+",
+          "source": "site"
+        },
+        {
+          "id": "top",
+          "name": "Top",
+          "dry": "60+",
+          "iron": "20+",
+          "source": "site"
+        }
+      ]
+    },
+    {
+      "id": "woolen",
+      "name": "Woolen & Winter Wear",
+      "delivery": "3 days",
+      "columns": {
+        "dry": "Dry Clean",
+        "iron": "Steam Iron"
+      },
+      "items": [
+        {
+          "id": "sweater-full",
+          "name": "Sweater (full sleeve)",
+          "dry": "150+",
+          "iron": ""
+        },
+        {
+          "id": "sweater-half",
+          "name": "Sweater (half sleeve)",
+          "dry": "125",
+          "iron": ""
+        },
+        {
+          "id": "sweatshirt",
+          "name": "Sweat Shirt",
+          "dry": "150",
+          "iron": ""
+        },
+        {
+          "id": "long-coat",
+          "name": "Long Coat",
+          "dry": "250",
+          "iron": ""
+        },
+        {
+          "id": "shawl",
+          "name": "Shawl",
+          "dry": "150",
+          "iron": ""
+        },
+        {
+          "id": "jacket-woolen",
+          "name": "Woolen jacket",
+          "dry": "190",
+          "iron": ""
+        },
+        {
+          "id": "pashmina",
+          "name": "Pashmina",
+          "dry": "450",
+          "iron": "",
+          "source": "site"
+        },
+        {
+          "id": "leather-jacket",
+          "name": "Leather Jacket",
+          "dry": "450",
+          "iron": "150",
+          "source": "site"
+        }
+      ]
+    },
+    {
+      "id": "household",
+      "name": "Household",
+      "delivery": "3 days",
+      "columns": {
+        "dry": "Dry Clean"
+      },
+      "items": [
+        {
+          "id": "blanket-single",
+          "name": "Blanket (single)",
+          "dry": "250"
+        },
+        {
+          "id": "blanket-double",
+          "name": "Blanket (double)",
+          "dry": "375"
+        },
+        {
+          "id": "quilt-single",
+          "name": "Quilt (single)",
+          "dry": "150"
+        },
+        {
+          "id": "quilt-double",
+          "name": "Quilt (double)",
+          "dry": "250"
+        },
+        {
+          "id": "duvet",
+          "name": "Duvet",
+          "dry": "200",
+          "source": "site"
+        },
+        {
+          "id": "curtain",
+          "name": "Curtain",
+          "dry": "150+"
+        },
+        {
+          "id": "blind",
+          "name": "Blind",
+          "dry": "100+",
+          "source": "site"
+        },
+        {
+          "id": "bedsheet-single",
+          "name": "Bed Sheet (single)",
+          "dry": "40"
+        },
+        {
+          "id": "bedsheet-double",
+          "name": "Bed Sheet (double)",
+          "dry": "80"
+        },
+        {
+          "id": "carpet",
+          "name": "Carpet",
+          "dry": "16+",
+          "unit": "sq ft"
+        },
+        {
+          "id": "sofa",
+          "name": "Sofa",
+          "dry": "200+",
+          "unit": "seat"
+        },
+        {
+          "id": "mattress-single",
+          "name": "Mattress (single)",
+          "dry": "599"
+        },
+        {
+          "id": "mattress-double",
+          "name": "Mattress (double)",
+          "dry": "799"
+        }
+      ]
+    },
+    {
+      "id": "shoes",
+      "name": "Shoes",
+      "delivery": "3 days",
+      "columns": {
+        "price": "Price"
+      },
+      "items": [
+        {
+          "id": "shoe-sports-basic",
+          "name": "Sports Shoes (basic)",
+          "price": "160"
+        },
+        {
+          "id": "shoe-sports-branded",
+          "name": "Sports Shoes (branded)",
+          "price": "250"
+        },
+        {
+          "id": "shoe-high-end",
+          "name": "Branded High End",
+          "price": "300"
+        },
+        {
+          "id": "shoe-leather",
+          "name": "Leather / Suede",
+          "price": "400"
+        },
+        {
+          "id": "boots",
+          "name": "Boots",
+          "price": "600",
+          "source": "site"
+        }
+      ]
+    },
+    {
+      "id": "bags",
+      "name": "Bags",
+      "delivery": "3 days",
+      "columns": {
+        "price": "Price"
+      },
+      "items": [
+        {
+          "id": "handbag",
+          "name": "Handbag",
+          "price": "200+",
+          "source": "site"
+        },
+        {
+          "id": "cloth-bag",
+          "name": "Canvas / Jute / Cloth Bag",
+          "price": "150+",
+          "source": "site"
+        },
+        {
+          "id": "leather-handbag",
+          "name": "Leather Handbag",
+          "price": "300+",
+          "source": "site"
+        },
+        {
+          "id": "suitcase",
+          "name": "Suitcase",
+          "price": "150+",
+          "source": "site"
+        },
+        {
+          "id": "wallet",
+          "name": "Wallet",
+          "price": "150+",
+          "source": "site"
+        }
+      ]
+    }
+  ],
+  "home_services": {
+    "label": "Pre-Diwali Season Offer",
+    "headline": "Upto 50% OFF on selected Home Cleaning Services",
+    "_note": "Seasonal. 'was' is the regular rate, 'now' the offer rate. When the offer ends, set now = was (or new rate) and clear 'label'.",
+    "items": [
+      {
+        "id": "home-curtain",
+        "name": "Curtain Cleaning",
+        "icon": "🪟",
+        "was": "200",
+        "now": "150",
+        "unit": ""
+      },
+      {
+        "id": "home-carpet",
+        "name": "Carpet Cleaning",
+        "icon": "🧶",
+        "was": "20",
+        "now": "16",
+        "unit": "sq ft"
+      },
+      {
+        "id": "home-sofa",
+        "name": "Sofa Cleaning",
+        "icon": "🛋️",
+        "was": "200",
+        "now": "150",
+        "unit": "seat"
+      },
+      {
+        "id": "home-mattress",
+        "name": "Mattress Cleaning",
+        "icon": "🛏️",
+        "was": "499",
+        "now": "399",
+        "unit": ""
+      },
+      {
+        "id": "home-floor",
+        "name": "Floor Cleaning",
+        "icon": "✨",
+        "was": "5",
+        "now": "4",
+        "unit": "sq ft"
+      },
+      {
+        "id": "home-kitchen",
+        "name": "Kitchen Cleaning",
+        "icon": "🍳",
+        "was": "1599",
+        "now": "1399",
+        "unit": ""
+      }
+    ]
+  },
+  "membership": [
+    {
+      "id": "silver",
+      "name": "Silver Member",
+      "icon": "🥈",
+      "topup": "2000",
+      "discount": "10",
+      "border": "#C0C6CF",
+      "blurb": "Top up ₹2,000 and get 10% member discount on select services."
+    },
+    {
+      "id": "gold",
+      "name": "Gold Member",
+      "icon": "🥇",
+      "topup": "3000",
+      "discount": "20",
+      "border": "#F2A900",
+      "blurb": "Top up ₹3,000 and get 20% member discount on select services."
+    }
+  ],
+  "calculator": [
+    "wash-fold:price",
+    "wash-iron:price",
+    "shirt:dry",
+    "shirt:iron",
+    "trouser:dry",
+    "trouser:iron",
+    "coat:dry",
+    "suit-2:dry",
+    "suit-3:dry",
+    "kurta-short:dry",
+    "saree:dry",
+    "saree:iron",
+    "lehenga:dry",
+    "sweater-full:dry",
+    "blanket-single:dry",
+    "blanket-double:dry",
+    "quilt-double:dry",
+    "bedsheet-double:dry",
+    "shoe-sports-basic:price"
+  ],
+  "membership_note": "Ask our staff for details on which services the member discount covers."
+}

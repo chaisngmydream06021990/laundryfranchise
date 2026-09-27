@@ -17,77 +17,60 @@ use.
 
 ## Structure
 
-- `index.html`, `about.html`, `services.html`, `pricing.html`,
-  `stores.html`, `contact.html` — the six pages, sharing `header`/`footer`
-  markup (no templating — edits to nav/footer must be repeated per page).
-- `css/styles.css` — single stylesheet, CSS custom properties in `:root`.
-- `js/app.js` — page interactions (mobile nav, pincode checker, WhatsApp
-  form redirect, scroll reveal).
-- `js/offers-banner.js` — **single source of truth for the site-wide
-  announcement bar** shown on every page. Change the `OFFER` object there
-  to update the offer text everywhere at once; see the comment at the top
-  of the file for wiring details.
-- `robots.txt`, `sitemap.xml`, `llms.txt` — crawler/AI-assistant surfaces.
-  Keep `llms.txt` and the JSON-LD `OfferCatalog` blocks in `index.html` /
-  `pricing.html` in sync with the visible price tables whenever prices
-  change — mismatches read as untrustworthy data to both crawlers and
-  customers who check both.
+Static site, no framework. Six hand-written pages (`index.html`, `about.html`,
+`services.html`, `pricing.html`, `stores.html`, `contact.html`) plus generated
+folders. One stylesheet (`css/styles.css`), `js/app.js` (nav, pincode checker,
+forms), `js/offers-banner.js` (site-wide offer bar — edit its `OFFER` object),
+`js/estimator.js` (price estimator on pricing.html).
 
-## Bhopal outlets & area pages (generated)
+## Everything data-driven is built by one script
 
-`data/bhopal.json` is the single source of truth for the Bhopal outlets
-(addresses, Google rating) and the list of areas served. Each area has a
-`zone` (one of `zones`; controls grouping on the hub/homepage and each
-page's "Nearby Areas"), an `outlet` (its closest outlet id) and an optional
-`aka` (alternate name people search for, e.g. Bairagarh → Sant Hirdaram
-Nagar). `footer_areas` picks the six areas linked in every footer. After
-editing it, run:
+    python3 tools/build_site.py
 
-    python3 tools/build_bhopal_pages.py
+Standard library only; deterministic (a re-run with unchanged sources changes
+nothing); run it after editing any source below, then commit the output.
 
-which (standard library only, safe to re-run) regenerates:
+| Source | Controls |
+|---|---|
+| `data/prices.json` | **Every price** — pricing.html tabs, JSON-LD and estimator, all service pages, "Starting ₹X" cards, Bhopal pages, `llms.txt`. `facts` = free-pickup minimum, delivery days, first-order discount. Items marked `"source": "site"` aren't on the printed price list — confirm them. |
+| `data/services.json` | Service pages at `/services/<slug>/`, cards on services.html and the homepage, footer service links. Text uses `{p:ITEM:COL}`, `{now:HOME_ID}`, `{was:HOME_ID}`, `{fact:KEY}` placeholders so prices are never typed twice. |
+| `data/bhopal.json` | Outlets (addresses), city zones, 67 areas → `/bhopal/` and `/bhopal/<area>/`, outlet cards/JSON-LD on stores.html + index.html, footer area links. |
+| `content/guides/*.html` | Guides at `/guides/<slug>/` — a `<!--meta {json} -->` header then plain HTML. Add a file to add a guide. |
 
-- `bhopal/index.html` — hub listing every outlet and area
-- `bhopal/<area-slug>/index.html` — one page per area, with its closest
-  outlet, prices, FAQ and nearby areas (pages for areas removed from the
-  data file are deleted)
-- `sitemap.xml`
-- the `<!-- BEGIN:gen:NAME --> … <!-- END:gen:NAME -->` regions inside the
-  hand-written pages: outlet cards + outlet JSON-LD in `stores.html`,
-  area links (capped at 6 per zone) + outlet JSON-LD in `index.html`, the
-  "Laundry in Bhopal" footer column on all six pages, and the area list in
-  `llms.txt`.
+Hand-written pages contain `<!-- BEGIN:gen:NAME -->…<!-- END:gen:NAME -->`
+regions (nav, footer, price panels, cards, JSON-LD). Never edit inside them —
+they're overwritten. Generated pages and folders (`services/`, `guides/`,
+`bhopal/`, `sitemap.xml`, parts of `llms.txt`) must not be hand-edited either.
 
-Never hand-edit generated files or anything between gen markers — it is
-overwritten on the next run. Generated pages use root-absolute paths
-(`/css/styles.css`), which work on the www.cleanzit.co.in custom domain;
-preview them with `python3 -m http.server` from the repo root, not
-file://.
+The build fails loudly on broken references (unknown price id, missing guide,
+etc.) and if a hand-written page quotes a `₹N/kg` figure that isn't a real
+per-kg price. Other prices quoted in hand-written prose (homepage, contact
+FAQ) still need a manual check when prices change.
 
-## Prices
+Generated pages use root-absolute paths (`/css/styles.css`); preview with
+`python3 -m http.server` from the repo root, not file://.
 
-The price list in `pricing.html` (six tabs: Laundry, Men's Wear, Women's
-Wear, Woolen, Household, Shoes & Bags, plus **Home Services** and
-**Membership**) is the source of truth for current pricing. When prices
-change, update, in this order:
+## Content rules (important for search engines and AI assistants)
 
-1. The visible `<table>`/panel in `pricing.html`.
-2. The matching `OfferCatalog` entries in the JSON-LD `<script>` block in
-   `pricing.html`'s `<head>`.
-3. `llms.txt` at the repo root, and `headline_prices` in
-   `data/bhopal.json` (then re-run the generator).
-4. Any FAQ answer in `contact.html` (and its FAQPage JSON-LD, generated
-   from that same visible text) that quotes a specific price.
-
-The "Home Services" tab reflects a **seasonal Pre-Diwali offer** (up to 50%
-off). Update or remove it, and its struck-through prices, once the
-campaign ends — see the comment above that panel in `pricing.html`.
+- Only state facts the business has confirmed (posters, the site's own About
+  and Services pages). Don't invent guarantees, turnaround times, equipment or
+  capacity claims.
+- **Never publish ratings or review counts that aren't real**, and don't add
+  `aggregateRating` markup — Google ignores self-served business reviews, and
+  inflated figures are misleading to customers.
+- FAQ structured data must match an FAQ actually visible on the same page.
+- Keep one name per price item (e.g. "Men's suit (2 pcs)" vs "Women's suit
+  (2 pcs)") so tables and structured data never show two identical labels
+  with different prices.
 
 ## Known inconsistencies (pre-existing, not yet reconciled)
 
 - Contact email in JSON-LD/footers is `franchise@cleanzit.in` (`.in`, not
   `.co.in`) — this predates recent edits and hasn't been verified either
   way; don't "fix" it without confirming which domain is correct.
+- `services.html` "How It Works" says "Book via app" — confirm an app exists.
+- Homepage stats (10,000 families, 1,000,000 garments, 99% satisfaction) are
+  pre-existing claims; confirm or soften them.
 - Opening hours: `stores.html`/`contact.html` historically said
   "Mon-Sat 9 AM - 8 PM", but Google Maps shows the outlets open on Sunday
   (10–10:30 AM). Hours were deliberately left out of the outlet cards and

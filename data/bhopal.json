@@ -1,5 +1,5 @@
 {
-  "_readme": "Source of truth for the Bhopal outlet + area pages. Edit this file, then run: python3 tools/build_bhopal_pages.py — it regenerates bhopal/index.html, every bhopal/<area>/index.html, sitemap.xml and the marked regions in the hand-written pages. Each area needs a 'zone' (one of 'zones', controls grouping on the hub and the 'Nearby Areas' list) and an 'outlet' (its closest outlet id). Optional 'aka' = another name people search for (shown on the area's page). To stop showing an area, delete it; its page is removed on the next run.",
+  "_readme": "Source of truth for the Bhopal outlet + area pages. Edit this file, then run: python3 tools/build_site.py — it regenerates bhopal/index.html, every bhopal/<area>/index.html, sitemap.xml and the marked regions in the hand-written pages. Each area needs a 'zone' (one of 'zones', controls grouping on the hub and the 'Nearby Areas' list) and an 'outlet' (its closest outlet id). Optional 'aka' = another name people search for (shown on the area's page). To stop showing an area, delete it; its page is removed on the next run. 'headline_prices' refers to data/prices.json (ITEM:COLUMN, or home:HOME_ID).",
   "outlets": [
     {
       "id": "gulmohar",
@@ -8,9 +8,7 @@
       "street": "108, Doorsanchar Nagar, near Hotel Radisson, Gulmohar",
       "locality": "Gulmohar",
       "postalCode": "462039",
-      "main": true,
-      "google_rating": "4.6",
-      "google_reviews": 68
+      "main": true
     },
     {
       "id": "shahpura",
@@ -57,38 +55,14 @@
     "Shahpura"
   ],
   "headline_prices": [
-    [
-      "Wash & Fold",
-      "₹60 / kg"
-    ],
-    [
-      "Wash & Steam Iron",
-      "₹90 / kg"
-    ],
-    [
-      "Shirt / T-Shirt — dry clean",
-      "₹60"
-    ],
-    [
-      "Men's suit (2 / 3 pcs) — dry clean",
-      "₹200 / 300"
-    ],
-    [
-      "Saree — dry clean",
-      "from ₹120"
-    ],
-    [
-      "Blanket (single / double)",
-      "₹250 / 375"
-    ],
-    [
-      "Sofa cleaning at home",
-      "from ₹150 / seat"
-    ],
-    [
-      "Shoe cleaning",
-      "from ₹160"
-    ]
+    "wash-fold:price",
+    "wash-iron:price",
+    "shirt:dry",
+    "suit-2:dry",
+    "saree:dry",
+    "blanket-single:dry",
+    "home:home-sofa",
+    "shoe-sports-basic:price"
   ],
   "areas": [
     {
