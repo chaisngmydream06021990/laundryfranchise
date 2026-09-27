@@ -2,67 +2,72 @@
   Hindi homepage body (/hi/). Same placeholders and {{components}} as
   content/home.html; components render in Hindi on this page.
 -->
-        <section class="hero home-hero" id="home">
+        <section class="px-hero" aria-roledescription="carousel" aria-label="Cleanzit">
             <div class="container">
-                <div class="hero-content">
-                    <p class="home-eyebrow">भोपाल · लॉन्ड्री · ड्राई क्लीनिंग · प्रेस</p>
-                    <h1 class="hero-title">भोपाल में लॉन्ड्री और ड्राई क्लीनिंग, <span>घर से पिकअप</span></h1>
-                    <p class="hero-subtitle">एक मिनट में बुक करें — हम कपड़े आपके घर से ले जाते हैं, हर कपड़े को उसके फैब्रिक के हिसाब से साफ करते हैं, और {fact:delivery_days} दिन में वापस पहुंचाते हैं।</p>
-                    <ul class="home-chips">
-                        <li>🚚 ₹{fact:free_pickup_min} से ज़्यादा पर फ्री पिकअप</li>
-                        <li>🎉 पहले ऑर्डर पर {fact:first_order_off}% छूट</li>
-                        <li>📅 हफ्ते के सातों दिन खुला</li>
-                        <li>📍 {{outlet_count}} आउटलेट · {{area_count}} इलाके</li>
-                    </ul>
-                    <p class="home-prices">वॉश और फोल्ड <strong>{p:wash-fold:price}/किलो</strong> · शर्ट ड्राई क्लीन <strong>{p:shirt:dry}</strong> · स्टीम प्रेस <strong>{p:shirt:iron}</strong></p>
-                    <div class="hero-buttons">
-                        <a href="/pricing.html" class="btn btn-outline">पूरी रेट लिस्ट (English)</a>
-                    </div>
+                <div class="px-slides">
+                    <article class="px-slide is-active" aria-roledescription="slide">
+                        <img src="/assets/slide-counter.webp" alt="Cleanzit काउंटर पर ड्राई क्लीन की हुई साड़ियां और सूट" width="1600" height="800" fetchpriority="high">
+                        <div class="px-copy">
+                            <p class="px-eyebrow">लॉन्ड्री · ड्राई क्लीनिंग · प्रेस — भोपाल</p>
+                            <h1 class="px-title">भोपाल में लॉन्ड्री और ड्राई क्लीनिंग, घर से पिकअप</h1>
+                            <p>WhatsApp पर बताइए क्या चाहिए। हम कपड़े आपके घर से ले जाते हैं, हर कपड़े को उसके फैब्रिक के हिसाब से साफ करते हैं, और {fact:delivery_days} दिन में वापस पहुंचाते हैं।</p>
+                            <a class="btn px-cta" href="#book">पिकअप बुक करें</a>
+                        </div>
+                    </article>
+                    <article class="px-slide" aria-roledescription="slide">
+                        <img src="/assets/slide-machines.webp" alt="" width="1600" height="800" loading="lazy">
+                        <div class="px-copy">
+                            <h2 class="px-title">रोज़ की लॉन्ड्री {p:wash-fold:price}/किलो से</h2>
+                            <p>वॉश और फोल्ड या वॉश और स्टीम प्रेस — ₹{fact:free_pickup_min} से ज़्यादा के ऑर्डर पर फ्री पिकअप और डिलीवरी।</p>
+                            <a class="btn px-cta" href="/pricing.html">कीमतें देखें</a>
+                        </div>
+                    </article>
+{{offer_slide}}
                 </div>
-                <div class="hero-book">
-{{booking_form}}
+                <div class="px-progress">
+                    <button type="button" class="px-bar" aria-label="स्लाइड 1"><span></span></button>
+                    <button type="button" class="px-bar" aria-label="स्लाइड 2"><span></span></button>
+                    <button type="button" class="px-bar" aria-label="स्लाइड 3"><span></span></button>
+                    <button type="button" class="px-pause" aria-label="स्लाइड रोकें">❚❚</button>
                 </div>
             </div>
         </section>
 
-        <section class="lp-section" id="services">
+        <section class="px-book">
             <div class="container">
-                <h2 class="section-title">हमारी <span>सेवाएं</span></h2>
-                <p class="lp-sub">रोज़ की लॉन्ड्री, ड्राई क्लीनिंग, प्रेस, जूते, बिस्तर — और घर पर सोफा, कारपेट व किचन की सफाई।</p>
-{{services_grid}}
+{{quick_book}}
             </div>
         </section>
 
-        <section class="lp-section alt" id="how-it-works">
+        <section class="px-section" id="services">
             <div class="container">
-                <h2 class="section-title">कैसे <span>काम करता है</span></h2>
+                <div class="px-row-head">
+                    <h2 class="px-h2">हमारी सेवाएं</h2>
+                    <a class="px-more" href="/services.html">सभी देखें (English) ›</a>
+                </div>
+{{service_scroller}}
+            </div>
+        </section>
+
+        <section class="px-section px-soft" id="how-it-works">
+            <div class="container">
+                <h2 class="px-h2 px-center">कैसे काम करता है</h2>
                 <p class="lp-sub">कोई ऐप डाउनलोड करने की ज़रूरत नहीं — सब कुछ WhatsApp पर।</p>
 {{steps}}
             </div>
         </section>
 
-        <section class="lp-section" id="outlets">
+        <section class="px-section" id="faq">
             <div class="container">
-                <h2 class="section-title">भोपाल में हमारे <span>आउटलेट</span></h2>
-{{outlets}}
-            </div>
-        </section>
-
-        <section class="lp-section alt" id="areas">
-            <div class="container">
-                <h2 class="section-title">भोपाल के <span>इलाके</span></h2>
-                <p class="lp-sub">इन सभी इलाकों में ₹{fact:free_pickup_min} से ज़्यादा के ऑर्डर पर फ्री पिकअप और डिलीवरी।</p>
-{{areas}}
-            </div>
-        </section>
-
-        <section class="lp-section" id="faq">
-            <div class="container">
-                <h2 class="section-title">अक्सर पूछे जाने वाले <span>सवाल</span></h2>
+                <h2 class="px-h2 px-center">अक्सर पूछे जाने वाले सवाल</h2>
                 <div class="lp-faq">
                     <details>
                         <summary>भोपाल में लॉन्ड्री का रेट कितना है?</summary>
                         <p>Cleanzit पर वॉश और फोल्ड {p:wash-fold:price} प्रति किलो और वॉश और स्टीम प्रेस {p:wash-iron:price} प्रति किलो है। शर्ट की ड्राई क्लीनिंग {p:shirt:dry} है। नए ग्राहकों को पहले ऑर्डर पर {fact:first_order_off}% छूट मिलती है।</p>
+                    </details>
+                    <details>
+                        <summary>बुकिंग कैसे करें? क्या कोई ऐप है?</summary>
+                        <p>कोई ऐप नहीं चाहिए। ऊपर अपनी सेवा चुनें और WhatsApp पर भेज दें — या सीधे +91 77778 18187 पर मैसेज करें। हम पिकअप का समय तय कर देंगे।</p>
                     </details>
                     <details>
                         <summary>क्या पिकअप और डिलीवरी फ्री है?</summary>
@@ -76,10 +81,19 @@
                         <summary>क्या Cleanzit रविवार को भी खुला रहता है?</summary>
                         <p>हां, Cleanzit के सभी आउटलेट हफ्ते के सातों दिन खुले रहते हैं, रविवार को भी।</p>
                     </details>
-                    <details>
-                        <summary>बुकिंग कैसे करें? क्या कोई ऐप है?</summary>
-                        <p>कोई ऐप डाउनलोड करने की ज़रूरत नहीं। इस पेज पर फॉर्म भरें या सीधे WhatsApp पर +91 77778 18187 पर मैसेज करें — हम आपका पिकअप स्लॉट कन्फर्म कर देंगे।</p>
-                    </details>
                 </div>
+            </div>
+        </section>
+
+        <section class="px-section px-soft" id="areas">
+            <div class="container">
+                <h2 class="px-h2 px-center">भोपाल में घर से पिकअप</h2>
+                <p class="lp-sub">पूरे भोपाल में ₹{fact:free_pickup_min} से ज़्यादा के ऑर्डर पर फ्री पिकअप और डिलीवरी। अपना इलाका पक्का नहीं? WhatsApp पर पूछ लें।</p>
+                <details class="px-areas-all">
+                    <summary>सभी इलाके देखें</summary>
+{{areas}}
+                </details>
+                <h3 class="px-h3">हमारे आउटलेट</h3>
+{{outlets}}
             </div>
         </section>

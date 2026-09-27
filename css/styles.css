@@ -2392,3 +2392,699 @@ html[lang^="hi"] .lp-tag {
     text-transform: none;
     font-size: 0.9rem;
 }
+
+/* ============================================================
+   Premium, photo-led homepage (content/home.html) — dark header,
+   hero slides with progress bars, two-tap booking card, sideways
+   service row, light section headings. Brand palette throughout.
+   ============================================================ */
+
+/* Dark header on every page */
+header {
+    background-color: var(--color-primary);
+    box-shadow: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-links a {
+    color: #fff;
+    font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--color-secondary);
+}
+
+.nav-links .nav-lang {
+    color: var(--color-secondary);
+}
+
+.nav-links .nav-cta {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 6px;
+    color: #fff;
+    box-shadow: none;
+}
+
+.nav-links .nav-cta:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-primary);
+    transform: none;
+}
+
+.mobile-toggle {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        background: var(--color-primary);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+
+/* Light, airy section headings */
+.px-h2 {
+    font-weight: 300;
+    font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+    color: var(--color-primary);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.px-center {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.px-accent {
+    color: #0f7a8a;
+    margin-bottom: 2.5rem;
+}
+
+.px-h3 {
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    text-align: center;
+    margin: 2.5rem 0 1.25rem;
+}
+
+.px-section {
+    padding: 4.5rem 0;
+    background: #fff;
+}
+
+.px-soft {
+    background: var(--color-bg);
+}
+
+.px-row-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.px-more {
+    font-weight: 600;
+    color: var(--color-primary);
+    white-space: nowrap;
+}
+
+.px-more:hover {
+    text-decoration: underline;
+}
+
+/* ---- Hero slides ---- */
+.px-hero {
+    padding: calc(var(--header-height) + 1.5rem) 0 0;
+    background: #fff;
+}
+
+.px-slides {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 2.4 / 1;
+    max-width: 100%;
+    background: var(--color-primary);
+}
+
+.px-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s;
+}
+
+.px-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.px-slide img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.px-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(15, 22, 30, 0.88) 0%, rgba(15, 22, 30, 0.6) 42%, rgba(15, 22, 30, 0) 75%);
+}
+
+.px-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem 3rem;
+    color: #fff;
+}
+
+.px-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.px-title {
+    color: #fff;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 0.9rem;
+}
+
+.px-copy p {
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.4rem;
+    max-width: 480px;
+}
+
+.px-cta {
+    align-self: flex-start;
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    border-radius: 6px;
+    padding: 0.8rem 1.6rem;
+}
+
+.px-cta:hover {
+    background: var(--color-secondary-hover);
+    color: var(--color-primary);
+}
+
+.px-section .lp-sub {
+    text-align: center;
+    color: var(--color-text-light);
+    max-width: 680px;
+    margin: 0 auto 2rem;
+}
+
+.px-section .lp-cards {
+    max-width: none;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.px-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.9rem;
+}
+
+.px-bar {
+    flex: 1;
+    height: 4px;
+    border: none;
+    padding: 0;
+    background: #d5dde6;
+    border-radius: 2px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.px-bar span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--color-primary);
+}
+
+.px-pause {
+    border: none;
+    background: none;
+    color: #64748b;
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+}
+
+/* ---- Two-tap booking card, overlapping the hero's bottom edge ---- */
+.px-book {
+    background: #fff;
+    padding: 1.5rem 0 1rem;
+}
+
+.qb {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    box-shadow: 0 14px 40px rgba(27, 38, 49, 0.12);
+    padding: 1.6rem 1.75rem 1.25rem;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.qb-step {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.8rem;
+}
+
+.qb-step + .qb-chips,
+.qb-chips + .qb-step {
+    margin-top: 0;
+}
+
+.qb-chips + .qb-step {
+    margin-top: 1.25rem;
+}
+
+.qb-step h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.qb-step small {
+    font-weight: 400;
+    color: var(--color-text-light);
+}
+
+.qb-num {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.qb-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.qb-chip {
+    cursor: pointer;
+}
+
+.qb-chip input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.qb-chip span {
+    display: inline-block;
+    padding: 0.55rem 0.95rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    background: #fff;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.qb-chip:hover span {
+    border-color: var(--color-primary);
+}
+
+.qb-chip input:checked + span {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+
+.qb-chip input:focus-visible + span {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+.qb-more {
+    border: none;
+    background: none;
+    color: #0f7a8a;
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.5rem 0.4rem;
+}
+
+.qb-row {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.qb-row input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.85rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 0.98rem;
+}
+
+.qb-row input:focus {
+    outline: 2px solid var(--color-secondary);
+    border-color: var(--color-primary);
+}
+
+.qb-send {
+    background: #25D366;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.85rem 1.5rem;
+    white-space: nowrap;
+}
+
+.qb-send:hover {
+    background: #1eb457;
+    color: #fff;
+}
+
+.qb-bag {
+    margin-top: 0.85rem;
+    padding: 0.6rem 0.9rem;
+    background: #f4fdfd;
+    border-left: 3px solid var(--color-secondary);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: var(--color-primary);
+}
+
+.qb-fine {
+    margin-top: 0.9rem;
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}
+
+.qb-status {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.qb-status a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* The standalone /book/ page reuses .qb */
+.book-layout .qb {
+    margin: 0;
+}
+
+/* ---- Sideways service row ---- */
+.px-scroller {
+    position: relative;
+}
+
+.px-track {
+    list-style: none;
+    padding: 0.25rem 0 1rem;
+    margin: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(250px, 23%);
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.px-track::-webkit-scrollbar {
+    display: none;
+}
+
+.px-card {
+    scroll-snap-align: start;
+}
+
+.px-card a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(27, 38, 49, 0.08);
+    color: inherit;
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.px-card a:hover {
+    box-shadow: 0 10px 26px rgba(27, 38, 49, 0.14);
+    transform: translateY(-2px);
+}
+
+.px-visual {
+    aspect-ratio: 3 / 2;
+    background: var(--tone, #eef2f7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.2rem;
+    overflow: hidden;
+}
+
+.px-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.px-body {
+    padding: 1rem 1.1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+}
+
+.px-body h3 {
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.35;
+}
+
+.px-meta {
+    font-size: 0.86rem;
+    color: var(--color-text-light);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.px-price {
+    margin-top: auto;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.px-arrow {
+    position: absolute;
+    top: 30%;
+    z-index: 2;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    color: var(--color-primary);
+    font-size: 1.6rem;
+    line-height: 1;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.px-arrow:disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.px-prev {
+    left: -1.2rem;
+}
+
+.px-next {
+    right: -1.2rem;
+}
+
+.px-track-bar {
+    height: 4px;
+    background: #d5dde6;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.px-track-bar span {
+    display: block;
+    height: 100%;
+    width: 25%;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transition: margin-left 0.1s linear;
+}
+
+/* ---- Why + process ---- */
+.px-why {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.px-why span {
+    font-size: 1.8rem;
+}
+
+.px-why h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0.6rem 0 0.4rem;
+}
+
+.px-why p {
+    color: var(--color-text-light);
+    font-size: 0.93rem;
+}
+
+.px-why a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.px-process li {
+    color: var(--color-primary);
+    border-color: #cbd5e1;
+    background: #fff;
+}
+
+.px-areas {
+    margin-top: 2rem;
+}
+
+.px-areas a {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.px-areas-all {
+    max-width: 1000px;
+    margin: 1rem auto 0;
+}
+
+.px-areas-all > summary {
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    margin-bottom: 1.25rem;
+}
+
+/* ---- Footer: a centred link row under the columns ---- */
+.footer-links {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 2rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-links a {
+    color: #e2e8f0;
+    font-size: 0.92rem;
+}
+
+.footer-links a:hover {
+    color: var(--color-secondary);
+}
+
+@media (max-width: 860px) {
+    .px-slides {
+        aspect-ratio: auto;
+        min-height: 420px;
+    }
+
+    .px-slide::after {
+        background: linear-gradient(180deg, rgba(15, 22, 30, 0.35) 0%, rgba(15, 22, 30, 0.9) 70%);
+    }
+
+    .px-copy {
+        justify-content: flex-end;
+        padding: 1.5rem;
+    }
+
+    .px-track {
+        grid-auto-columns: 72%;
+    }
+
+    .px-arrow {
+        display: none;
+    }
+
+    .qb {
+        padding: 1.25rem;
+    }
+
+    .qb-row {
+        flex-direction: column;
+    }
+
+    /* Two compact columns so step 2 stays close on a phone */
+    .qb-chips {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem;
+    }
+
+    .qb-chip span {
+        display: block;
+        height: 100%;
+        padding: 0.5rem 0.6rem;
+        border-radius: 10px;
+        font-size: 0.82rem;
+        line-height: 1.3;
+    }
+
+    .qb-more {
+        grid-column: 1 / -1;
+        text-align: left;
+    }
+}

@@ -44,35 +44,19 @@ e = html.escape
 # UI strings for shared components. Page copy lives in data/ and content/.
 T = {
     "en": {
-        "nav": [("Services", "/services.html"), ("Pricing", "/pricing.html"), ("Areas", "/bhopal/"), ("Stores", "/stores.html"),
-                ("Guides", "/guides/"), ("About", "/about.html"), ("Contact", "/contact.html")],
+        "nav": [("Services", "/services.html"), ("Pricing", "/pricing.html"), ("Stores", "/stores.html"), ("Contact", "/contact.html")],
         "lang_link": ("हिंदी", "/hi/", "hi"), "book_btn": "Book Pickup", "book_href": "/book/",
-        "book_title": "Book a Free Pickup", "book_sub": "Takes a minute. We confirm your slot on WhatsApp.",
-        "f_service": "Service", "f_service_any": "Several items / not sure", "f_name": "Your name", "f_name_ph": "Full name",
-        "f_phone": "Mobile number", "f_phone_ph": "10-digit mobile", "f_area": "Area in Bhopal", "f_area_choose": "Choose your area",
-        "f_area_other": "Other area (write it in the address)", "f_address": "Pickup address", "f_address_ph": "House / flat no., street, landmark",
-        "f_date": "Pickup date", "f_time": "Preferred time", "t": ["Morning", "Afternoon", "Evening"],
-        "f_notes": "Items or anything we should know (optional)", "notes_msg": "Notes", "f_notes_ph": "e.g. 2 sarees, 1 blanket, stain on a shirt",
-        "submit": "Send booking on WhatsApp", "fine": "Free pickup & delivery on orders above ₹{min} · {off}% off your first order · Open 7 days",
+        "fine": "Free pickup & delivery on orders above ₹{min} · {off}% off your first order · Open 7 days",
         "status": "Already booked? Ask for your order status on WhatsApp", "status_msg": "Hi Cleanzit, I'd like to know the status of my order.",
-        "intro": "Hi Cleanzit, I'd like to book a pickup.", "err_required": "Please fill in:", "err_phone": "Please enter a valid 10-digit mobile number.",
-        "sent": "Opening WhatsApp… If it didn't open, message us at", "msg_date": "Date", "msg_time": "Time",
+        "intro": "Hi Cleanzit, I'd like to book a pickup.",
         "bar_call": "Call", "bar_wa": "WhatsApp", "bar_book": "Book Pickup",
     },
     "hi": {
-        "nav": [("सेवाएं", "/hi/#services"), ("कीमतें", "/pricing.html"), ("इलाके", "/hi/#areas"), ("स्टोर", "/stores.html"),
-                ("संपर्क", "/contact.html")],
+        "nav": [("सेवाएं", "/hi/#services"), ("कीमतें", "/pricing.html"), ("स्टोर", "/stores.html"), ("संपर्क", "/contact.html")],
         "lang_link": ("English", "/", "en"), "book_btn": "पिकअप बुक करें", "book_href": "/hi/#book",
-        "book_title": "फ्री पिकअप बुक करें", "book_sub": "बस एक मिनट लगेगा। आपका स्लॉट हम WhatsApp पर कन्फर्म करेंगे।",
-        "f_service": "सेवा", "f_service_any": "कई कपड़े / पक्का नहीं पता", "f_name": "आपका नाम", "f_name_ph": "पूरा नाम",
-        "f_phone": "मोबाइल नंबर", "f_phone_ph": "10 अंकों का मोबाइल नंबर", "f_area": "भोपाल में इलाका", "f_area_choose": "अपना इलाका चुनें",
-        "f_area_other": "कोई और इलाका (पते में लिखें)", "f_address": "पिकअप का पता", "f_address_ph": "मकान / फ्लैट नंबर, गली, लैंडमार्क",
-        "f_date": "पिकअप की तारीख", "f_time": "पसंदीदा समय", "t": ["सुबह", "दोपहर", "शाम"],
-        "f_notes": "कपड़े या कोई और जानकारी (वैकल्पिक)", "notes_msg": "नोट", "f_notes_ph": "जैसे 2 साड़ी, 1 कंबल, शर्ट पर दाग",
-        "submit": "WhatsApp पर बुकिंग भेजें", "fine": "₹{min} से ज़्यादा के ऑर्डर पर फ्री पिकअप और डिलीवरी · पहले ऑर्डर पर {off}% छूट · हफ्ते के सातों दिन खुला",
+        "fine": "₹{min} से ज़्यादा के ऑर्डर पर फ्री पिकअप और डिलीवरी · पहले ऑर्डर पर {off}% छूट · हफ्ते के सातों दिन खुला",
         "status": "पहले से बुक किया है? अपने ऑर्डर का स्टेटस WhatsApp पर पूछें", "status_msg": "नमस्ते Cleanzit, मुझे अपने ऑर्डर का स्टेटस जानना है।",
-        "intro": "नमस्ते Cleanzit, मुझे पिकअप बुक करना है।", "err_required": "कृपया ये भरें:", "err_phone": "कृपया सही 10 अंकों का मोबाइल नंबर डालें।",
-        "sent": "WhatsApp खुल रहा है… अगर नहीं खुला, तो हमें इस नंबर पर मैसेज करें:", "msg_date": "तारीख", "msg_time": "समय",
+        "intro": "नमस्ते Cleanzit, मुझे पिकअप बुक करना है।",
         "bar_call": "कॉल", "bar_wa": "WhatsApp", "bar_book": "पिकअप बुक करें",
     },
 }
@@ -232,69 +216,65 @@ def mobile_bar(lang="en"):
 </div>'''
 
 
-def booking_form(ctx, lang="en"):
-    """WhatsApp booking form. js/booking.js validates it, builds the message
-    from the data-msg labels, and pre-selects ?service=<slug>&area=<slug>."""
-    t = T[lang]
+QB = {
+    "en": {"step1": "What do you need?", "step2": "Where should we pick up?", "optional": "optional",
+           "more": "+ More services", "area_ph": "Your area, e.g. Kolar Road", "send": "Send on WhatsApp",
+           "fine": "We reply on WhatsApp to fix a pickup time · No app, no sign-up · Free pickup above ₹{min} · {off}% off your first order",
+           "full": "Hi Cleanzit! I'd like to book a pickup for {service} in {area}.",
+           "service": "Hi Cleanzit! I'd like to book a pickup for {service}.",
+           "area": "Hi Cleanzit! I'd like to book a pickup in {area}.",
+           "none": "Hi Cleanzit! I'd like to book a pickup.",
+           "bag": "My bag", "status": "Already booked? Ask for your order status on WhatsApp",
+           "status_msg": "Hi Cleanzit, I'd like to know the status of my order."},
+    "hi": {"step1": "क्या चाहिए?", "step2": "पिकअप कहां से करें?", "optional": "वैकल्पिक",
+           "more": "+ और सेवाएं", "area_ph": "आपका इलाका, जैसे कोलार रोड", "send": "WhatsApp पर भेजें",
+           "fine": "हम WhatsApp पर पिकअप का समय तय करेंगे · कोई ऐप या साइन-अप नहीं · ₹{min} से ज़्यादा पर फ्री पिकअप · पहले ऑर्डर पर {off}% छूट",
+           "full": "नमस्ते Cleanzit! मुझे {area} में {service} के लिए पिकअप बुक करना है।",
+           "service": "नमस्ते Cleanzit! मुझे {service} के लिए पिकअप बुक करना है।",
+           "area": "नमस्ते Cleanzit! मुझे {area} में पिकअप बुक करना है।",
+           "none": "नमस्ते Cleanzit! मुझे पिकअप बुक करना है।",
+           "bag": "मेरे कपड़े", "status": "पहले से बुक किया है? अपने ऑर्डर का स्टेटस WhatsApp पर पूछें",
+           "status_msg": "नमस्ते Cleanzit, मुझे अपने ऑर्डर का स्टेटस जानना है।"},
+}
+QB_MAIN = 8   # chips shown before "+ More"
+
+
+def quick_book(ctx, lang="en"):
+    """Two-tap booking: pick a service (optional), type an area (optional),
+    send on WhatsApp. Name and number come from WhatsApp itself, so we don't
+    ask for them. js/booking.js builds the message and pre-selects
+    ?service=<slug>&area=<slug>&items=<bag>."""
+    q = QB[lang]
     P, B = ctx["prices"], ctx["bhopal"]
-    hi = ctx.get("hi", {})
-    svc_hi = hi.get("service_names", {})
-    area_hi = hi.get("area_names", {})
-    def sname(sv):
-        return svc_hi.get(sv["slug"], sv["name"]) if lang == "hi" else sv["name"]
-    def aname(a):
-        return area_hi.get(a["name"], a["name"]) if lang == "hi" else a["name"]
-    svc_opts = "\n".join(f'            <option value="{e(sname(sv))}" data-slug="{sv["slug"]}">{e(sname(sv))}</option>' for sv in ctx["services"]["services"])
-    groups = []
-    for z in B["zones"]:
-        zl = hi.get("zone_names", {}).get(z, z) if lang == "hi" else z
-        opts = "\n".join(f'                <option value="{e(aname(a))}" data-slug="{slugify(a["name"])}">{e(aname(a))}</option>' for a in B["areas"] if a["zone"] == z)
-        groups.append(f'            <optgroup label="{e(zl)}">\n{opts}\n            </optgroup>')
-    fine = t["fine"].format(min=P.facts["free_pickup_min"], off=P.facts["first_order_off"])
-    status = wa_link(t["status_msg"])
-    return f'''<form class="book-form" id="book" novalidate data-wa="{PHONE_ORDERS}" data-intro="{e(t["intro"])}"
-      data-err-required="{e(t["err_required"])}" data-err-phone="{e(t["err_phone"])}" data-sent="{e(t["sent"])} {PHONE_ORDERS_DISPLAY}">
-    <h2>{e(t["book_title"])}</h2>
-    <p class="book-sub">{e(t["book_sub"])}</p>
-    <div class="book-grid">
-        <label class="book-wide">{e(t["f_service"])}
-            <select name="service" data-msg="{e(t["f_service"])}">
-{svc_opts}
-            <option value="{e(t["f_service_any"])}" data-slug="any">{e(t["f_service_any"])}</option>
-            </select>
-        </label>
-        <label>{e(t["f_name"])}
-            <input name="name" type="text" autocomplete="name" placeholder="{e(t["f_name_ph"])}" required data-msg="{e(t["f_name"])}">
-        </label>
-        <label>{e(t["f_phone"])}
-            <input name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="{e(t["f_phone_ph"])}" required data-msg="{e(t["f_phone"])}">
-        </label>
-        <label class="book-wide">{e(t["f_area"])}
-            <select name="area" required data-msg="{e(t["f_area"])}">
-            <option value="">{e(t["f_area_choose"])}</option>
-{chr(10).join(groups)}
-            <option value="{e(t["f_area_other"])}" data-slug="other">{e(t["f_area_other"])}</option>
-            </select>
-        </label>
-        <label class="book-wide">{e(t["f_address"])}
-            <input name="address" type="text" autocomplete="street-address" placeholder="{e(t["f_address_ph"])}" required data-msg="{e(t["f_address"])}">
-        </label>
-        <label>{e(t["f_date"])}
-            <input name="date" type="date" required data-msg="{e(t["msg_date"])}">
-        </label>
-        <label>{e(t["f_time"])}
-            <select name="time" data-msg="{e(t["msg_time"])}">
-{chr(10).join(f'            <option>{e(x)}</option>' for x in t["t"])}
-            </select>
-        </label>
-        <label class="book-wide">{e(t["f_notes"])}
-            <textarea name="notes" rows="2" placeholder="{e(t["f_notes_ph"])}" data-msg="{e(t["notes_msg"])}"></textarea>
-        </label>
+    hi = ctx["hi"]
+    order = ctx["services"]["home_page"] + [x["slug"] for x in ctx["services"]["services"] if x["slug"] not in ctx["services"]["home_page"]]
+    chips = []
+    for i, slug in enumerate(order):
+        sv = ctx["services_by_slug"][slug]
+        name = hi["service_names"][slug] if lang == "hi" else sv["name"]
+        extra = ' class="qb-chip qb-extra" hidden' if i >= QB_MAIN else ' class="qb-chip"'
+        chips.append(f'        <label{extra}><input type="radio" name="service" value="{e(name)}" data-slug="{slug}"><span>{sv["icon"]} {e(name)}</span></label>')
+    areas = "\n".join(f'        <option value="{e(hi["area_names"][a["name"]] if lang == "hi" else a["name"])}" data-slug="{slugify(a["name"])}"></option>' for a in B["areas"])
+    fine = q["fine"].format(min=P.facts["free_pickup_min"], off=P.facts["first_order_off"])
+    dl = "qb-areas-" + lang
+    return f'''<form class="qb" id="book" novalidate data-wa="{PHONE_ORDERS}" data-msg-full="{e(q["full"])}" data-msg-service="{e(q["service"])}"
+      data-msg-area="{e(q["area"])}" data-msg-none="{e(q["none"])}" data-bag="{e(q["bag"])}">
+    <div class="qb-step"><span class="qb-num">1</span><h2>{e(q["step1"])}</h2></div>
+    <div class="qb-chips" role="radiogroup" aria-label="{e(q["step1"])}">
+{chr(10).join(chips)}
+        <button type="button" class="qb-more">{e(q["more"])}</button>
     </div>
-    <p class="book-error" role="alert" hidden></p>
-    <button type="submit" class="btn book-submit">💬 {e(t["submit"])}</button>
-    <p class="book-fine">{e(fine)}</p>
-    <p class="book-status"><a href="{e(status)}" target="_blank" rel="noopener">{e(t["status"])}</a></p>
+    <div class="qb-step"><span class="qb-num">2</span><h2>{e(q["step2"])} <small>({e(q["optional"])})</small></h2></div>
+    <div class="qb-row">
+        <input name="area" type="text" list="{dl}" autocomplete="address-level3" placeholder="{e(q["area_ph"])}" aria-label="{e(q["step2"])}">
+        <datalist id="{dl}">
+{areas}
+        </datalist>
+        <button type="submit" class="btn qb-send">💬 {e(q["send"])}</button>
+    </div>
+    <p class="qb-bag" hidden></p>
+    <p class="qb-fine">{e(fine)}</p>
+    <p class="qb-status"><a href="{e(wa_link(q["status_msg"]))}" target="_blank" rel="noopener">{e(q["status"])}</a></p>
 </form>'''
 
 
@@ -316,15 +296,6 @@ def footer_cols(ctx, indent, lang="en"):
     return f'''{indent}<div class="footer-col">
 {indent}    <h4>Cleanzit</h4>
 {indent}    <p>Laundry, dry cleaning, steam ironing &amp; home cleaning in Bhopal, with free doorstep pickup.</p>
-{indent}    <ul>
-{indent}        <li><a href="/about.html">About Us</a></li>
-{indent}        <li><a href="/pricing.html">Pricing</a></li>
-{indent}        <li><a href="/stores.html">Stores</a></li>
-{indent}        <li><a href="/guides/">Guides</a></li>
-{indent}        <li><a href="/contact.html">Contact</a></li>
-{indent}        <li><a href="/hi/" lang="hi">हिंदी में देखें</a></li>
-{indent}        <li><a href="/franchise.html">Franchise enquiries</a></li>
-{indent}    </ul>
 {indent}</div>
 {indent}<div class="footer-col">
 {indent}    <h4>Services in Bhopal</h4>
@@ -337,7 +308,7 @@ def footer_cols(ctx, indent, lang="en"):
 {indent}    <h4>Laundry in Bhopal</h4>
 {indent}    <ul>
 {a_links}
-{indent}            <li><a href="/bhopal/">All {len(ctx["bhopal"]["areas"])} areas →</a></li>
+{indent}            <li><a href="/bhopal/">All areas →</a></li>
 {indent}    </ul>
 {indent}</div>
 {indent}<div class="footer-col">
@@ -350,6 +321,15 @@ def footer_cols(ctx, indent, lang="en"):
 {indent}        <li>{e(ctx["bhopal"]["open_note"])}</li>
 {indent}    </ul>
 {indent}</div>
+{indent}<nav class="footer-links" aria-label="More">
+{indent}    <a href="/about.html">About</a>
+{indent}    <a href="/pricing.html">Pricing</a>
+{indent}    <a href="/stores.html">Stores</a>
+{indent}    <a href="/guides/">Guides</a>
+{indent}    <a href="/contact.html">Contact</a>
+{indent}    <a href="/hi/" lang="hi">हिंदी</a>
+{indent}    <a href="/franchise.html">Franchise enquiries</a>
+{indent}</nav>
 {indent_block(mobile_bar(lang), indent)}'''
 
 
@@ -576,12 +556,12 @@ def page_shell(ctx, *, title, description, canonical, body, ld, active, og_type=
     <meta property="og:title" content="{e(title)}">
     <meta property="og:description" content="{e(description)}">
     <meta property="og:url" content="{canonical}">
-    <meta property="og:image" content="{BASE}/assets/india_laundry_hero.png">
+    <meta property="og:image" content="{BASE}/assets/og-cleanzit.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="/assets/logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">{hind}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">{hind}
     <link rel="stylesheet" href="/css/styles.css">
 {lds}
 </head>
@@ -631,6 +611,7 @@ def page_shell(ctx, *, title, description, canonical, body, ld, active, og_type=
 
     <script src="/js/app.js"></script>
     <script src="/js/booking.js" defer></script>
+    <script src="/js/carousel.js" defer></script>
 </body>
 
 </html>
@@ -744,11 +725,11 @@ def build_book_page(ctx):
             <div class="container">
                 {crumbs_html(trail)}
                 <h1>Book a Free <span>Pickup</span></h1>
-                <p class="lp-lede">Fill in the form and send it to us on WhatsApp — we'll confirm your pickup slot. Free pickup &amp; delivery above ₹{f["free_pickup_min"]}, delivered in {f["delivery_days"]} days, open 7 days a week.</p>
+                <p class="lp-lede">Tap a service, add your area and send — we'll reply on WhatsApp to fix a pickup time. Free pickup &amp; delivery above ₹{f["free_pickup_min"]}, delivered in {f["delivery_days"]} days, open 7 days a week.</p>
             </div>
         </section>''',
         section(f'''                <div class="book-layout">
-{indent_block(booking_form(ctx), "                    ")}
+{indent_block(quick_book(ctx), "                    ")}
                     <aside class="book-aside">
                         <h2>What happens next</h2>
 {indent_block(steps_html(ctx), "                        ")}
@@ -759,14 +740,14 @@ def build_book_page(ctx):
     ])
     ld = [{"@context": "https://schema.org", "@graph": [breadcrumb_ld(trail)]}]
     return page_shell(ctx, title="Book a Laundry Pickup in Bhopal | Cleanzit",
-                      description=f"Book a free laundry & dry cleaning pickup in Bhopal in a minute — pick a service, area, date and time, and send it on WhatsApp. Free pickup above ₹{f['free_pickup_min']}.",
+                      description=f"Book a free laundry & dry cleaning pickup in Bhopal: tap a service, type your area, send on WhatsApp. Free pickup above ₹{f['free_pickup_min']}.",
                       canonical=url, body=body, ld=ld, active="/book/")
 
 
 def faqs_from_html(text):
     return [(re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", q))).strip(),
              re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", a))).strip())
-            for q, a in re.findall(r"<summary[^>]*>(.*?)</summary>\s*<p[^>]*>(.*?)</p>", text, re.S)]
+            for q, a in re.findall(r"<details(?![^>]*px-areas-all)[^>]*>\s*<summary[^>]*>(.*?)</summary>\s*<p[^>]*>(.*?)</p>", text, re.S)]
 
 
 def build_service_hi(ctx, s, h):
@@ -899,7 +880,7 @@ def build_guide(ctx, g):
         "@type": "Article", "@id": url + "#article", "headline": g["h1"], "description": g["description"],
         "datePublished": g["date"], "dateModified": g.get("updated", g["date"]), "inLanguage": "en-IN",
         "mainEntityOfPage": url, "author": ORG_REF, "publisher": ORG_REF,
-        "image": f"{BASE}/assets/india_laundry_hero.png"}]
+        "image": f"{BASE}/assets/og-cleanzit.jpg"}]
     if g.get("faqs"):
         parts.append(section(f"                <h2>Frequently Asked Questions</h2>\n{faq_block(g['faqs'])}"))
         ld_graph.append(faq_ld(g["faqs"], url))
@@ -937,10 +918,9 @@ def build_hub(ctx):
     f = P.facts
     url = f"{BASE}/bhopal/"
     trail = [("Home", BASE + "/"), ("Bhopal", url)]
-    n_out, n_areas = len(B["outlets"]), len(B["areas"])
     qas = [
         ("Where are Cleanzit's laundry outlets in Bhopal?",
-         f"Cleanzit has {n_out} outlets in Bhopal: " + "; ".join(f"{o['short']} — {full_address(o)}" for o in B["outlets"]) + "."),
+         "Cleanzit's outlets in Bhopal: " + "; ".join(f"{o['short']} — {full_address(o)}" for o in B["outlets"]) + "."),
         ("Do you offer free laundry pickup and delivery in Bhopal?",
          f"Yes. Pickup and delivery are free on orders above ₹{f['free_pickup_min']}. Book on WhatsApp at {PHONE_ORDERS_DISPLAY} and we'll collect from your door."),
         ("How much does laundry cost in Bhopal?",
@@ -948,13 +928,13 @@ def build_hub(ctx):
         ("How long does laundry and dry cleaning take?",
          f"Standard delivery is within {f['delivery_days']} days for laundry, dry cleaning, woolens, household items and shoes."),
         ("Are Cleanzit outlets open on Sunday?",
-         f"Yes — all {n_out} Cleanzit outlets in Bhopal are open 7 days a week, including Sunday. Check each outlet's timings on Google Maps, or book a pickup any day on WhatsApp."),
+         "Yes — every Cleanzit outlet in Bhopal is open 7 days a week, including Sunday. Check each outlet's timings on Google Maps, or book a pickup any day on WhatsApp."),
         ("Which areas of Bhopal does Cleanzit cover?",
          "Free doorstep pickup and delivery across Bhopal — " + "; ".join(
              z + ": " + ", ".join(a["name"] for a in B["areas"] if a["zone"] == z) for z in B["zones"]) + "."),
     ]
     outlets = "\n".join(outlet_card(o) for o in B["outlets"])
-    lede = P.fill(f"{n_out} Cleanzit outlets and free doorstep pickup &amp; delivery on orders above ₹{{fact:free_pickup_min}}. "
+    lede = P.fill("Cleanzit outlets across Bhopal and free doorstep pickup &amp; delivery on orders above ₹{fact:free_pickup_min}. "
                   "Laundry {p:wash-fold:price}/kg, shirt dry cleaning {p:shirt:dry}, delivered in {fact:delivery_days} days — and {fact:first_order_off}% off your first order.")
     body = "\n\n".join([
         hero(trail, "Laundry &amp; Dry Cleaning in <span>Bhopal</span>", lede,
@@ -965,7 +945,7 @@ def build_hub(ctx):
 {outlets}
                 </div>''', alt=True, id_="outlets"),
         section(f'''                <h2>📍 Areas We Serve in Bhopal</h2>
-                <p class="lp-sub">Free doorstep pickup &amp; delivery across {n_areas} neighbourhoods. Pick your area for local details and your closest outlet.</p>
+                <p class="lp-sub">Free doorstep pickup &amp; delivery across Bhopal. Pick your area for local details and your closest outlet.</p>
 {area_groups(ctx)}
                 <p class="lp-sub" style="margin-top:1rem;">Don't see your area? <a href="{e(wa_link("Hi Cleanzit, do you pick up from my area in Bhopal?"))}" target="_blank" rel="noopener">Ask us on WhatsApp</a> — we'll confirm the same day.</p>''', id_="areas"),
         section(f'''                <h2>Our Services</h2>
@@ -985,7 +965,7 @@ def build_hub(ctx):
              "url": f"{BASE}/bhopal/{slugify(a['name'])}/"} for i, a in enumerate(B["areas"])]},
         faq_ld(qas, url)]}]
     return page_shell(ctx, title="Laundry & Dry Cleaning in Bhopal | Free Pickup | Cleanzit",
-                      description=f"Cleanzit laundry & dry cleaning in Bhopal: {n_out} outlets, free pickup across {n_areas} areas. " + P.fill("Wash & fold {p:wash-fold:price}/kg, free pickup above ₹{fact:free_pickup_min}, {fact:first_order_off}% off first order."),
+                      description="Cleanzit laundry & dry cleaning in Bhopal — stores in Gulmohar, Shahpura, Bagmugaliya, Kolar. " + P.fill("Wash & fold {p:wash-fold:price}/kg, free pickup above ₹{fact:free_pickup_min}, {fact:first_order_off}% off first order."),
                       canonical=url, body=body, ld=ld, active="/bhopal/")
 
 
@@ -1005,7 +985,7 @@ def build_area(ctx, area):
         (f"Do you offer laundry pickup in {name}, Bhopal?",
          f"Yes. Cleanzit picks up and delivers across {name}{aka}, free on orders above ₹{f['free_pickup_min']}. Book on WhatsApp at {PHONE_ORDERS_DISPLAY} with your address and a preferred time."),
         (f"Which Cleanzit outlet is closest to {name}?",
-         f"{where}, at {full_address(o)}. You can also drop off at any of our {len(B['outlets'])} Bhopal outlets."),
+         f"{where}, at {full_address(o)}. You can also drop off at any Cleanzit outlet in Bhopal."),
         (f"How much does dry cleaning cost in {name}?",
          P.fill("Prices are the same across Bhopal: shirt or trouser dry cleaning {p:shirt:dry}, 2-piece suit {p:suit-2:dry}, saree from {p:saree:dry}. Laundry is {p:wash-fold:price}/kg (wash & fold) or {p:wash-iron:price}/kg (wash & steam iron). New customers get {fact:first_order_off}% off the first order.")),
         (f"How long does delivery take in {name}?",
@@ -1278,42 +1258,71 @@ def service_grid(ctx, slugs, detailed, lang="en"):
     return '<div class="lp-service-grid">\n' + "\n".join(cards) + "\n</div>"
 
 
-def stats_html(ctx):
-    B = ctx["bhopal"]
-    items = [(str(len(B["outlets"])), "Outlets in Bhopal"), (str(len(B["areas"])), "Areas with free pickup"),
-             ("7", "Days a week"), ("10,000+", "Happy families")]
-    cells = "\n".join(f'''            <div class="stat-item">
-                <span class="stat-number">{n}</span>
-                <span class="stat-label">{e(l)}</span>
-            </div>''' for n, l in items)
-    return f'''        <section class="stats-section">
-    <div class="container">
-        <div class="stats-grid">
-{cells}
-        </div>
-    </div>
-</section>'''
+TONES = ["#E6FBFB", "#FFF3E0", "#EEF0FF", "#E9F8EF", "#FDECEF", "#EAF4FF", "#FFF8DB"]
 
 
-def offers_html(ctx):
+def service_scroller(ctx, lang="en"):
+    """Sideways-scrolling service cards (arrows + progress bar in js/carousel.js).
+    A service may set "image" in data/services.json to show a real photo."""
+    hi = ctx["hi"]
+    cards = []
+    for i, sv in enumerate(ctx["services"]["services"]):
+        st = service_start(ctx, sv, lang)
+        if lang == "hi":
+            name, href = hi["service_names"][sv["slug"]], hi_service_href(ctx, sv["slug"])
+            price = f"{st[0]} से शुरू" if st else "कीमत के लिए पूछें"
+            meta = "पूरे भोपाल में"
+        else:
+            name, href = sv["name"], f"/services/{sv['slug']}/"
+            price = f"Starting {st[0]}" if st else "Ask for a quote"
+            meta = ctx["prices"].fill(sv["short"])
+        visual = (f'<img src="{e(sv["image"])}" alt="" loading="lazy" width="600" height="400">' if sv.get("image")
+                  else f'<span aria-hidden="true">{sv["icon"]}</span>')
+        cards.append(f'''        <li class="px-card">
+            <a href="{href}">
+                <div class="px-visual" style="--tone: {TONES[i % len(TONES)]}">{visual}</div>
+                <div class="px-body">
+                    <h3>{e(name)}</h3>
+                    <p class="px-meta">{e(meta)}</p>
+                    <p class="px-price">{e(price)}</p>
+                </div>
+            </a>
+        </li>''')
+    prev_l, next_l = ("पिछला", "अगला") if lang == "hi" else ("Previous", "Next")
+    return f'''<div class="px-scroller">
+    <button type="button" class="px-arrow px-prev" aria-label="{prev_l}">‹</button>
+    <ul class="px-track">
+{chr(10).join(cards)}
+    </ul>
+    <button type="button" class="px-arrow px-next" aria-label="{next_l}">›</button>
+    <div class="px-track-bar" aria-hidden="true"><span></span></div>
+</div>'''
+
+
+def offer_slide(ctx, lang="en"):
+    """Third hero slide: the seasonal home-cleaning offer while it runs, else the first-order discount."""
     P = ctx["prices"]
     f = P.facts
-    hs = P.data["home_services"]
-    top = max(int(m["discount"]) for m in P.data["membership"])
-    cards = [("🎉", f"{f['first_order_off']}% off", "your first order", "New to Cleanzit? Your first laundry or dry cleaning order is discounted automatically.", "/book/", "Book your first pickup"),
-             ("🚚", "Free pickup", f"on orders above ₹{f['free_pickup_min']}", "Doorstep pickup and delivery anywhere we serve in Bhopal.", "/bhopal/", "Check your area"),
-             ("🎖️", f"Up to {top}% off", "with membership", "Top up once and get a member discount on select services.", "/pricing.html", "See membership plans")]
     if P.offer_on:
-        cards.insert(2, ("🪔", hs["label"], hs["headline"].replace("Upto", "Up to"), "Sofa, carpet, mattress, curtain, floor and kitchen cleaning at your home.",
-                         "/services/home-deep-cleaning-bhopal/", "See home cleaning"))
-    out = "\n".join(f'''    <a class="offer-card" href="{href}">
-        <span class="offer-icon" aria-hidden="true">{icon}</span>
-        <strong>{e(big)}</strong>
-        <em>{e(small)}</em>
-        <p>{e(text)}</p>
-        <span class="lp-more">{e(cta)} →</span>
-    </a>''' for icon, big, small, text, href, cta in cards)
-    return f'<div class="offer-grid">\n{out}\n</div>'
+        if lang == "hi":
+            t, d, cta, href = ("दिवाली से पहले: घर की सफाई पर 50% तक छूट", "सोफा, कारपेट, गद्दे, पर्दे और किचन की सफाई — आपके घर पर।",
+                               "घर की सफाई देखें", hi_service_href(ctx, "home-deep-cleaning-bhopal"))
+        else:
+            t, d, cta, href = ("Pre-Diwali: up to 50% off home cleaning", "Sofa, carpet, mattress, curtain and kitchen cleaning — at your home.",
+                               "See home cleaning", "/services/home-deep-cleaning-bhopal/")
+    else:
+        if lang == "hi":
+            t, d, cta, href = (f"पहले ऑर्डर पर {f['first_order_off']}% छूट", "Cleanzit पर नए हैं? आपके पहले ऑर्डर पर छूट अपने-आप मिलती है।", "पिकअप बुक करें", "#book")
+        else:
+            t, d, cta, href = (f"{f['first_order_off']}% off your first order", "New to Cleanzit? Your first order is discounted automatically.", "Book your first pickup", "#book")
+    return f'''            <article class="px-slide" aria-roledescription="slide">
+                <img src="/assets/slide-family.webp" alt="" width="1600" height="800" loading="lazy">
+                <div class="px-copy">
+                    <h2 class="px-title">{e(t)}</h2>
+                    <p>{e(d)}</p>
+                    <a class="btn px-cta" href="{href}">{e(cta)}</a>
+                </div>
+            </article>'''
 
 
 def guides_html(ctx):
@@ -1331,16 +1340,14 @@ def render_template(ctx, path, extra=None, lang="en"):
     B = ctx["bhopal"]
     all_slugs = [x["slug"] for x in ctx["services"]["services"]]
     comps = {
-        "booking_form": lambda: indent_block(booking_form(ctx, lang), "                    "),
-        "stats": lambda: stats_html(ctx),
+        "quick_book": lambda: indent_block(quick_book(ctx, lang), "                "),
+        "service_scroller": lambda: indent_block(service_scroller(ctx, lang), "                "),
+        "offer_slide": lambda: offer_slide(ctx, lang),
         "services_grid": lambda: indent_block(service_grid(ctx, all_slugs if lang == "hi" else ctx["services"]["home_page"], False, lang), "                "),
-        "offers": lambda: indent_block(offers_html(ctx), "                "),
         "steps": lambda: indent_block(steps_html(ctx, lang=lang), "                "),
-        "areas": lambda: indent_block(area_groups(ctx, per_zone=None if lang == "hi" else 6, lang=lang), "                "),
+        "areas": lambda: indent_block(area_groups(ctx, lang=lang), "                "),
         "outlets": lambda: indent_block('<div class="lp-outlets">\n' + "\n".join(outlet_card(o, lang=lang) for o in B["outlets"]) + "\n</div>", "                "),
         "guides": lambda: indent_block(guides_html(ctx), "                "),
-        "outlet_count": lambda: str(len(B["outlets"])),
-        "area_count": lambda: str(len(B["areas"])),
     }
     comps.update(extra or {})
     def sub(m):
@@ -1402,7 +1409,7 @@ def fill_static_pages(ctx):
     for pid, fn in panels.items():
         replace_region("pricing.html", f"panel-{pid}", lambda ind, fn=fn: indent_block(fn(ctx), ind))
     replace_region("pricing.html", "pricing-ld", lambda ind: ld_script(pricing_ld(ctx), ind))
-    for page, anchor in (("contact.html", "contact.html"), ("franchise.html", "franchise.html")):
+    for page, anchor in (("index.html", ""), ("contact.html", "contact.html"), ("franchise.html", "franchise.html")):
         replace_region(page, "faq-ld", lambda ind, page=page, anchor=anchor: ld_script({"@context": "https://schema.org", **faq_ld(visible_faqs(page), f"{BASE}/{anchor}")}, ind))
     replace_region("pricing.html", "calculator", lambda ind: indent_block(calculator(ctx), ind))
 
