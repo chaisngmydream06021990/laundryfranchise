@@ -1,5 +1,11 @@
 {
   "_readme": "Hindi (हिंदी) content. Names map English data to Hindi; 'services' holds Hindi copy for the service pages built under /hi/services/<slug>/ (same {p:..}/{now:..}/{fact:..} placeholders as data/services.json). Hindi homepage: content/hi/home.html. Build with python3 tools/build_site.py.",
+  "booking_groups": {
+    "daily": {"name": "रोज़ के कपड़े", "hint": "धुलाई, फोल्ड और प्रेस"},
+    "dry": {"name": "ड्राई क्लीनिंग", "hint": "सूट, साड़ी, लहंगा, ऊनी कपड़े"},
+    "shoes": {"name": "जूते और बैग", "hint": "स्नीकर, लेदर, हैंडबैग"},
+    "home": {"name": "घर का सामान", "hint": "कंबल, पर्दे, कारपेट, सोफा"}
+  },
   "service_names": {
     "laundry-service-bhopal": "लॉन्ड्री (किलो के हिसाब से)",
     "dry-cleaning-bhopal": "ड्राई क्लीनिंग",

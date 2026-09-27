@@ -3,28 +3,34 @@
   Built by tools/build_site.py: {p:ITEM:COL} {now:ID} {fact:KEY} are prices
   from data/prices.json; {{name}} inserts a generated component
   (quick_book, service_scroller, offer_slide, steps, guides).
-  Slide photos live in /assets/slide-*.webp — swap in real Cleanzit photos
-  (1600×800) whenever you have them.
+  Slide photos are real Cleanzit shots in /assets/photos/hero-*.webp
+  (350×400, portrait), two per slide.
 -->
         <!-- Hero: photo slides with progress bars (js/carousel.js) -->
         <section class="px-hero" aria-roledescription="carousel" aria-label="Cleanzit highlights">
             <div class="container">
                 <div class="px-slides">
                     <article class="px-slide is-active" aria-roledescription="slide">
-                        <img src="/assets/slide-counter.webp" alt="Cleanzit counter with dry-cleaned sarees and suits" width="1600" height="800" fetchpriority="high">
                         <div class="px-copy">
                             <p class="px-eyebrow">Laundry · Dry cleaning · Ironing — Bhopal</p>
                             <h1 class="px-title">Laundry &amp; dry cleaning in Bhopal, picked up from your door</h1>
                             <p>Tell us what you need on WhatsApp. We collect, clean every garment the right way for its fabric, and bring it back in {fact:delivery_days} days.</p>
                             <a class="btn px-cta" href="#book">Book a pickup</a>
                         </div>
+                        <div class="px-photos">
+                            <img src="/assets/photos/hero-gulmohar.webp" alt="Cleanzit store at Gulmohar, Bhopal" width="350" height="400" fetchpriority="high">
+                            <img src="/assets/photos/hero-washer.webp" alt="Loading an LG commercial washer at Cleanzit" width="350" height="400" fetchpriority="high">
+                        </div>
                     </article>
                     <article class="px-slide" aria-roledescription="slide">
-                        <img src="/assets/slide-machines.webp" alt="" width="1600" height="800" loading="lazy">
                         <div class="px-copy">
                             <h2 class="px-title">Everyday laundry from {p:wash-fold:price}/kg</h2>
                             <p>Wash &amp; fold or wash &amp; steam iron — free pickup &amp; delivery on orders above ₹{fact:free_pickup_min}.</p>
                             <a class="btn px-cta" href="/pricing.html">See prices</a>
+                        </div>
+                        <div class="px-photos">
+                            <img src="/assets/photos/hero-iron.webp" alt="Steam ironing a shirt at Cleanzit" width="350" height="400" loading="lazy">
+                            <img src="/assets/photos/hero-hangers.webp" alt="Freshly cleaned kurta and shirt on hangers" width="350" height="400" loading="lazy">
                         </div>
                     </article>
 {{offer_slide}}
@@ -103,7 +109,7 @@
                     </details>
                     <details>
                         <summary>How do I book a pickup? Is there an app?</summary>
-                        <p>No app needed. Tap the service you need above and send it on WhatsApp — or message +91 77778 18187 directly. We reply to fix a pickup time.</p>
+                        <p>No app needed. Tick what you're sending above (as many as you like) and send it on WhatsApp — or message +91 77778 18187 directly. We reply to fix a pickup time.</p>
                     </details>
                     <details>
                         <summary>Is pickup and delivery free?</summary>

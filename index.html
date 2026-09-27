@@ -133,7 +133,7 @@
           "name": "How do I book a pickup? Is there an app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No app needed. Tap the service you need above and send it on WhatsApp — or message +91 77778 18187 directly. We reply to fix a pickup time."
+            "text": "No app needed. Tick what you're sending above (as many as you like) and send it on WhatsApp — or message +91 77778 18187 directly. We reply to fix a pickup time."
           }
         },
         {
@@ -338,28 +338,37 @@
             <div class="container">
                 <div class="px-slides">
                     <article class="px-slide is-active" aria-roledescription="slide">
-                        <img src="/assets/slide-counter.webp" alt="Cleanzit counter with dry-cleaned sarees and suits" width="1600" height="800" fetchpriority="high">
                         <div class="px-copy">
                             <p class="px-eyebrow">Laundry · Dry cleaning · Ironing — Bhopal</p>
                             <h1 class="px-title">Laundry &amp; dry cleaning in Bhopal, picked up from your door</h1>
                             <p>Tell us what you need on WhatsApp. We collect, clean every garment the right way for its fabric, and bring it back in 3 days.</p>
                             <a class="btn px-cta" href="#book">Book a pickup</a>
                         </div>
+                        <div class="px-photos">
+                            <img src="/assets/photos/hero-gulmohar.webp" alt="Cleanzit store at Gulmohar, Bhopal" width="350" height="400" fetchpriority="high">
+                            <img src="/assets/photos/hero-washer.webp" alt="Loading an LG commercial washer at Cleanzit" width="350" height="400" fetchpriority="high">
+                        </div>
                     </article>
                     <article class="px-slide" aria-roledescription="slide">
-                        <img src="/assets/slide-machines.webp" alt="" width="1600" height="800" loading="lazy">
                         <div class="px-copy">
                             <h2 class="px-title">Everyday laundry from ₹60/kg</h2>
                             <p>Wash &amp; fold or wash &amp; steam iron — free pickup &amp; delivery on orders above ₹300.</p>
                             <a class="btn px-cta" href="/pricing.html">See prices</a>
                         </div>
+                        <div class="px-photos">
+                            <img src="/assets/photos/hero-iron.webp" alt="Steam ironing a shirt at Cleanzit" width="350" height="400" loading="lazy">
+                            <img src="/assets/photos/hero-hangers.webp" alt="Freshly cleaned kurta and shirt on hangers" width="350" height="400" loading="lazy">
+                        </div>
                     </article>
             <article class="px-slide" aria-roledescription="slide">
-                <img src="/assets/slide-family.webp" alt="" width="1600" height="800" loading="lazy">
                 <div class="px-copy">
                     <h2 class="px-title">Pre-Diwali: up to 50% off home cleaning</h2>
                     <p>Sofa, carpet, mattress, curtain and kitchen cleaning — at your home.</p>
                     <a class="btn px-cta" href="/services/home-deep-cleaning-bhopal/">See home cleaning</a>
+                </div>
+                <div class="px-photos">
+                    <img src="/assets/photos/hero-counter.webp" alt="Weighing an order at the Cleanzit counter" width="350" height="400" loading="lazy">
+                    <img src="/assets/photos/hero-packed.webp" alt="Cleaned clothes packed for delivery" width="350" height="400" loading="lazy">
                 </div>
             </article>
                 </div>
@@ -375,27 +384,42 @@
         <!-- Two-tap booking -->
         <section class="px-book">
             <div class="container">
-                <form class="qb" id="book" novalidate data-wa="917777818187" data-msg-full="Hi Cleanzit! I&#x27;d like to book a pickup for {service} in {area}." data-msg-service="Hi Cleanzit! I&#x27;d like to book a pickup for {service}."
-                      data-msg-area="Hi Cleanzit! I&#x27;d like to book a pickup in {area}." data-msg-none="Hi Cleanzit! I&#x27;d like to book a pickup." data-bag="My bag">
-                    <div class="qb-step"><span class="qb-num">1</span><h2>What do you need?</h2></div>
-                    <div class="qb-chips" role="radiogroup" aria-label="What do you need?">
-                        <label class="qb-chip"><input type="radio" name="service" value="Laundry by KG" data-slug="laundry-service-bhopal"><span>🧺 Laundry by KG</span></label>
-                        <label class="qb-chip"><input type="radio" name="service" value="Dry Cleaning" data-slug="dry-cleaning-bhopal"><span>👔 Dry Cleaning</span></label>
-                        <label class="qb-chip"><input type="radio" name="service" value="Steam Ironing" data-slug="steam-ironing-bhopal"><span>🌬️ Steam Ironing</span></label>
-                        <label class="qb-chip"><input type="radio" name="service" value="Saree &amp; Lehenga Care" data-slug="saree-lehenga-dry-cleaning-bhopal"><span>🥻 Saree &amp; Lehenga Care</span></label>
-                        <label class="qb-chip"><input type="radio" name="service" value="Shoe Cleaning" data-slug="shoe-cleaning-bhopal"><span>👟 Shoe Cleaning</span></label>
-                        <label class="qb-chip"><input type="radio" name="service" value="Blanket &amp; Quilt Cleaning" data-slug="blanket-quilt-cleaning-bhopal"><span>🛏️ Blanket &amp; Quilt Cleaning</span></label>
-                        <label class="qb-chip"><input type="radio" name="service" value="Sofa Cleaning" data-slug="sofa-cleaning-bhopal"><span>🛋️ Sofa Cleaning</span></label>
-                        <label class="qb-chip"><input type="radio" name="service" value="Home Deep Cleaning" data-slug="home-deep-cleaning-bhopal"><span>🏠 Home Deep Cleaning</span></label>
-                        <label class="qb-chip qb-extra" hidden><input type="radio" name="service" value="Bag Cleaning" data-slug="bag-cleaning-bhopal"><span>👜 Bag Cleaning</span></label>
-                        <label class="qb-chip qb-extra" hidden><input type="radio" name="service" value="Woolen &amp; Winter Wear" data-slug="woolen-dry-cleaning-bhopal"><span>🧣 Woolen &amp; Winter Wear</span></label>
-                        <label class="qb-chip qb-extra" hidden><input type="radio" name="service" value="Curtain Cleaning" data-slug="curtain-cleaning-bhopal"><span>🪟 Curtain Cleaning</span></label>
-                        <label class="qb-chip qb-extra" hidden><input type="radio" name="service" value="Carpet Cleaning" data-slug="carpet-cleaning-bhopal"><span>🧶 Carpet Cleaning</span></label>
-                        <label class="qb-chip qb-extra" hidden><input type="radio" name="service" value="Mattress Cleaning" data-slug="mattress-cleaning-bhopal"><span>🛌 Mattress Cleaning</span></label>
-                        <label class="qb-chip qb-extra" hidden><input type="radio" name="service" value="Stain Removal" data-slug="stain-removal-bhopal"><span>🧴 Stain Removal</span></label>
-                        <button type="button" class="qb-more">+ More services</button>
-                    </div>
-                    <div class="qb-step"><span class="qb-num">2</span><h2>Where should we pick up? <small>(optional)</small></h2></div>
+                <form class="qb" id="book" novalidate data-wa="917777818187" data-intro="Hi Cleanzit! I&#x27;d like to book a pickup." data-for="For"
+                      data-area="Area" data-bag="My bag" data-names="{&quot;laundry-service-bhopal&quot;: &quot;Laundry by KG&quot;, &quot;steam-ironing-bhopal&quot;: &quot;Steam Ironing&quot;, &quot;stain-removal-bhopal&quot;: &quot;Stain Removal&quot;, &quot;dry-cleaning-bhopal&quot;: &quot;Dry Cleaning&quot;, &quot;saree-lehenga-dry-cleaning-bhopal&quot;: &quot;Saree &amp; Lehenga Care&quot;, &quot;woolen-dry-cleaning-bhopal&quot;: &quot;Woolen &amp; Winter Wear&quot;, &quot;shoe-cleaning-bhopal&quot;: &quot;Shoe Cleaning&quot;, &quot;bag-cleaning-bhopal&quot;: &quot;Bag Cleaning&quot;, &quot;blanket-quilt-cleaning-bhopal&quot;: &quot;Blanket &amp; Quilt Cleaning&quot;, &quot;curtain-cleaning-bhopal&quot;: &quot;Curtain Cleaning&quot;, &quot;carpet-cleaning-bhopal&quot;: &quot;Carpet Cleaning&quot;, &quot;mattress-cleaning-bhopal&quot;: &quot;Mattress Cleaning&quot;, &quot;sofa-cleaning-bhopal&quot;: &quot;Sofa Cleaning&quot;, &quot;home-deep-cleaning-bhopal&quot;: &quot;Home Deep Cleaning&quot;}">
+                    <fieldset class="qb-need">
+                        <legend class="qb-step"><span class="qb-num">1</span><span class="qb-h">What are you sending? <small>(tap all that apply)</small></span></legend>
+                        <div class="qb-opts">
+                            <label class="qb-opt">
+                                <input type="checkbox" name="need" value="Daily wear" data-services="laundry-service-bhopal steam-ironing-bhopal stain-removal-bhopal">
+                                <span class="qb-tick" aria-hidden="true"></span>
+                                <svg class="qb-ico" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7 8 11l3 8 4-2v24h18V17l4 2 3-8-9-4c-1 3-3.5 5-7 5s-6-2-7-5Z"/></svg>
+                                <strong>Daily wear</strong>
+                                <small>Wash, fold &amp; ironing</small>
+                            </label>
+                            <label class="qb-opt">
+                                <input type="checkbox" name="need" value="Dry cleaning" data-services="dry-cleaning-bhopal saree-lehenga-dry-cleaning-bhopal woolen-dry-cleaning-bhopal">
+                                <span class="qb-tick" aria-hidden="true"></span>
+                                <svg class="qb-ico" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10a4 4 0 1 1 5.5 3.7c-1 .4-1.5 1.2-1.5 2.3v2"/><path d="M24 18 6.8 31.4A2 2 0 0 0 8 35h32a2 2 0 0 0 1.2-3.6Z"/></svg>
+                                <strong>Dry cleaning</strong>
+                                <small>Suits, sarees, lehengas, woollens</small>
+                            </label>
+                            <label class="qb-opt">
+                                <input type="checkbox" name="need" value="Shoes &amp; bags" data-services="shoe-cleaning-bhopal bag-cleaning-bhopal">
+                                <span class="qb-tick" aria-hidden="true"></span>
+                                <svg class="qb-ico" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 36V23c0-2.5 2.5-3.5 4-2l3 2.5c2 1.5 4.5 1 5.5-1l1.5-3c.8-1.4 2.2-1.6 3.2-.4l3.3 4.4c3 3.5 7 5.5 12 6.5 3 .6 5.5 2.8 5.5 6Z"/><path d="M5 36h38v3H5z"/><path d="m19 22 3 2.5M22 18.5l3 2.5"/></svg>
+                                <strong>Shoes &amp; bags</strong>
+                                <small>Sneakers, leather, handbags</small>
+                            </label>
+                            <label class="qb-opt">
+                                <input type="checkbox" name="need" value="Home items" data-services="blanket-quilt-cleaning-bhopal curtain-cleaning-bhopal carpet-cleaning-bhopal mattress-cleaning-bhopal sofa-cleaning-bhopal home-deep-cleaning-bhopal">
+                                <span class="qb-tick" aria-hidden="true"></span>
+                                <svg class="qb-ico" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22 24 8l17 14"/><path d="M11 19v20h26V19"/><path d="M20.5 39V29h7v10"/></svg>
+                                <strong>Home items</strong>
+                                <small>Blankets, curtains, carpets, sofa</small>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <div class="qb-step"><span class="qb-num">2</span><h2 class="qb-h">Where should we pick up? <small>(optional)</small></h2></div>
                     <div class="qb-row">
                         <input name="area" type="text" list="qb-areas-en" autocomplete="address-level3" placeholder="Your area, e.g. Kolar Road" aria-label="Where should we pick up?">
                         <datalist id="qb-areas-en">
@@ -488,7 +512,7 @@
                     <ul class="px-track">
                         <li class="px-card">
                             <a href="/services/laundry-service-bhopal/">
-                                <div class="px-visual" style="--tone: #E6FBFB"><span aria-hidden="true">🧺</span></div>
+                                <div class="px-visual is-photo" style="--tone: #E6FBFB"><img src="/assets/photos/card-laundry.webp" alt="Loading clothes into an LG commercial washer at Cleanzit" loading="lazy" width="480" height="360"></div>
                                 <div class="px-body">
                                     <h3>Laundry by KG</h3>
                                     <p class="px-meta">Wash &amp; fold or wash &amp; steam iron for everyday clothes, charged per kilogram.</p>
@@ -498,7 +522,7 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/dry-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #FFF3E0"><span aria-hidden="true">👔</span></div>
+                                <div class="px-visual is-photo" style="--tone: #FFF3E0"><img src="/assets/photos/card-dry.webp" alt="Dry-cleaned white kurta and shirt on hangers at Cleanzit" loading="lazy" width="480" height="360"></div>
                                 <div class="px-body">
                                     <h3>Dry Cleaning</h3>
                                     <p class="px-meta">Suits, blazers, sarees, dresses and delicate fabrics, cleaned with fabric-appropriate processes.</p>
@@ -508,7 +532,7 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/steam-ironing-bhopal/">
-                                <div class="px-visual" style="--tone: #EEF0FF"><span aria-hidden="true">🌬️</span></div>
+                                <div class="px-visual is-photo" style="--tone: #EEF0FF"><img src="/assets/photos/card-iron.webp" alt="Steam ironing a shirt at Cleanzit" loading="lazy" width="480" height="360"></div>
                                 <div class="px-body">
                                     <h3>Steam Ironing</h3>
                                     <p class="px-meta">Crisp, wrinkle-free steam pressing for everyday and formal wear.</p>
@@ -518,7 +542,7 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/shoe-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #E9F8EF"><span aria-hidden="true">👟</span></div>
+                                <div class="px-visual is-photo" style="--tone: #E9F8EF"><img src="/assets/photos/card-shoe.webp" alt="Hand-cleaning a sneaker at Cleanzit" loading="lazy" width="480" height="360"></div>
                                 <div class="px-body">
                                     <h3>Shoe Cleaning</h3>
                                     <p class="px-meta">Deep cleaning for sports shoes, sneakers, leather, suede and boots.</p>
@@ -527,8 +551,18 @@
                             </a>
                         </li>
                         <li class="px-card">
+                            <a href="/services/stain-removal-bhopal/">
+                                <div class="px-visual is-photo" style="--tone: #FDECEF"><img src="/assets/photos/card-stain.webp" alt="Treating an ink stain on a shirt at Cleanzit" loading="lazy" width="480" height="360"></div>
+                                <div class="px-body">
+                                    <h3>Stain Removal</h3>
+                                    <p class="px-meta">Spot treatment for turmeric, oil, tea, ink and other stubborn stains.</p>
+                                    <p class="px-price">Ask for a quote</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="px-card">
                             <a href="/services/bag-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #FDECEF"><span aria-hidden="true">👜</span></div>
+                                <div class="px-visual" style="--tone: #EAF4FF"><svg class="glyph" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h30l-3 22H12Z"/><path d="M18 18v-3a6 6 0 0 1 12 0v3"/></svg></div>
                                 <div class="px-body">
                                     <h3>Bag Cleaning</h3>
                                     <p class="px-meta">Handbags, leather bags, cloth bags, suitcases and wallets.</p>
@@ -538,7 +572,7 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/saree-lehenga-dry-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #EAF4FF"><span aria-hidden="true">🥻</span></div>
+                                <div class="px-visual" style="--tone: #FFF8DB"><svg class="glyph" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 7h12l2 10H16Z"/><path d="M16 17 8 41h32l-8-24"/><path d="M9.3 37h29.4"/><path d="M24 17v24"/></svg></div>
                                 <div class="px-body">
                                     <h3>Saree &amp; Lehenga Care</h3>
                                     <p class="px-meta">Silk sarees, lehengas, embroidered suits and achkans handled with care.</p>
@@ -548,7 +582,7 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/woolen-dry-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #FFF8DB"><span aria-hidden="true">🧣</span></div>
+                                <div class="px-visual" style="--tone: #E6FBFB"><svg class="glyph" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8 8 13l2 12 4-2v17h20V23l4 2 2-12-9-5c-1 3-3.5 5-7 5s-6-2-7-5Z"/><path d="M14 35h20M10.5 21.5l3.5-1.5M37.5 21.5 34 20"/></svg></div>
                                 <div class="px-body">
                                     <h3>Woolen &amp; Winter Wear</h3>
                                     <p class="px-meta">Sweaters, shawls, jackets and long coats, cleaned without stretching or shrinking.</p>
@@ -558,7 +592,7 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/blanket-quilt-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #E6FBFB"><span aria-hidden="true">🛏️</span></div>
+                                <div class="px-visual" style="--tone: #FFF3E0"><svg class="glyph" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="11" width="30" height="8" rx="4"/><rect x="6" y="21" width="36" height="8" rx="4"/><rect x="9" y="31" width="30" height="8" rx="4"/></svg></div>
                                 <div class="px-body">
                                     <h3>Blanket &amp; Quilt Cleaning</h3>
                                     <p class="px-meta">Blankets, quilts (razai), duvets and bed sheets — too big for a home machine.</p>
@@ -568,7 +602,7 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/curtain-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #FFF3E0"><span aria-hidden="true">🪟</span></div>
+                                <div class="px-visual" style="--tone: #EEF0FF"><svg class="glyph" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h38"/><path d="M9 8c0 12 5 22 2 32h9c-2-12 0-24 0-32M39 8c0 12-5 22-2 32h-9c2-12 0-24 0-32"/></svg></div>
                                 <div class="px-body">
                                     <h3>Curtain Cleaning</h3>
                                     <p class="px-meta">Curtains and blinds, dry cleaned or cleaned at your home.</p>
@@ -578,7 +612,7 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/carpet-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #EEF0FF"><span aria-hidden="true">🧶</span></div>
+                                <div class="px-visual" style="--tone: #E9F8EF"><svg class="glyph" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="12" width="30" height="24" rx="1"/><path d="M12 12V8M17 12V8M22 12V8M27 12V8M32 12V8M37 12V8M12 40v-4M17 40v-4M22 40v-4M27 40v-4M32 40v-4M37 40v-4"/><path d="m24 17 7 7-7 7-7-7Z"/></svg></div>
                                 <div class="px-body">
                                     <h3>Carpet Cleaning</h3>
                                     <p class="px-meta">Carpets and rugs deep cleaned, priced per square foot.</p>
@@ -588,7 +622,7 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/sofa-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #E9F8EF"><span aria-hidden="true">🛋️</span></div>
+                                <div class="px-visual" style="--tone: #FDECEF"><svg class="glyph" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 22v-6a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v6"/><path d="M6 24a3 3 0 0 1 6 0v4h24v-4a3 3 0 0 1 6 0v10H6Z"/><path d="M10 34v4M38 34v4"/></svg></div>
                                 <div class="px-body">
                                     <h3>Sofa Cleaning</h3>
                                     <p class="px-meta">Fabric sofa cleaning at your home, priced per seat.</p>
@@ -598,7 +632,7 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/mattress-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #FDECEF"><span aria-hidden="true">🛌</span></div>
+                                <div class="px-visual" style="--tone: #EAF4FF"><svg class="glyph" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="19" width="38" height="15" rx="3"/><path d="M15 19v15M24 19v15M33 19v15M8 38h32"/></svg></div>
                                 <div class="px-body">
                                     <h3>Mattress Cleaning</h3>
                                     <p class="px-meta">Deep cleaning for single and double mattresses.</p>
@@ -608,21 +642,11 @@
                         </li>
                         <li class="px-card">
                             <a href="/services/home-deep-cleaning-bhopal/">
-                                <div class="px-visual" style="--tone: #EAF4FF"><span aria-hidden="true">🏠</span></div>
+                                <div class="px-visual" style="--tone: #FFF8DB"><svg class="glyph" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22 24 8l17 14"/><path d="M11 19v20h26V19"/><path d="M20.5 39V29h7v10"/></svg></div>
                                 <div class="px-body">
                                     <h3>Home Deep Cleaning</h3>
                                     <p class="px-meta">Kitchen, floor, sofa, carpet, mattress and curtain cleaning at your home.</p>
                                     <p class="px-price">Starting ₹1,399</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="px-card">
-                            <a href="/services/stain-removal-bhopal/">
-                                <div class="px-visual" style="--tone: #FFF8DB"><span aria-hidden="true">🧴</span></div>
-                                <div class="px-body">
-                                    <h3>Stain Removal</h3>
-                                    <p class="px-meta">Spot treatment for turmeric, oil, tea, ink and other stubborn stains.</p>
-                                    <p class="px-price">Ask for a quote</p>
                                 </div>
                             </a>
                         </li>
@@ -701,7 +725,7 @@
                     </details>
                     <details>
                         <summary>How do I book a pickup? Is there an app?</summary>
-                        <p>No app needed. Tap the service you need above and send it on WhatsApp — or message +91 77778 18187 directly. We reply to fix a pickup time.</p>
+                        <p>No app needed. Tick what you're sending above (as many as you like) and send it on WhatsApp — or message +91 77778 18187 directly. We reply to fix a pickup time.</p>
                     </details>
                     <details>
                         <summary>Is pickup and delivery free?</summary>

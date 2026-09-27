@@ -1,5 +1,5 @@
 {
-  "_readme": "Source of truth for the Bhopal outlet + area pages. Edit this file, then run: python3 tools/build_site.py — it regenerates bhopal/index.html, every bhopal/<area>/index.html, sitemap.xml and the marked regions in the hand-written pages. Each area needs a 'zone' (one of 'zones', controls grouping on the hub and the 'Nearby Areas' list) and an 'outlet' (its closest outlet id). Optional 'aka' = another name people search for (shown on the area's page). To stop showing an area, delete it; its page is removed on the next run. 'headline_prices' refers to data/prices.json (ITEM:COLUMN, or home:HOME_ID).",
+  "_readme": "Source of truth for the Bhopal outlet + area pages. Optional outlet 'photo' shows the storefront on outlet cards. Edit this file, then run: python3 tools/build_site.py — it regenerates bhopal/index.html, every bhopal/<area>/index.html, sitemap.xml and the marked regions in the hand-written pages. Each area needs a 'zone' (one of 'zones', controls grouping on the hub and the 'Nearby Areas' list) and an 'outlet' (its closest outlet id). Optional 'aka' = another name people search for (shown on the area's page). To stop showing an area, delete it; its page is removed on the next run. 'headline_prices' refers to data/prices.json (ITEM:COLUMN, or home:HOME_ID).",
   "outlets": [
     {
       "id": "gulmohar",
@@ -8,7 +8,8 @@
       "street": "108, Doorsanchar Nagar, near Hotel Radisson, Gulmohar",
       "locality": "Gulmohar",
       "postalCode": "462039",
-      "main": true
+      "main": true,
+      "photo": "/assets/photos/store-gulmohar.webp"
     },
     {
       "id": "shahpura",
@@ -17,7 +18,8 @@
       "street": "Shop No. 5, Aashiyana Aangan, Thana Road, near Shahpura",
       "locality": "Shahpura",
       "postalCode": "",
-      "main": false
+      "main": false,
+      "photo": "/assets/photos/store-shahpura.webp"
     },
     {
       "id": "bagmugaliya",
@@ -26,7 +28,8 @@
       "street": "Shop No. 1 & 2, 80 Feet CPA Road, Bagmugaliya",
       "locality": "Bagmugaliya",
       "postalCode": "",
-      "main": false
+      "main": false,
+      "photo": "/assets/photos/store-bagmugaliya.webp"
     },
     {
       "id": "kolar",
@@ -35,7 +38,8 @@
       "street": "Shop No. GF-04, Shiv Sai Plaza, Danish Square, Kolar Road",
       "locality": "Kolar",
       "postalCode": "",
-      "main": false
+      "main": false,
+      "photo": "/assets/photos/store-kolar.webp"
     }
   ],
   "zones": [
